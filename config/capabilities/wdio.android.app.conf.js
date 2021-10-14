@@ -1,14 +1,14 @@
-const { config } = require("../wdio.conf");
+const {config} = require("../wdio.conf");
 
 config.capabilities = [
     // Android Real Device for installed app
     {
         platformName: "Android",
         platformVersion: "11",
-        deviceName: "Redmi Note 9 Pro",
+        deviceName: "Galaxy A51",
+        udid: "R58R312DAYM",
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
-        noReset:false
     }
 
 
@@ -70,7 +70,6 @@ config.capabilities = [
     */
 
 ];
-
 
 
 exports.config = config;

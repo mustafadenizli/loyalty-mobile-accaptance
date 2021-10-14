@@ -1,9 +1,13 @@
-@Deneme
 Feature: Loyalty Landing Page
 
   AS Nisa
   I WANT to know about the features of the loyalty program
   SO THAT I can decide whether to enroll in the loyalty program
+
+  | Emails                            | Passwords      | CustomerIDs |
+  | userLoyaltyLanding@modanisa.com   | Modanisa1234.  | 12727253    |
+  | toptanci.musteri@modanisa.com     | Testhb123      | 10183939    |
+  | problemli.musteri@modanisa.com    | Testhb123      | 10183941    |
 
   Background:
     Given Nisa waits for Welcome page
@@ -12,134 +16,147 @@ Feature: Loyalty Landing Page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
+    Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
+    Given Nisa waits for Home page
+    Given Nisa taps on the My Account button in bottom menu bar
 
-  Scenario: Nisa has landed "Landing Page"
-    Given Nisa login with email: "landing.test.user@modanisa.com" and password: "Modanisa123"
-    When Nisa taps to MyModanisa section
+  @S74/74.1-LoggedIn/NotLoggedIn-CheckButton
+  Scenario Outline: Nisa has landed "Landing Page"
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
     Then Nisa should see Landing Page Title
     Then Nisa should see Description: "My Modanisa ayrıcalıklar dünyası bu kapının arkasında" in Landing Page
-    Then Nisa should see Button: "My Modanisa'ya Katıl" in Landing Page
+    Then Nisa should see Button: "<buttonType>" in Landing Page
+    Examples:
+      | email                           | password      | buttonType           |
+      | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa'ya Katıl |
+      | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa'ya Katıl |
+      | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa'ya Katıl |
+      |                                 |               | Giriş Yap            |
 
-  Scenario: Nisa has landed "Landing Page"
-    When Nisa taps to MyModanisa section
-    Then Nisa should see Landing Page Title
-    Then Nisa should see Description: "My Modanisa ayrıcalıklar dünyası bu kapının arkasında" in Landing Page
-    Then Nisa should see Button: "Giriş Yap" in Landing Page
+  @S74/74.1-LoggedIn/NotLoggedIn-CheckTab  @Deneme
+  Scenario Outline: Nisa has taps "Program Features|Earn Points|Points Usage"
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
+    Then Nisa should see Tab: "<tab>" in Landing Page
+    When Nisa click to Tab: "<tab>" in Landing Page
+    Then Nisa should see Tab Card: "<tabCard>" in Landing Page
+    Examples:
+      | email                           | password      | tab                 | tabCard                 |
+      | problemli.musteri@modanisa.com  | Testhb123     | Hediye Seçimi       | Modanisa Hediye Çekleri |
+      |                                 |               | Program Özellikleri | Kargo Bedava Fırsatları |
+      |                                 |               | Puan Kazanımı       | Hoş Geldin Puanı        |
+      |                                 |               | Hediye Seçimi       | Modanisa Hediye Çekleri |
 
-  Scenario: Nisa has landed "Landing Page"
-    Given Nisa login with email: "landing.test.user@modanisa.com" and password: "Modanisa123"
-    When Nisa taps to MyModanisa section
-    Then Nisa should see Tab: "Program Özellikleri" in Landing Page
-    Then Nisa should see Tab: "Puan Kazanımı" in Landing Page
-    Then Nisa should see Tab: "Hediye Seçimi" in Landing Page
-    When Nisa click to Tab: "Program Özellikleri" in Landing Page
-    Then Nisa should see Tab Card: "Kargo Bedava Fırsatları" in Landing Page
-    When Nisa click to Tab: "Puan Kazanımı" in Landing Page
-    Then Nisa should see Tab Card: "Hoş Geldin Puanı" in Landing Page
-    When Nisa click to Tab: "Hediye Seçimi" in Landing Page
-    Then Nisa should see Tab Card: "Modanisa Hediye Çekleri" in Landing Page
-
-  Scenario: Nisa has landed "Landing Page"
-    When Nisa taps to MyModanisa section
-    Then Nisa should see Tab: "Program Özellikleri" in Landing Page
-    Then Nisa should see Tab: "Puan Kazanımı" in Landing Page
-    Then Nisa should see Tab: "Hediye Seçimi" in Landing Page
-    When Nisa click to Tab: "Program Özellikleri" in Landing Page
-    Then Nisa should see Tab Card: "Kargo Bedava Fırsatları" in Landing Page
-    When Nisa click to Tab: "Puan Kazanımı" in Landing Page
-    Then Nisa should see Tab Card: "Hoş Geldin Puanı" in Landing Page
-    When Nisa click to Tab: "Hediye Seçimi" in Landing Page
-    Then Nisa should see Tab Card: "Modanisa Hediye Çekleri" in Landing Page
-
-  Scenario: Nisa has landed "Landing Page"
-    Given Nisa login with email: "landing.test.user@modanisa.com" and password: "Modanisa123"
-    When Nisa taps to MyModanisa section
+  @S74/74.1-LoggedIn/NotLoggedIn-CheckFaqContainer
+  Scenario Outline: Nisa has taps Faq Container Element
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
     Then Nisa should see Faq Area Name: "POPÜLER SORULAR" in Landing Page
-    Then Nisa should see Faq Name: "My Modanisa nedir?" in Landing Page
-    Then Nisa should see Faq Name: "My Modanisa'ya nasıl kayıt olurum?" in Landing Page
-    Then Nisa should see Faq Name: "My Modanisa ne gibi ayrıcalıklar sağlar?" in Landing Page
+    Then Nisa should see Faq Name: "<faqName>" in Landing Page
+    When Nisa click to Faq Name: "<faqName>" in Landing Page
+    Then Nisa should see Faq Modal Title "<faqName>"
+    Then Nisa should see Faq Modal Description "<faqDescription>"
+    When Nisa click to Faq Modal Close Button
+    Then Nisa should see Landing Page Title
     Then Nisa should see All Faq: "Tüm Sorular" in Landing Page
-
-  Scenario: Nisa has landed "Landing Page"
-    Given Nisa login with email: "landing.test.user@modanisa.com" and password: "Modanisa123"
-    When Nisa taps to MyModanisa section
-    When Nisa click to Faq Name: "My Modanisa nedir" in Landing Page
-    Then Nisa should see Faq Modal Title "My Modanisa nedir?"
-    Then Nisa should see Faq Modal Description "My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır"
-    When Nisa click to Faq Modal Close Button
-    Then Nisa should see Landing Page Title
-    When Nisa click to Faq Name: "My Modanisa’ya nasıl kayıt olurum?" in Landing Page
-    Then Nisa should see Faq Modal Title "My Modanisa’ya nasıl kayıt olurum?"
-    When Nisa click to Faq Modal Close Button
-    Then Nisa should see Landing Page Title
-    When Nisa click to Faq Name: "My Modanisa ne gibi ayrıcalıklar sağlar?" in Landing Page
-    Then Nisa should see Faq Modal Title "My Modanisa ne gibi ayrıcalıklar sağlar?"
-    Then Nisa should see Faq Modal Description "My Modanisa’ya kayıt olduktan sonra"
-    When Nisa click to Faq Modal Close Button
-    Then Nisa should see Landing Page Title
     When Nisa click to All Faq in Landing Page
     Then Nisa should see Faq Page Title
     When Nisa click to Back Button in Faq Page
     Then Nisa should see Landing Page Title
+    Examples:
+      | email                           | password      | faqName                                 | faqDescription                                            |
+      | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa nedir                       | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır |
+      | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa’ya nasıl kayıt olurum       | My Modanisa’ya kayıt olmak için                           |
+      | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa ne gibi ayrıcalıklar sağlar | My Modanisa’ya kayıt olduktan sonra                       |
+      | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa nedir                       | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır |
+      | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa’ya nasıl kayıt olurum       | My Modanisa’ya kayıt olmak için                           |
+      | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa ne gibi ayrıcalıklar sağlar | My Modanisa’ya kayıt olduktan sonra                       |
+      | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa nedir                       | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır |
+      | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa’ya nasıl kayıt olurum       | My Modanisa’ya kayıt olmak için                           |
+      | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa ne gibi ayrıcalıklar sağlar | My Modanisa’ya kayıt olduktan sonra                       |
+      |                                 |               | My Modanisa nedir                       | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır |
+      |                                 |               | My Modanisa’ya nasıl kayıt olurum       | My Modanisa’ya kayıt olmak için                           |
+      |                                 |               | My Modanisa ne gibi ayrıcalıklar sağlar | My Modanisa’ya kayıt olduktan sonra                       |
 
-  Scenario: Nisa has landed "Landing Page"
-    When Nisa taps to MyModanisa section
-    Then Nisa should see Faq Area Name: "POPÜLER SORULAR" in Landing Page
-    Then Nisa should see Faq Name: "My Modanisa nedir?" in Landing Page
-    Then Nisa should see Faq Name: "My Modanisa'ya nasıl kayıt olurum?" in Landing Page
-    Then Nisa should see Faq Name: "My Modanisa ne gibi ayrıcalıklar sağlar?" in Landing Page
+  @S74/74.1-LoggedIn/NotLoggedIn-CheckLandFaqPage
+  Scenario Outline: Nisa has taps All Questions
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
+    Then Nisa should see Landing Page Title
     Then Nisa should see All Faq: "Tüm Sorular" in Landing Page
-
-  Scenario: Nisa has landed "Landing Page"
-    When Nisa taps to MyModanisa section
-    When Nisa click to Faq Name: "My Modanisa nedir" in Landing Page
-    Then Nisa should see Faq Modal Title "My Modanisa nedir?"
-    Then Nisa should see Faq Modal Description "My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır"
-    When Nisa click to Faq Modal Close Button
-    Then Nisa should see Landing Page Title
-    When Nisa click to Faq Name: "My Modanisa’ya nasıl kayıt olurum?" in Landing Page
-    Then Nisa should see Faq Modal Title "My Modanisa’ya nasıl kayıt olurum?"
-    When Nisa click to Faq Modal Close Button
-    Then Nisa should see Landing Page Title
-    When Nisa click to Faq Name: "My Modanisa ne gibi ayrıcalıklar sağlar?" in Landing Page
-    Then Nisa should see Faq Modal Title "My Modanisa ne gibi ayrıcalıklar sağlar?"
-    Then Nisa should see Faq Modal Description "My Modanisa’ya kayıt olduktan sonra"
-    When Nisa click to Faq Modal Close Button
-    Then Nisa should see Landing Page Title
     When Nisa click to All Faq in Landing Page
     Then Nisa should see Faq Page Title
     When Nisa click to Back Button in Faq Page
+    Then Nisa should see Landing Page Title
+    Examples:
+      | email                           | password      |
+      | userLoyaltyLanding@modanisa.com | Modanisa1234. |
+      | toptanci.musteri@modanisa.com   | Testhb123     |
+      | problemli.musteri@modanisa.com  | Testhb123     |
+      |                                 |               |
 
+  @S74
   Scenario: Nisa Has Tapped 'Login Button' on ‘Loyalty Page’ Navigate To Legacy Login Page
-    When Nisa taps to MyModanisa section
+    When Nisa taps to My Modanisa section
     When Nisa click Button: "Giriş Yap" in Landing Page
     Then Nisa should see Login Page
 
+  @S74
   Scenario: Nisa Has Tapped 'Login Button' on ‘Loyalty Page’ Navigate To Legacy Login Page
     Given Nisa login with email: "landing.test.user@modanisa.com" and password: "Modanisa123"
-    When Nisa taps to MyModanisa section
+    When Nisa taps to My Modanisa section
     When Nisa click Button: "My Modanisa'ya Katıl" in Landing Page
-    Then Nisa should see Enrollment Page Title
+    Then Nisa should see Enrollment Page
 
-  Scenario: Nisa Has Not See Enroll Button And Warning Message When She Is Wholesaler
-    Given Nisa login with email: "toptanci.musteri@modanisa.com" and password: "Testhb123"
-    When Nisa taps to MyModanisa section
+  @S56
+  Scenario Outline: Nisa Has Not See Enroll Button And Warning Message When She Is Wholesaler
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
     When Nisa click Button: "My Modanisa'ya Katıl" in Landing Page
-    Then Nisa should see Popup Message "My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz" in Landing Page
+    Then Nisa should see Popup Message "<message>" in Landing Page
+    Examples:
+      | email                          | password  | message                                                                                                                                               |
+      | toptanci.musteri@modanisa.com  | Testhb123 | My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz |
+      | problemli.musteri@modanisa.com | Testhb123 | My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz |
 
-  Scenario: Nisa Has Not See Enroll Button And Warning Message When She Is Blacklisted
-    Given Nisa login with email: "problemli.musteri@modanisa.com" and password: "Testhb123"
-    When Nisa taps to MyModanisa section
+  @S56
+  Scenario Outline: Nisa Has see Warning Button and Phone back button
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
     When Nisa click Button: "My Modanisa'ya Katıl" in Landing Page
-    Then Nisa should see Popup Message "My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz" in Landing Page
+    Then Nisa click Phone back button
+    Then Nisa should see Popup Message "<message>" in Landing Page
+    When Nisa click Popup Button "Kapat" in Landing Page
+    When Nisa click Phone back button
+    Then Nisa should see My Account page
+    Examples:
+      | email                          | password  | message                                                                                                                                               |
+      | toptanci.musteri@modanisa.com  | Testhb123 | My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz |
+      | problemli.musteri@modanisa.com | Testhb123 | My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz |
 
-  Scenario: Nisa Goes Back To My Account Page From Loyalty Page
-    Given Nisa login with email: "landing.test.user@modanisa.com" and password: "Modanisa123"
-    When Nisa taps to MyModanisa section
+  @S57.1
+  Scenario Outline: Nisa Goes Back To My Account Page From Loyalty Page
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
     When Nisa click to Back Button in Landing Page
     Then Nisa should see My Account page
+    Examples:
+      | email                           | password      |
+      | userLoyaltyLanding@modanisa.com | Modanisa1234. |
+      | toptanci.musteri@modanisa.com   | Testhb123     |
+      | problemli.musteri@modanisa.com  | Testhb123     |
+      |                                 |               |
 
-  Scenario: Nisa Goes Back To My Account Page From Loyalty Page
-    When Nisa taps to MyModanisa section
-    When Nisa click to Back Button in Landing Page
+  @S57.1
+  Scenario Outline: Nisa Goes Phone Back To My Account Page From Loyalty Page
+    Given Nisa login with email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
+    When Nisa click Phone back button
     Then Nisa should see My Account page
+    Examples:
+      | email                           | password      |
+      | userLoyaltyLanding@modanisa.com | Modanisa1234. |
+      | toptanci.musteri@modanisa.com   | Testhb123     |
+      | problemli.musteri@modanisa.com  | Testhb123     |
+      |                                 |               |

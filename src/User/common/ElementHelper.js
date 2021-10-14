@@ -1,5 +1,13 @@
 class ElementHelper {
 
+    async getText(element) {
+        await this.writeConsoleInfo("getText adımı başladı - " + element)
+        let elem = await this.findElement(element)
+        const text = await elem.getText()
+        await this.writeConsoleTick("getText adımı başarıyla gerçekleşti")
+        return text
+    }
+
     async elementSendKey(element, text) {
         await this.writeConsoleInfo("elementSendKey adımı başladı - " + element)
         let elem = await this.findElement(element)
@@ -21,15 +29,20 @@ class ElementHelper {
 
     async elementCheck(element) {
         await this.writeConsoleInfo("elementCheck adımı başladı - " + element)
-        let elem = await this.findElement(element)
-        await expect(elem).toExist()
+        await this.findElement(element)
+        await this.writeConsoleTick("elementCheck adımı başarıyla gerçekleşti")
+    }
+
+    async elementNotCheck(element) {
+        await this.writeConsoleInfo("elementCheck adımı başladı - " + element)
+        let elem = $(element).isExisting()
+        await expect(elem).toEqual(false)
         await this.writeConsoleTick("elementCheck adımı başarıyla gerçekleşti")
     }
 
     async elementCheckTextEquals(element, text) {
         await this.writeConsoleInfo("elementCheckTextEquals adımı başladı - " + element)
         let elem = await this.findElement(element)
-        await expect(elem).toExist()
         const elementText = await elem.getText()
         await expect(elementText).toEqual(text)
         await this.writeConsoleTick("elementCheckTextEquals adımı başarıyla gerçekleşti")
@@ -46,10 +59,10 @@ class ElementHelper {
     async elementClick(element) {
         await this.writeConsoleInfo("elementClick adımı başladı - " + element)
         let elem = await this.findElement(element)
-        await expect(elem).toExist()
         await elem.click()
         await this.writeConsoleTick("elementClick adımı başarıyla gerçekleşti")
     }
+
 
     async withOutElementClickTextContains(text) {
         await this.writeConsoleInfo("withOutElementClickTextContains adımı başladı - " + text)
@@ -66,6 +79,7 @@ class ElementHelper {
         await elem.click()
         await this.writeConsoleTick("withOutElementClickTextEquals adımı başarıyla gerçekleşti")
     }
+
 
     async elementsCheckTextContains(element1, text) {
         await this.writeConsoleInfo("elementsCheckTextContains adımı başladı - " + text)
@@ -114,6 +128,7 @@ class ElementHelper {
     async elementsCheckUnderElementWithText(element1, element2, text) {
         await this.writeConsoleInfo("elementsCheckUnderElementWithText adımı başladı - " + text)
         let result = false
+        await this.findElement(element1)
         let elems = await $(element1).$$(element2)
         let elements = await elems.map(async (el) => {
             let txt = await el.getText()
@@ -134,6 +149,7 @@ class ElementHelper {
     async elementsClickUnderElementWithText(element1, element2, text) {
         await this.writeConsoleInfo("elementsClickUnderElementWithText adımı başladı - " + text)
         let result = false
+        await this.findElement(element1)
         let elems = await $(element1).$$(element2)
         let elements = await elems.map(async (el) => {
             let txt = await el.getText()
@@ -155,10 +171,12 @@ class ElementHelper {
     async findElement(element) {
         await this.writeConsoleChildMethod("FindElement adımı başladı")
         try {
-            await $(element).waitForDisplayed({timeout: 5000})
+            await $(element).waitForDisplayed({timeout: 20000})
+            await expect($(element)).toExist()
             await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
             return await $(element)
         } catch (error) {
+            await this.writeConsoleChildMethod("Element bulunamadı sayfayı kaydırmayı deniyorum")
             let elem = await element.replace("android=", "")
             let window = await browser.getWindowSize()
             await $(`android=new UiScrollable(new UiSelector().scrollable(true)).flingToBeginning(3).scrollIntoView(` + elem + `)`)
@@ -169,7 +187,9 @@ class ElementHelper {
             ])
             await browser.pause(2000)
             try {
-                await $(element).waitForDisplayed({timeout: 5000})
+                await $(element).waitForDisplayed({timeout: 2000})
+                await expect($(element)).toExist()
+                await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
                 return await $(element)
             } catch (error) {
                 await browser.touchAction([
@@ -177,6 +197,9 @@ class ElementHelper {
                     {action: 'moveTo', x: window.width / 2, y: window.height * 3 / 4},
                     'release'
                 ])
+                await $(element).waitForDisplayed({timeout: 2000})
+                await expect($(element)).toExist()
+                await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
                 return await $(element)
             }
         }

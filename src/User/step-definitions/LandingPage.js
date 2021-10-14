@@ -1,7 +1,5 @@
 const {Given, When, Then} = require('@wdio/cucumber-framework');
-
 const LandingPage = require('../pages/LandingPage')
-
 
 Then(/^Nisa should see Landing Page Title$/, async () => {
     await LandingPage.checkLandingPageTitle()
@@ -9,8 +7,6 @@ Then(/^Nisa should see Landing Page Title$/, async () => {
 When(/^Nisa click to Back Button in Landing Page$/, async () => {
     await LandingPage.clickBackButton()
 });
-
-
 Then(/^Nisa should see Description: "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.checkLandingPageDescription(text)
 });
@@ -20,8 +16,6 @@ Then(/^Nisa should see Button: "([^"]*)" in Landing Page$/, async (text) => {
 When(/^Nisa click Button: "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.clickButton(text)
 });
-
-
 Then(/^Nisa should see Tab: "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.checkTabName(text)
 });
@@ -31,8 +25,6 @@ When(/^Nisa click to Tab: "([^"]*)" in Landing Page$/, async (text) => {
 Then(/^Nisa should see Tab Card: "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.checkTabCardName(text)
 });
-
-
 Then(/^Nisa should see Faq Area Name: "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.checkFaqAreaName(text)
 });
@@ -48,12 +40,9 @@ When(/^Nisa click to All Faq in Landing Page$/, async () => {
 Then(/^Nisa should see All Faq: "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.checkAllFaqName(text)
 });
-
-
 Then(/^Nisa should see Popup Message "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.checkPopupMessage(text)
 });
-
 When(/^Nisa click Popup Button "([^"]*)" in Landing Page$/, async () => {
     await LandingPage.clickPopupButton()
 });

@@ -1,5 +1,4 @@
 const {Given, When, Then} = require('@wdio/cucumber-framework');
-
 const FaqPage = require('../pages/FaqPage')
 
 Then(/^Nisa should see Faq Page Title$/, async () => {
@@ -16,4 +15,7 @@ Then(/^Nisa should see Faq Modal Description "([^"]*)"$/, async (text) => {
 });
 When(/^Nisa click to Faq Modal Close Button$/, async () => {
     await FaqPage.clickFaqModalCloseButton()
+});
+When(/^Nisa click to Faq Name: "([^"]*)" in Faq Page$/, async (text) => {
+    await FaqPage.clickFaqName(text)
 });

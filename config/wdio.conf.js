@@ -104,7 +104,8 @@ exports.config = {
      * @param {ITestCaseHookParameter} world world object containing information on pickle and test step
      */
     beforeScenario: async (world) => {
-        await browser.reset()
+        await driver.launchApp()
+        //await browser.reset()
         await browser.deleteCookies()
         await console.log('\u001b[' + 34 + 'm' + '  Scenario name : ' + world.pickle.name + '\u001b[0m')
     },
@@ -146,7 +147,8 @@ exports.config = {
      * @param {number}                 result.duration duration of scenario in milliseconds
      */
     afterScenario: async (world, result) => {
-        await browser.pause(3000)
+        let appId = await driver.getCurrentPackage()
+        await driver.terminateApp(appId)
     },
     /**
      *
@@ -191,6 +193,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
+    /*
     onComplete: function () {
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results', '--clean'])
@@ -211,6 +214,8 @@ exports.config = {
             })
         })
     },
+
+     */
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session

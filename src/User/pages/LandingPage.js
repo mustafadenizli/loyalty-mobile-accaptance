@@ -1,4 +1,4 @@
-const ElementHelper = require('../../utils/elementHelper')
+const ElementHelper = require('../common/ElementHelper')
 
 const txt_LandingPageTitle = browser.isAndroid ? `android=new UiSelector().textContains("page-title")` : ``
 const btn_BackButton = browser.isAndroid ? `android=new UiSelector().textContains("back-button")` : ``
@@ -12,7 +12,6 @@ const txt_FaqName = browser.isAndroid ? `android=new UiSelector().textContains("
 const txt_AllFaq = browser.isAndroid ? `android=new UiSelector().textContains("faq-container-all-questions")` : ``
 const txt_PopupMessage = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/content")` : ``
 const btn_PopupClose = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/close_button")` : ``
-
 
 
 class LandingPage {
@@ -33,7 +32,7 @@ class LandingPage {
     }
 
     async clickButton(text) {
-        await ElementHelper.elementCheckTextContains(btn_LandingButton,text)
+        await ElementHelper.elementCheckTextContains(btn_LandingButton, text)
         await ElementHelper.elementClick(btn_LandingButton, text)
     }
 
@@ -46,6 +45,7 @@ class LandingPage {
     }
 
     async checkTabCardName(text) {
+        await driver.pause(1000)
         await ElementHelper.elementCheckTextContains(txt_TabCard, text)
     }
 
@@ -70,7 +70,7 @@ class LandingPage {
     }
 
     async checkPopupMessage(text) {
-        await ElementHelper.elementCheckTextContains(txt_PopupMessage,text)
+        await ElementHelper.elementCheckTextContains(txt_PopupMessage, text)
     }
 
     async clickPopupButton() {
