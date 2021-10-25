@@ -14,6 +14,6 @@ config.capabilities = [
 ];
 
 config.services = ["browserstack"];
-config.user = "mustafademir_9vdIYb";
-config.key = "XZu5zeUMHQMxesR51wAC";
+config.user = "tayfun.oztan@modanisa.com";
+config.key = "123456qq@@";
 exports.config = config;
