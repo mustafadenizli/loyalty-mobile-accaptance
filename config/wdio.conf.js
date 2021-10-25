@@ -4,7 +4,8 @@ exports.config = {
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        './src/User/features/**/*.feature'
+        './src/User/features/**/8FaqPage.feature',
+        './src/User/features/**/5RewardsPage.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'
