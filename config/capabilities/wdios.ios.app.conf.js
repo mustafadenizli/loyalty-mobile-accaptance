@@ -1,6 +1,17 @@
-const { config } = require("../wdio.conf");
+const {config} = require("../wdio.conf");
+const path = require("path");
 
-// iOS Real Device for apps 
+config.capabilities = [
+    {
+        platformName: "iOS",
+        platformVersion: "14.4",
+        deviceName: "iPhone 12 Pro Max",
+        app: path.resolve("files/Modanisa.app")
+    },
+];
+
+/*
+// iOS Real Device for apps
 config.capabilities = [
     {
         platformName: "iOS",
@@ -10,7 +21,7 @@ config.capabilities = [
     },
 ];
 
-// iOS Real Device for mobile-web 
+// iOS Real Device for mobile-web
 config.capabilities = [
     {
         platformName: "iOS",
@@ -38,6 +49,8 @@ config.capabilities = [
         deviceName: "iPhone 12 Pro Max",
         browserName: "Safari"
     },
-];
+    ];
+ */
+
 
 exports.config = config;

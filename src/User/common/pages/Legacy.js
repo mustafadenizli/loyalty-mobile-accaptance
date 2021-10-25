@@ -1,4 +1,5 @@
 const ElementHelper = require('../ElementHelper')
+const expect = require("chai").expect;
 
 const logo_Modanisa = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/logo")` : `-ios predicate string: name == 'welcomeLogo'`
 const btn_TeslimatUlkesi = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/welcomeCountryConstraint")` : `-ios predicate string: name == 'textField_country'`
@@ -6,32 +7,32 @@ const list_Ulkeler = browser.isAndroid ? `android=new UiSelector().resourceId("c
 const btn_Diller = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/welcomeLanguageConstraint")` : `-ios predicate string: name == 'textField_language'`
 const list_Diller = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/select_dialog_listview")` : `-ios predicate string: name == 'picker_language'`
 const btn_DevamEt = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/startShopping")` : `-ios predicate string: name == 'button_continue'`
-const bottomNavigation = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/bottom_navigation")` : `-ios predicate string: name == 'button_continue'`
-const btn_MyAccount = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/tab_myaccount")` : `-ios predicate string: name == 'button_continue'`
-const txt_Hesabim = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/toolBarTitle")` : `-ios predicate string: name == 'button_continue'`
-const btn_Login = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/loginOrSignup")` : `-ios predicate string: name == 'button_continue'`
-const txt_GirisYap = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/toolBarTitle")` : `-ios predicate string: name == 'button_continue'`
-const btn_Email = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/emailTabLayout")` : `-ios predicate string: name == 'button_continue'`
-const btn_EmailOpened = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/email")` : `-ios predicate string: name == 'button_continue'`
-const txtbox_Email = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/email").childSelector(new UiSelector().resourceId("com.modanisa.debug:id/textInputEditText"))` : `-ios predicate string: name == 'button_continue'`
-const txtbox_Password = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/password").childSelector(new UiSelector().resourceId("com.modanisa.debug:id/textInputEditText"))` : `-ios predicate string: name == 'button_continue'`
-const btn_GirisYap = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/login")` : `-ios predicate string: name == 'button_continue'`
-const txt_HesapAyarlari = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/userInfoLayout")` : `-ios predicate string: name == 'button_continue'`
-const btn_MyModanisa = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/myModanisaLayout")` : `-ios predicate string: name == 'button_continue'`
-const btn_FacebookLogin = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/withFacebook")` : `-ios predicate string: name == 'button_continue'`
+const area_SearchBox = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/searchBox")` : `-ios predicate string: name == 'textField_search'`
+const btn_MyAccount = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/tab_myaccount")` : `-ios predicate string: name == 'tabbar_account'`
+const txt_Hesabim = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/toolBarTitle")` : `-ios predicate string: type == 'XCUIElementTypeNavigationBar'`
+const btn_Login = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/loginOrSignup")` : `-ios predicate string: name == 'button_loginSignup'`
+const txt_GirisYap = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/toolBarTitle")` : `-ios predicate string: type == 'XCUIElementTypeNavigationBar'`
+const btn_Email = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/emailTabLayout")` : `-ios predicate string: name == 'button_2'`
+const btn_EmailOpened = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/email")` : `-ios predicate string: name == 'textField_email'`
+const txtbox_Email = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/email").childSelector(new UiSelector().resourceId("com.modanisa.debug:id/textInputEditText"))` : `-ios predicate string: name == 'textField_email'`
+const txtbox_Password = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/password").childSelector(new UiSelector().resourceId("com.modanisa.debug:id/textInputEditText"))` : `-ios predicate string: name == 'textField_password'`
+const btn_GirisYap = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/login")` : `-ios predicate string: name == 'button_loginSignupContinue'`
+const txt_HesapAyarlari = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/userInfoLayout")` : `-ios predicate string: name == 'cell_accountInformation'`
+const btn_MyModanisa = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/myModanisaLayout")` : `-ios predicate string: name == 'drawer_my_modanisa'`
+const btn_FacebookLogin = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/withFacebook")` : `-ios predicate string: name == 'button_fb'`
 const logo_Facebook = browser.isAndroid ? `android=new UiSelector().textContains("Facebook")` : `-ios predicate string: name == 'button_continue'`
 const txtbox_FacebookEmail = browser.isAndroid ? `android=new UiSelector().resourceId("m_login_email")` : `-ios predicate string: name == 'button_continue'`
 const txtbox_FacebookPassword = browser.isAndroid ? `android=new UiSelector().resourceId("m_login_password")` : `-ios predicate string: name == 'button_continue'`
 const btn_FacebookGirisYap = browser.isAndroid ? `android=new UiSelector().resourceId("login_password_step_element")` : `-ios predicate string: name == 'button_continue'`
 const btn_FacebookGirisYapDevam = browser.isAndroid ? `android=new UiSelector().className("android.widget.Button").textContains("Devam")` : `-ios predicate string: name == 'button_continue'`
-const btn_UserInfo = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/userInfoLayout")` : `-ios predicate string: name == 'button_continue'`
-const btn_NotificationPreferences = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/notificationsPreferenceText")` : `-ios predicate string: name == 'button_continue'`
-const switch_NotificationEmail = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/email")` : `-ios predicate string: name == 'button_continue'`
-const switch_NotificationTelefon = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/phone")` : `-ios predicate string: name == 'button_continue'`
-const switch_NotificationSms = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/sms")` : `-ios predicate string: name == 'button_continue'`
-const txt_PrivateApi = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/hMtext")` : `-ios predicate string: name == 'button_continue'`
-const textBox_Api = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/apiHost")` : `-ios predicate string: name == 'button_continue'`
-const btn_Done = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/submit")` : `-ios predicate string: name == 'button_continue'`
+const btn_UserInfo = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/userInfoLayout")` : `-ios predicate string: name == 'cell_accountInformation'`
+const btn_NotificationPreferences = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/notificationsPreferenceText")` : `-ios predicate string: name == 'cell_notificationPreferences'`
+const switch_NotificationEmail = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/email")` : `-ios predicate string: name == 'emailPermissionSwitch'`
+const switch_NotificationTelefon = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/phone")` : `-ios predicate string: name == 'phonePermissionSwitch'`
+const switch_NotificationSms = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/sms")` : `-ios predicate string: name == 'smsPermissionSwitch'`
+const txt_PrivateApi = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/hMtext")` : `-ios predicate string: name == 'button_hiddenMenu'`
+const textBox_Api = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/apiHost")` : `-ios predicate string: name == 'field_url'`
+const btn_Done = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/submit")` : `-ios predicate string: name == 'button_submit'`
 
 
 class Common {
@@ -56,8 +57,8 @@ class Common {
         await ElementHelper.elementClick(btn_DevamEt)
     }
 
-    async checkNavigation() {
-        await ElementHelper.elementCheck(bottomNavigation)
+    async checkHomePage() {
+        await ElementHelper.elementCheck(area_SearchBox)
     }
 
     async clickMyAccount() {
@@ -167,7 +168,7 @@ class Common {
             await ElementHelper.elementCheckTextEquals(switch_NotificationTelefon, "KAPAT")
         } else {
             await ElementHelper.writeConsoleFail("checkNotificationTelefonSwitch adımı başarısız")
-            expect(true).to.equal(false)
+            expect(true).equal(false)
         }
     }
 
@@ -178,7 +179,7 @@ class Common {
             await ElementHelper.elementCheckTextEquals(switch_NotificationSms, "KAPAT")
         } else {
             await ElementHelper.writeConsoleFail("checkNotificationSmsSwitch adımı başarısız")
-            expect(true).to.equal(false)
+            expect(true).equal(false)
         }
     }
 

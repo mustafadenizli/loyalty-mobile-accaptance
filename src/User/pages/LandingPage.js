@@ -1,17 +1,17 @@
 const ElementHelper = require('../common/ElementHelper')
 
-const txt_LandingPageTitle = browser.isAndroid ? `android=new UiSelector().textContains("page-title")` : ``
-const btn_BackButton = browser.isAndroid ? `android=new UiSelector().textContains("back-button")` : ``
-const txt_LandingPageDescription = browser.isAndroid ? `android=new UiSelector().textContains("My Modanisa ayrıcalıklar dünyası bu kapının arkasında")` : ``
-const btn_LandingButton = browser.isAndroid ? `android=new UiSelector().className("android.widget.Button")` : ``
-const area_TabBars = browser.isAndroid ? `android=new UiSelector().text("tab-bar")` : ``
-const btn_TabBar = browser.isAndroid ? `android=new UiSelector().className("android.view.View")` : ``
-const txt_TabCard = browser.isAndroid ? `android=new UiSelector().textContains("tab-view-card")` : ``
-const txt_FaqArea = browser.isAndroid ? `android=new UiSelector().textContains("faq-container")` : ``
-const txt_FaqName = browser.isAndroid ? `android=new UiSelector().textContains("faq-container-element")` : ``
-const txt_AllFaq = browser.isAndroid ? `android=new UiSelector().textContains("faq-container-all-questions")` : ``
-const txt_PopupMessage = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/content")` : ``
-const btn_PopupClose = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/close_button")` : ``
+const txt_LandingPageTitle = browser.isAndroid ? `android=new UiSelector().textContains("page-title")` : `-ios predicate string: name CONTAINS 'page-title'`
+const btn_BackButton = browser.isAndroid ? `android=new UiSelector().textContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
+const txt_LandingPageDescription = browser.isAndroid ? `android=new UiSelector().textContains("My Modanisa ayrıcalıklar dünyası bu kapının arkasında")` : `-ios predicate string: name CONTAINS 'My Modanisa ayrıcalıklar dünyası bu kapının arkasında'`
+const btn_LandingButton = browser.isAndroid ? `android=new UiSelector().className("android.widget.Button")` : `-ios predicate string: name CONTAINS 'enroll-button'`
+const area_TabBars = browser.isAndroid ? `android=new UiSelector().text("tab-bar")` : `-ios predicate string: name CONTAINS 'tab-bar'`
+const btn_TabBar = browser.isAndroid ? `android=new UiSelector().className("android.view.View")` : `-ios predicate string: name CONTAINS 'tab-bar'`
+const txt_TabCard = browser.isAndroid ? `android=new UiSelector().textContains("tab-view-card")` : `-ios predicate string: name CONTAINS 'tab-view-card'`
+const txt_FaqArea = browser.isAndroid ? `android=new UiSelector().textContains("faq-container")` : `-ios predicate string: name CONTAINS 'faq-container'`
+const txt_FaqName = browser.isAndroid ? `android=new UiSelector().textContains("faq-container-element")` : `-ios predicate string: name CONTAINS 'faq-container-element'`
+const txt_AllFaq = browser.isAndroid ? `android=new UiSelector().textContains("faq-container-all-questions")` : `-ios predicate string: name CONTAINS 'faq-container-all-questions'`
+const txt_PopupMessage = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/content")` : `-ios predicate string: name CONTAINS 'cl_alert_dialog_message'`
+const btn_PopupClose = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/close_button")` : `-ios predicate string: name CONTAINS 'cl_alert_dialog_close_button'`
 
 
 class LandingPage {

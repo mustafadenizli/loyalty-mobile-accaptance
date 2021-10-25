@@ -16,3 +16,6 @@ Given(/^Nisa is not enrolled user with customerId: "([^"]*)"$/, async (customerI
 Given(/^Nisa add Pending Point with customerId: "([^"]*)" and pendingPoint: "([^"]*)"$/, async (customerId, point) => {
     await Api.operationPendingPoints(customerId, point, "add")
 });
+Given(/^Nisa add Confirmed Point with customerId: "([^"]*)" and confirmedPoint: "([^"]*)"$/, async (customerId, point) => {
+    await Api.addPoints(point, customerId)
+});

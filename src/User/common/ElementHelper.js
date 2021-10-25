@@ -1,11 +1,12 @@
+const expect = require("chai").expect;
+
 class ElementHelper {
 
     async getText(element) {
         await this.writeConsoleInfo("getText adımı başladı - " + element)
         let elem = await this.findElement(element)
-        const text = await elem.getText()
         await this.writeConsoleTick("getText adımı başarıyla gerçekleşti")
-        return text
+        return elem.getText();
     }
 
     async elementSendKey(element, text) {
@@ -34,25 +35,40 @@ class ElementHelper {
     }
 
     async elementNotCheck(element) {
-        await this.writeConsoleInfo("elementCheck adımı başladı - " + element)
-        let elem = $(element).isExisting()
-        await expect(elem).toEqual(false)
-        await this.writeConsoleTick("elementCheck adımı başarıyla gerçekleşti")
+        await this.writeConsoleInfo("elementNotCheck adımı başladı - " + element)
+        let wait = await $(element).waitForDisplayed({
+            timeout: 3000,
+            reverse: true,
+            timeoutMsg: "Element bulunamadı"
+        })
+        await expect(wait).equal(true)
+        await this.writeConsoleTick("elementNotCheck adımı başarıyla gerçekleşti")
     }
 
     async elementCheckTextEquals(element, text) {
         await this.writeConsoleInfo("elementCheckTextEquals adımı başladı - " + element)
         let elem = await this.findElement(element)
-        const elementText = await elem.getText()
-        await expect(elementText).toEqual(text)
+        const elemText = await elem.getText()
+        await expect(elemText).equal(text)
         await this.writeConsoleTick("elementCheckTextEquals adımı başarıyla gerçekleşti")
     }
 
     async elementCheckTextContains(element, text) {
         await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
         let elem = await this.findElement(element)
-        const elementText = await elem.getText()
-        await expect(elementText).toContain(text)
+        const elemText = await elem.getText()
+        await expect(elemText).contain(text)
+        await this.writeConsoleTick("elementCheckTextContains adımı başarıyla gerçekleşti")
+    }
+
+    async elementCheckNotTextContains(element, text) {
+        await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
+        let elem = await this.findElement(element)
+        const elemText = await elem.getText()
+        if (elemText.includes(text)) {
+            console.info("Element texti içeriyor = " + text)
+            await expect(true).equal(false)
+        }
         await this.writeConsoleTick("elementCheckTextContains adımı başarıyla gerçekleşti")
     }
 
@@ -80,7 +96,6 @@ class ElementHelper {
         await this.writeConsoleTick("withOutElementClickTextEquals adımı başarıyla gerçekleşti")
     }
 
-
     async elementsCheckTextContains(element1, text) {
         await this.writeConsoleInfo("elementsCheckTextContains adımı başladı - " + text)
         let result = false
@@ -98,7 +113,7 @@ class ElementHelper {
                 break
             }
         }
-        await expect(true).toEqual(result)
+        await expect(true).equal(result)
         await this.writeConsoleTick("elementsCheckTextContains adımı başarıyla gerçekleşti")
     }
 
@@ -120,7 +135,7 @@ class ElementHelper {
                 break
             }
         }
-        await expect(true).toEqual(result)
+        await expect(true).equal(result)
         await this.writeConsoleTick("elementsClickTextContains adımı başarıyla gerçekleşti")
     }
 
@@ -142,7 +157,7 @@ class ElementHelper {
                 break
             }
         }
-        await expect(true).toEqual(result)
+        await expect(true).equal(result)
         await this.writeConsoleTick("elementsCheckUnderElementWithText adımı başarıyla gerçekleşti")
     }
 
@@ -164,15 +179,14 @@ class ElementHelper {
                 break
             }
         }
-        await expect(true).toEqual(result)
+        await expect(true).equal(result)
         await this.writeConsoleTick("elementsClickUnderElementWithText adımı başarıyla gerçekleşti")
     }
 
     async findElement(element) {
         await this.writeConsoleChildMethod("FindElement adımı başladı")
         try {
-            await $(element).waitForDisplayed({timeout: 20000})
-            await expect($(element)).toExist()
+            await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
             await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
             return await $(element)
         } catch (error) {
@@ -187,8 +201,7 @@ class ElementHelper {
             ])
             await browser.pause(2000)
             try {
-                await $(element).waitForDisplayed({timeout: 2000})
-                await expect($(element)).toExist()
+                await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
                 await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
                 return await $(element)
             } catch (error) {
@@ -197,12 +210,21 @@ class ElementHelper {
                     {action: 'moveTo', x: window.width / 2, y: window.height * 3 / 4},
                     'release'
                 ])
-                await $(element).waitForDisplayed({timeout: 2000})
-                await expect($(element)).toExist()
+                await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
                 await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
                 return await $(element)
             }
         }
+    }
+
+    async scrollDown() {
+        let window = await browser.getWindowSize()
+        await browser.touchAction([
+            {action: 'press', x: window.width / 2, y: window.height * 3 / 4},
+            {action: 'moveTo', x: window.width / 2, y: window.height / 5},
+            'release'
+        ])
+        await browser.pause(2000)
     }
 
     async pause(ms) {

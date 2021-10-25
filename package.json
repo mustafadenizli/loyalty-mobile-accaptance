@@ -2,15 +2,11 @@
   "name": "user-webdriverioarchitecture",
   "version": "1.0.0",
   "description": "User ekibi mobil otomasyon için WebDriverIO Mimarisi",
-  "main": "index.js",
   "scripts": {
     "test:desktopweb": "wdio ./config/capabilities/wdio.desktop.web.conf.js --cucumberOpts.tagExpression='@desktopWeb_happyPath_4'",
     "test:iosapp": "wdio ./config/capabilities/wdio.ios.app.conf.js",
     "test:androidapp": "wdio ./config/capabilities/wdio.android.app.conf.js"
   },
-  "keywords": [],
-  "author": "Enes Erdogan",
-  "license": "ISC",
   "dependencies": {
     "@wdio/cli": "^7.12.6",
     "allure-commandline": "^2.13.8"
@@ -21,7 +17,12 @@
     "@wdio/cucumber-framework": "^7.12.4",
     "@wdio/local-runner": "^7.12.4",
     "@wdio/spec-reporter": "^7.10.1",
+    "chai": "^4.3.4",
     "chromedriver": "^93.0.1",
+    "expect-webdriverio": "^3.1.4",
     "wdio-chromedriver-service": "^7.2.0"
-  }
+  },
+  "keywords": [],
+  "author": "Enes Erdogan",
+  "license": "ISC"
 }

@@ -1,5 +1,6 @@
 const {Given, When, Then} = require('@wdio/cucumber-framework');
 const LandingPage = require('../pages/LandingPage')
+const Legacy = require("../common/pages/Legacy");
 
 Then(/^Nisa should see Landing Page Title$/, async () => {
     await LandingPage.checkLandingPageTitle()
@@ -43,12 +44,13 @@ Then(/^Nisa should see All Faq: "([^"]*)" in Landing Page$/, async (text) => {
 Then(/^Nisa should see Popup Message "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.checkPopupMessage(text)
 });
-When(/^Nisa click Popup Button "([^"]*)" in Landing Page$/, async () => {
+When(/^Nisa click Popup Button "([^"]*)" in Landing Page$/, async (text) => {
     await LandingPage.clickPopupButton()
 });
-
-
-
-
-
-
+When(/^Nisa login with email: "([^"]*)" and password: "([^"]*)" in Landing Page$/, async (email, password) => {
+    await Legacy.clickEmailTab()
+    await Legacy.checkEmailTabOpen()
+    await Legacy.setTextEmail(email)
+    await Legacy.setTextPassword(password)
+    await Legacy.clickGirisYapButton()
+});

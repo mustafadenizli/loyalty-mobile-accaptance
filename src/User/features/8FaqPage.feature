@@ -1,8 +1,12 @@
+@Deneme
 Feature: FAQ Page
 
   As Nisa
   I want to see a FAQ page
   So that I know how to benefit best from the loyalty program
+
+  | status    | Emails                      | Passwords      | CustomerIDs |
+  | normal    | userLoyaltyFaq@modanisa.com | Modanisa1234.  | 12727306       |
 
   Background:
     Given Nisa waits for Welcome page
@@ -11,10 +15,14 @@ Feature: FAQ Page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
-    Given Nisa is not enrolled user with customerId: "9027919"
-    Given Nisa is enrolled user with customerId: "9027919" and e-mail: "isimli.soyisimli@modanisa.com"
-    Given Nisa login with email: "isimli.soyisimli@modanisa.com" and password: "Testhb123"
-    When Nisa taps to MyModanisa section
+    Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
+    Given Nisa taps on the My Account button in bottom menu bar
+    Given Nisa is not enrolled user with customerId: "12727306"
+    Given Nisa is enrolled user with customerId: "12727306" and e-mail: "userLoyaltyFaq@modanisa.com"
+    Given Nisa add Pending Point with customerId: "12727306" and pendingPoint: "10"
+    Given Nisa add Confirmed Point with customerId: "12727306" and confirmedPoint: "10"
+    Given Nisa login with user:"normal" email: "userLoyaltyDashboard@modanisa.com" and password: "Modanisa1234."
+    When Nisa taps to My Modanisa section
     Then Nisa should see Dashboard Main Page
     When Nisa click to Faq in Dashboard Main Page
 

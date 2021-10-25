@@ -4,20 +4,21 @@ exports.config = {
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        './src/User/features/**/0LandingPage.feature'
+        './src/User/features/**/*.feature'
     ],
     exclude: [
         // 'path/to/excluded/files'
     ],
 
-    maxInstances: 10,
-    logLevel: 'silent',
+    maxInstances: 1,
+    logLevel: 'error',
     bail: 0,
     baseUrl: 'https://www.modanisa.com/',
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
     services: ['appium'],
+    appium: {command: 'appium'},
     framework: 'cucumber',
     /*
     reporters: ['spec', ['allure', {
@@ -36,7 +37,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: '@Deneme',
+        tagExpression: '',
         timeout: 60000,
         ignoreUndefinedDefinitions: false
     },
@@ -104,9 +105,8 @@ exports.config = {
      * @param {ITestCaseHookParameter} world world object containing information on pickle and test step
      */
     beforeScenario: async (world) => {
-        await driver.launchApp()
-        //await browser.reset()
-        await browser.deleteCookies()
+        await browser.reset()
+        //await driver.launchApp()
         await console.log('\u001b[' + 34 + 'm' + '  Scenario name : ' + world.pickle.name + '\u001b[0m')
     },
     /**
@@ -129,11 +129,10 @@ exports.config = {
      * @param {number}             result.duration duration of scenario in milliseconds
      */
     afterStep: async (test, scenario, {error, duration, passed}) => {
-        if (error) {
-            await console.info('\u001b[' + 31 + 'm' + '      ✖ Fail : ' + step.text + '\u001b[0m')
-            browser.takeScreenshot();
+        if (passed == true) {
+            await console.log('\u001b[' + 32 + 'm' + '    ✓ Step Succeed : ' + test.text + '\u001b[0m')
         } else {
-            await console.info('\u001b[' + 32 + 'm' + '      ✓ Succeed : ' + step.text + '\u001b[0m')
+            await console.log('\u001b[' + 31 + 'm' + '    ✖ Step Fail : ' + test.text + '\u001b[0m')
         }
     },
 
@@ -147,8 +146,8 @@ exports.config = {
      * @param {number}                 result.duration duration of scenario in milliseconds
      */
     afterScenario: async (world, result) => {
-        let appId = await driver.getCurrentPackage()
-        await driver.terminateApp(appId)
+        //let appId = driver.getCurrentPackage()
+        //await driver.terminateApp(appId)
     },
     /**
      *
@@ -193,8 +192,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    /*
+
     onComplete: function () {
+        /*
         const reportError = new Error('Could not generate Allure report')
         const generation = allure(['generate', 'allure-results', '--clean'])
         return new Promise((resolve, reject) => {
@@ -213,9 +213,11 @@ exports.config = {
                 resolve()
             })
         })
+
+         */
     },
 
-     */
+
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session

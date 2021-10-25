@@ -1,6 +1,8 @@
 const {Given, When, Then} = require('@wdio/cucumber-framework');
 const Legacy = require('../pages/Legacy')
 const ElementHelper = require('../ElementHelper')
+const expect = require("chai").expect;
+
 
 Given(/^Nisa waits for Welcome page$/, async () => {
     await Legacy.checkLogo()
@@ -17,22 +19,42 @@ Given(/^Nisa taps on the Start Shopping button in Welcome page$/, async () => {
     await Legacy.clickContinueShopping()
 });
 Given(/^Nisa waits for Home page$/, async () => {
-    await Legacy.checkNavigation()
+    await Legacy.checkHomePage()
 });
 Given(/^Nisa taps on the My Account button in bottom menu bar$/, async () => {
     await Legacy.clickMyAccount()
     await Legacy.checkMyAccountPage()
 });
-Given(/^Nisa login with email: "([^"]*)" and password: "([^"]*)"$/, async (email, password) => {
-    if (email != null) {
-        await Legacy.clickLoginButton()
-        await Legacy.checkLoginPage()
-        await Legacy.clickEmailTab()
-        await Legacy.checkEmailTabOpen()
-        await Legacy.setTextEmail(email)
-        await Legacy.setTextPassword(password)
-        await Legacy.clickGirisYapButton()
-        await Legacy.checkUserLogin()
+Given(/^Nisa login with user:"([^"]*)" email: "([^"]*)" and password: "([^"]*)"$/, async (user, email, password) => {
+    switch (user) {
+        case "normal":
+            await Legacy.clickLoginButton()
+            await Legacy.checkLoginPage()
+            await Legacy.clickEmailTab()
+            await Legacy.checkEmailTabOpen()
+            await Legacy.setTextEmail(email)
+            await Legacy.setTextPassword(password)
+            await Legacy.clickGirisYapButton()
+            await Legacy.checkUserLogin()
+            break;
+        case "facebook":
+            await Legacy.clickLoginButton()
+            await Legacy.checkLoginPage()
+            await Legacy.clickFacebookLogin()
+            await Legacy.checkFacebookLoginPage()
+            let durum = await Legacy.checkFacebookTextbox()
+            if (durum == true) {
+                await Legacy.setFacebookEmail(email)
+                await Legacy.setFacebookPassword(password)
+                await Legacy.clickFacebookGirisYap()
+            }
+            await Legacy.clickFacebookGirisYapDevam()
+            await Legacy.checkUserLogin()
+            break;
+        case "apple":
+            console.log("apple şuan yok")
+            break;
+        default:
     }
 });
 Given(/^Nisa taps to My Modanisa section$/, async () => {
@@ -43,20 +65,6 @@ Then(/^Nisa should see My Account page$/, async () => {
 });
 Then(/^Nisa should see Login Page$/, async () => {
     await Legacy.checkLoginPage()
-});
-Given(/^Nisa login with facebook email: "([^"]*)" and password: "([^"]*)"$/, async (email, password) => {
-    await Legacy.clickLoginButton()
-    await Legacy.checkLoginPage()
-    await Legacy.clickFacebookLogin()
-    await Legacy.checkFacebookLoginPage()
-    let durum = await Legacy.checkFacebookTextbox()
-    if (durum == true) {
-        await Legacy.setFacebookEmail(email)
-        await Legacy.setFacebookPassword(password)
-        await Legacy.clickFacebookGirisYap()
-    }
-    await Legacy.clickFacebookGirisYapDevam()
-    await Legacy.checkUserLogin()
 });
 Then(/^Nisa should go to notification settings page$/, async () => {
     await Legacy.clickUserInfoLayout()
@@ -75,7 +83,7 @@ Then(/^Nisa should seen "([^"]*)" section as "([^"]*)"$/, async (text, bool) => 
             break;
         default:
             await ElementHelper.writeConsoleFail(text + " adında bir tab yok")
-            expect(true).to.equal(false)
+            expect(true).equal(false)
     }
 });
 Then(/^Nisa should see visible Section My Modanisa in My Account Page$/, async () => {
@@ -99,6 +107,6 @@ Given(/^Nisa sendKey private api "([^"]*)" and restart app$/, async (text) => {
         let appId = await driver.getCurrentPackage()
         await driver.terminateApp(appId)
         await driver.activateApp(appId)
-        await driver.pause("3000")
+        await driver.pause(3000)
     }
 });

@@ -16,3 +16,6 @@ Then(/^Nisa should see Challenge Name: "([^"]*)" in Point History Page$/, async 
 Then(/^Nisa should see Challenge Date: "([^"]*)" in Point History Page$/, async (text) => {
     await PointHistoryPage.checkChallengeDate(text)
 });
+Then(/^Nisa should see Challenge Date: Today in Point History Page$/, async () => {
+    await PointHistoryPage.checkChallengeDateToday()
+});
