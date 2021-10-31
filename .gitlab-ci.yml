@@ -4,16 +4,9 @@ stages:          # List of stages for jobs, and their order of execution
   - Test
   - Report
 
-
-unit-test-job:   # This job runs in the test stage.
-  stage: test   
-  image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine  # It only starts when the job in the build stage completes successfully.
-  script:
-    - npm run test:androidBrowserStack
-    - sleep 60
-
 Test:
   stage: Test
+  image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
   script:
     - npm run test:androidBrowserStack
   artifacts:
