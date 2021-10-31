@@ -1,9 +1,9 @@
 const ElementHelper = require('../common/ElementHelper')
 
-const txt_EarnedGiftsPageTitle = browser.isAndroid ? `android=new UiSelector().textContains("my-earned-gift-list-page-title")` : `-ios predicate string: name CONTAINS 'my-earned-gift-list-page-title'`
-const btn_BackButton = browser.isAndroid ? `android=new UiSelector().textContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
-const txt_EmptyMessage = browser.isAndroid ? `android=new UiSelector().textContains("empty-earned-gifts-page-title")` : `-ios predicate string: name CONTAINS 'empty-earned-gifts-page-title'`
-const txt_EmptyDescription = browser.isAndroid ? `android=new UiSelector().textContains("empty-earned-gifts-page-text")` : `-ios predicate string: name CONTAINS 'empty-earned-gifts-page-text'`
+const txt_EarnedGiftsPageTitle = browser.isAndroid ? `android=new UiSelector().descriptionContains("my-earned-gift-list-page-title")` : `-ios predicate string: name CONTAINS 'my-earned-gift-list-page-title'`
+const btn_BackButton = browser.isAndroid ? `android=new UiSelector().descriptionContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
+const txt_EmptyMessage = browser.isAndroid ? `android=new UiSelector().descriptionContains("empty-earned-gifts-page-title")` : `-ios predicate string: name CONTAINS 'empty-earned-gifts-page-title'`
+const txt_EmptyDescription = browser.isAndroid ? `android=new UiSelector().descriptionContains("empty-earned-gifts-page-text")` : `-ios predicate string: name CONTAINS 'empty-earned-gifts-page-text'`
 const btn_HediyeleriKesfet = browser.isAndroid ? `android=new UiSelector().className("android.widget.Button")` : `-ios predicate string: name CONTAINS 'discover-gifts-button'`
 
 

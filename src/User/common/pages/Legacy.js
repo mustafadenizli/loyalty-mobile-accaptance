@@ -1,4 +1,5 @@
 const ElementHelper = require('../ElementHelper')
+const {Before} = require("@wdio/cucumber-framework");
 const expect = require("chai").expect;
 
 const logo_Modanisa = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/logo")` : `-ios predicate string: name == 'welcomeLogo'`
@@ -36,6 +37,7 @@ const btn_Done = browser.isAndroid ? `android=new UiSelector().resourceId("com.m
 
 
 class Common {
+
 
     async checkLogo() {
         await ElementHelper.elementCheck(logo_Modanisa)
@@ -130,6 +132,19 @@ class Common {
         }
     }
 
+    async checkDevamTextbox() {
+        try {
+            await $(btn_FacebookGirisYapDevam).waitForDisplayed({timeout: 2000})
+            if (await $(btn_FacebookGirisYapDevam).isExisting() == true) {
+                return true
+            } else {
+                return false
+            }
+        } catch (error) {
+            return false
+        }
+    }
+
     async setFacebookPassword(text) {
         await ElementHelper.elementSendKey(txtbox_FacebookPassword, text)
     }
@@ -210,6 +225,7 @@ class Common {
     async clickDoneButton() {
         await ElementHelper.elementClick(btn_Done)
     }
+
 
 }
 

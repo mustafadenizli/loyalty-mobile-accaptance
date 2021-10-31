@@ -1,11 +1,13 @@
+
 exports.config = {
 
     port: 4723,
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        './src/User/features/**/8FaqPage.feature',
-        './src/User/features/**/5RewardsPage.feature',
+        //'./src/User/features/**/EnrollmentPage.feature',
+        './src/User/features/**/deneme.feature',
+
     ],
     exclude: [
         // 'path/to/excluded/files'
@@ -14,12 +16,10 @@ exports.config = {
     maxInstances: 1,
     logLevel: 'error',
     bail: 0,
-    baseUrl: 'https://www.modanisa.com/',
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: ['appium'],
-    appium: {command: 'appium'},
+    services: [['appium']],
     framework: 'cucumber',
     /*
     reporters: ['spec', ['allure', {
@@ -38,7 +38,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: '',
+        tagExpression: 'not @Hatali',
         timeout: 60000,
         ignoreUndefinedDefinitions: false
     },
@@ -46,41 +46,41 @@ exports.config = {
     /**
      * Gets executed once before all workers get launched.
      * @param {Object} config wdio configuration object
-     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<Object>} capabilities list of appCapabilities details
      */
-    onPrepare: function (config, capabilities) {
+    onPrepare: async (config, capabilities) => {
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
      * @param  {String} cid      capability id (e.g 0-0)
-     * @param  {[type]} caps     object containing capabilities for session that will be spawn in the worker
+     * @param  {[type]} caps     object containing appCapabilities for session that will be spawn in the worker
      * @param  {[type]} specs    specs to be run in the worker process
      * @param  {[type]} args     object that will be merged with the main configuration once worker is initialised
      * @param  {[type]} execArgv list of string arguments passed to the worker process
      */
-    onWorkerStart: function (cid, caps, specs, args, execArgv) {
+    onWorkerStart: async (cid, caps, specs, args, execArgv) => {
     },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
      * to manipulate configurations depending on the capability or spec.
      * @param {Object} config wdio configuration object
-     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<Object>} capabilities list of appCapabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    beforeSession: function (config, capabilities, specs) {
+    beforeSession: async (config, capabilities, specs) => {
     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
-     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<Object>} capabilities list of appCapabilities details
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    before: function (capabilities, specs) {
-        require('expect-webdriverio');
+    before: async (capabilities, specs) => {
+        await require('expect-webdriverio');
         global.wdioExpect = global.expect;
-        const chai = require('chai');
+        const chai = await require('chai');
         global.expect = chai.expect;
     },
     /**
@@ -88,7 +88,7 @@ exports.config = {
      * @param {String} commandName hook command name
      * @param {Array} args arguments that command would receive
      */
-    beforeCommand: function (commandName, args) {
+    beforeCommand: async (commandName, args) => {
     },
     /**
      * Cucumber Hooks
@@ -147,16 +147,15 @@ exports.config = {
      * @param {number}                 result.duration duration of scenario in milliseconds
      */
     afterScenario: async (world, result) => {
-        //let appId = driver.getCurrentPackage()
-        //await driver.terminateApp(appId)
     },
+
     /**
      *
      * Runs after a Cucumber Feature.
      * @param {String}                   uri      path to feature file
      * @param {GherkinDocument.IFeature} feature  Cucumber feature object
      */
-    afterFeature: function (uri, feature) {
+    afterFeature: async (uri, feature) => {
     },
 
     /**
@@ -166,64 +165,43 @@ exports.config = {
      * @param {Number} result 0 - command success, 1 - command error
      * @param {Object} error error object if any
      */
-    afterCommand: function (commandName, args, result, error) {
+    afterCommand: async (commandName, args, result, error) => {
     },
     /**
      * Gets executed after all tests are done. You still have access to all global variables from
      * the test.
      * @param {Number} result 0 - test pass, 1 - test fail
-     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<Object>} capabilities list of appCapabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    after: function (result, capabilities, specs) {
+    after: async (result, capabilities, specs) => {
     },
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {Object} config wdio configuration object
-     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<Object>} capabilities list of appCapabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    afterSession: function (config, capabilities, specs) {
+    afterSession: async (config, capabilities, specs) => {
     },
     /**
      * Gets executed after all workers got shut down and the process is about to exit. An error
      * thrown in the onComplete hook will result in the test run failing.
      * @param {Object} exitCode 0 - success, 1 - fail
      * @param {Object} config wdio configuration object
-     * @param {Array.<Object>} capabilities list of capabilities details
+     * @param {Array.<Object>} appCapabilities list of appCapabilities details
      * @param {<Object>} results object containing test results
      */
 
     onComplete: function () {
-        /*
-        const reportError = new Error('Could not generate Allure report')
-        const generation = allure(['generate', 'allure-results', '--clean'])
-        return new Promise((resolve, reject) => {
-            const generationTimeout = setTimeout(
-                () => reject(reportError),
-                5000)
 
-            generation.on('exit', function (exitCode) {
-                clearTimeout(generationTimeout)
-
-                if (exitCode !== 0) {
-                    return reject(reportError)
-                }
-
-                console.log('Allure report successfully generated')
-                resolve()
-            })
-        })
-
-         */
     },
-
 
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session
      * @param {String} newSessionId session ID of the new session
      */
-    onReload: function (oldSessionId, newSessionId) {
+    onReload: async (oldSessionId, newSessionId) => {
     }
 }

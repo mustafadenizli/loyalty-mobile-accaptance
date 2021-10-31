@@ -1,19 +1,19 @@
 const ElementHelper = require('../common/ElementHelper')
 
-const txt_DashboardMainPageTitle = browser.isAndroid ? `android=new UiSelector().textContains("dashboard-main-page-title")` : `-ios predicate string: name CONTAINS 'dashboard-main-page-title'`
-const btn_BackButton = browser.isAndroid ? `android=new UiSelector().textContains("dashboard-back-button")` : `-ios predicate string: name CONTAINS 'dashboard-back-button'`
-const txt_ConfirmedPointsName = browser.isAndroid ? `android=new UiSelector().textContains("Güncel Puanlarım")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
-const txt_ConfirmedPoints = browser.isAndroid ? `android=new UiSelector().textContains("dashboard-main-page-current-points")` : `-ios predicate string: name CONTAINS 'dashboard-main-page-current-points'`
-const txt_Hello = browser.isAndroid ? `android=new UiSelector().textContains("Merhaba")` : `-ios predicate string: name CONTAINS 'Merhaba'`
-const txt_HelloAndHerName = browser.isAndroid ? `android=new UiSelector().textContains("dashboard-main-page-hello-and-customer-name")` : `-ios predicate string: name CONTAINS 'Merhaba'`
-const txt_Description = browser.isAndroid ? `android=new UiSelector().textContains("My Modanisa’ya Hoş Geldin")` : `-ios predicate string: name CONTAINS 'My Modanisa’ya Hoş Geldin'`
-const txt_PendingPointsName = browser.isAndroid ? `android=new UiSelector().textContains("Onay Bekleyen")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
-const txt_PendingPoints = browser.isAndroid ? `android=new UiSelector().textContains("dashboard-main-page-pending-points")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
-const btn_EarningPoints = browser.isAndroid ? `android=new UiSelector().textContains("earning-points-page-button")` : `-ios predicate string: name CONTAINS 'earning-points-page-button'`
-const btn_Rewards = browser.isAndroid ? `android=new UiSelector().textContains("rewards-button")` : `-ios predicate string: name CONTAINS 'rewards-button'`
-const btn_MyEarnedGifts = browser.isAndroid ? `android=new UiSelector().textContains("my-earned-gift-list-section")` : `-ios predicate string: name CONTAINS 'my-earned-gift-list-section'`
-const btn_MyTierStatus = browser.isAndroid ? `android=new UiSelector().textContains("my-membership-level-section")` : `-ios predicate string: name CONTAINS 'my-membership-level-section'`
-const btn_Faq = browser.isAndroid ? `android=new UiSelector().textContains("faq-section")` : `-ios predicate string: name CONTAINS 'faq-section'`
+const txt_DashboardMainPageTitle = browser.isAndroid ? `android=new UiSelector().descriptionContains("dashboard-main-page-title")` : `-ios predicate string: name CONTAINS 'dashboard-main-page-title'`
+const btn_BackButton = browser.isAndroid ? `android=new UiSelector().descriptionContains("dashboard-back-button")` : `-ios predicate string: name CONTAINS 'dashboard-back-button'`
+const txt_ConfirmedPointsName = browser.isAndroid ? `android=new UiSelector().descriptionContains("Güncel Puanlarım")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
+const txt_ConfirmedPoints = browser.isAndroid ? `android=new UiSelector().descriptionContains("dashboard-main-page-current-points")` : `-ios predicate string: name CONTAINS 'dashboard-main-page-current-points'`
+const txt_Hello = browser.isAndroid ? `android=new UiSelector().descriptionContains("Merhaba")` : `-ios predicate string: name CONTAINS 'Merhaba'`
+const txt_HelloAndHerName = browser.isAndroid ? `android=new UiSelector().descriptionContains("dashboard-main-page-hello-and-customer-name")` : `-ios predicate string: name CONTAINS 'Merhaba'`
+const txt_Description = browser.isAndroid ? `android=new UiSelector().descriptionContains("My Modanisa’ya Hoş Geldin")` : `-ios predicate string: name CONTAINS 'My Modanisa’ya Hoş Geldin'`
+const txt_PendingPointsName = browser.isAndroid ? `android=new UiSelector().descriptionContains("Onay Bekleyen")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
+const txt_PendingPoints = browser.isAndroid ? `android=new UiSelector().descriptionContains("dashboard-main-page-pending-points")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
+const btn_EarningPoints = browser.isAndroid ? `android=new UiSelector().descriptionContains("earning-points-page-button")` : `-ios predicate string: name CONTAINS 'earning-points-page-button'`
+const btn_Rewards = browser.isAndroid ? `android=new UiSelector().descriptionContains("rewards-button")` : `-ios predicate string: name CONTAINS 'rewards-button'`
+const btn_MyEarnedGifts = browser.isAndroid ? `android=new UiSelector().descriptionContains("my-earned-gift-list-section")` : `-ios predicate string: name CONTAINS 'my-earned-gift-list-section'`
+const btn_MyTierStatus = browser.isAndroid ? `android=new UiSelector().descriptionContains("my-membership-level-section")` : `-ios predicate string: name CONTAINS 'my-membership-level-section'`
+const btn_Faq = browser.isAndroid ? `android=new UiSelector().descriptionContains("faq-section")` : `-ios predicate string: name CONTAINS 'faq-section'`
 
 
 class DashboardMainPage {

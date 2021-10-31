@@ -1,7 +1,9 @@
-const {Given, When, Then} = require('@wdio/cucumber-framework');
+const {Given, When, Then, Before} = require('@wdio/cucumber-framework');
 const Legacy = require('../pages/Legacy')
 const ElementHelper = require('../ElementHelper')
 const expect = require("chai").expect;
+const request = require('request-promise-native');
+const WebDriver = require('webdriver');
 
 
 Given(/^Nisa waits for Welcome page$/, async () => {
@@ -41,14 +43,16 @@ Given(/^Nisa login with user:"([^"]*)" email: "([^"]*)" and password: "([^"]*)"$
             await Legacy.clickLoginButton()
             await Legacy.checkLoginPage()
             await Legacy.clickFacebookLogin()
-            await Legacy.checkFacebookLoginPage()
             let durum = await Legacy.checkFacebookTextbox()
             if (durum == true) {
                 await Legacy.setFacebookEmail(email)
                 await Legacy.setFacebookPassword(password)
                 await Legacy.clickFacebookGirisYap()
             }
-            await Legacy.clickFacebookGirisYapDevam()
+            let durum2 = await Legacy.checkDevamTextbox()
+            if (durum2 == true) {
+                await Legacy.clickFacebookGirisYapDevam()
+            }
             await Legacy.checkUserLogin()
             break;
         case "apple":
@@ -98,7 +102,6 @@ When(/^Nisa click Phone back button$/, async () => {
 Given(/^Nisa sendKey private api "([^"]*)" and restart app$/, async (text) => {
     let privateApiText = await Legacy.checkPrivateApiText()
     if (privateApiText.includes("customer-legacy")) {
-        console.info("Api Ayarlı")
     } else {
         await Legacy.clickPrivateApiButton(text)
         await Legacy.sendKeyPrivateApi(text)
@@ -109,4 +112,22 @@ Given(/^Nisa sendKey private api "([^"]*)" and restart app$/, async (text) => {
         await driver.activateApp(appId)
         await driver.pause(3000)
     }
+});
+
+
+Given(/^Deneme Given$/, async () => {
+    await browser.pause(2000)
+
+});
+When(/^Deneme When$/, async () => {
+    await browser.pause(2000)
+
+});
+Then(/^Deneme Then$/, async () => {
+    await browser.pause(2000)
+
+});
+When(/^Deneme When Basarısız$/, async () => {
+    await browser.pause(1000)
+    await expect(true).equals(false)
 });

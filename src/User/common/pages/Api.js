@@ -9,7 +9,7 @@ class Api {
             customer: customerId,
             action: 'opt_out'
         }).then(function (response) {
-            console.log(response);
+            //console.log(response);
         }).catch(function (error) {
             console.log(error);
         });
@@ -23,7 +23,7 @@ class Api {
             action: "opt_in",
             data: {email: email}
         }).then(function (response) {
-            console.log(response);
+            //console.log(response);
         }).catch(function (error) {
             console.log(error);
         });
@@ -40,7 +40,7 @@ class Api {
                 operation: operation
             }
         }).then(function (response) {
-            console.log(response);
+            //console.log(response);
         }).catch(function (error) {
             console.log(error);
         });
@@ -54,7 +54,7 @@ class Api {
             action: "point_add",
             data: {points: point}
         }).then(function (response) {
-            console.log(response);
+            //console.log(response);
         }).catch(function (error) {
             console.log(error);
         });

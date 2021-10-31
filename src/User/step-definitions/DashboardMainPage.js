@@ -49,7 +49,6 @@ When(/^Nisa click to My Tier Status in Dashboard Main Page$/, async () => {
 When(/^Nisa click to Faq in Dashboard Main Page$/, async () => {
     await DashboardMainPage.clickFaq()
 });
-
 Then(/^Nisa should see Point Earning in Dashboard Main Page$/, async () => {
     await DashboardMainPage.checkEarningPoints()
 });

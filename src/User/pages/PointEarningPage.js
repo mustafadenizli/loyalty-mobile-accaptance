@@ -1,14 +1,14 @@
 const ElementHelper = require('../common/ElementHelper')
 const expect = require("chai").expect;
 
-const txt_PointEarningPageTitle = browser.isAndroid ? `android=new UiSelector().textContains("page-title")` : `-ios predicate string: name CONTAINS 'page-title'`
-const btn_BackButton = browser.isAndroid ? `android=new UiSelector().textContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
-const area_Challenges = browser.isAndroid ? `android=new UiSelector().text("challenge-item")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
-const txt_BottomChallengesPoint = browser.isAndroid ? `android=new UiSelector().textContains("challenge-item-points")` : `-ios predicate string: name CONTAINS 'challenge-item-points'`
-const txt_ChallengeTitle = browser.isAndroid ? `android=new UiSelector().textContains("challenge-item-title")` : `-ios predicate string: name CONTAINS 'challenge-item-title'`
-const txt_ChallengeDescription = browser.isAndroid ? `android=new UiSelector().textContains("challenge-item-description")` : `-ios predicate string: name CONTAINS 'challenge-item-description'`
-const txt_ChallengePoint = browser.isAndroid ? `android=new UiSelector().textContains("challenge-item-points")` : `-ios predicate string: name CONTAINS 'challenge-item-points'`
-const btn_PointHistory = browser.isAndroid ? `android=new UiSelector().textContains("my-points-history-section")` : `-ios predicate string: name CONTAINS 'my-points-history-section'`
+const txt_PointEarningPageTitle = browser.isAndroid ? `android=new UiSelector().descriptionContains("page-title")` : `-ios predicate string: name CONTAINS 'page-title'`
+const btn_BackButton = browser.isAndroid ? `android=new UiSelector().descriptionContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
+const area_Challenges = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
+const txt_BottomChallengesPoint = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item-points")` : `-ios predicate string: name CONTAINS 'challenge-item-points'`
+const txt_ChallengeTitle = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item-title")` : `-ios predicate string: name CONTAINS 'challenge-item-title'`
+const txt_ChallengeDescription = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item-description")` : `-ios predicate string: name CONTAINS 'challenge-item-description'`
+const txt_ChallengePoint = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item-points")` : `-ios predicate string: name CONTAINS 'challenge-item-points'`
+const btn_PointHistory = browser.isAndroid ? `android=new UiSelector().descriptionContains("my-points-history-section")` : `-ios predicate string: name CONTAINS 'my-points-history-section'`
 
 
 class PointEarningPage {
@@ -30,7 +30,7 @@ class PointEarningPage {
         await $(txt_BottomChallengesPoint).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
         let elems = await $$(txt_BottomChallengesPoint)
         for (const el of elems) {
-            let text = await el.getText()
+            let text = await el.getAttribute("content-desc")
             let confirmedsiz = await text.replace("challenge-item-points", "")
             let artısız = await confirmedsiz.replace("+", "")
             let result = await artısız.replace("puan", "")

@@ -9,6 +9,13 @@ class ElementHelper {
         return elem.getText();
     }
 
+    async getAttribute(element,attr) {
+        await this.writeConsoleInfo("getText adımı başladı - " + element)
+        let elem = await this.findElement(element)
+        await this.writeConsoleTick("getText adımı başarıyla gerçekleşti")
+        return elem.getAttribute(attr);
+    }
+
     async elementSendKey(element, text) {
         await this.writeConsoleInfo("elementSendKey adımı başladı - " + element)
         let elem = await this.findElement(element)
@@ -19,10 +26,10 @@ class ElementHelper {
     async withOutElementSendKey(text) {
         try {
             await this.writeConsoleInfo("withOutElementSendKey adımı başladı - " + text)
-            await browser.pause(2000)
+            await browser.pause(3000)
             await browser.keys(text)
         } catch (e) {
-            await browser.pause(1000)
+            await browser.pause(2000)
             await browser.hideKeyboard('pressKey', 'Done');
             await this.writeConsoleTick("withOutElementSendKey adımı başarıyla gerçekleşti")
         }
@@ -37,7 +44,7 @@ class ElementHelper {
     async elementNotCheck(element) {
         await this.writeConsoleInfo("elementNotCheck adımı başladı - " + element)
         let wait = await $(element).waitForDisplayed({
-            timeout: 3000,
+            timeout: 10000,
             reverse: true,
             timeoutMsg: "Element bulunamadı"
         })
@@ -56,7 +63,7 @@ class ElementHelper {
     async elementCheckTextContains(element, text) {
         await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
         let elem = await this.findElement(element)
-        const elemText = await elem.getText()
+        const elemText = await elem.getAttribute("content-desc")
         await expect(elemText).contain(text)
         await this.writeConsoleTick("elementCheckTextContains adımı başarıyla gerçekleşti")
     }
@@ -64,7 +71,7 @@ class ElementHelper {
     async elementCheckNotTextContains(element, text) {
         await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
         let elem = await this.findElement(element)
-        const elemText = await elem.getText()
+        const elemText = await elem.getAttribute("content-desc")
         if (elemText.includes(text)) {
             console.info("Element texti içeriyor = " + text)
             await expect(true).equal(false)
@@ -123,7 +130,7 @@ class ElementHelper {
         await this.findElement(element1)
         let elems = await $$(element1)
         let elements = elems.map(async (el) => {
-            let txt = await el.getText()
+            let txt = await el.getAttribute("content-desc")
             if (txt.includes(text)) {
                 await el.click()
                 return true
@@ -167,7 +174,7 @@ class ElementHelper {
         await this.findElement(element1)
         let elems = await $(element1).$$(element2)
         let elements = await elems.map(async (el) => {
-            let txt = await el.getText()
+            let txt = await el.getAttribute("content-desc")
             if (txt.includes(text)) {
                 await el.click()
                 return true
@@ -199,7 +206,7 @@ class ElementHelper {
                 {action: 'moveTo', x: window.width / 2, y: window.height / 5},
                 'release'
             ])
-            await browser.pause(2000)
+            await browser.pause(3000)
             try {
                 await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
                 await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
@@ -224,7 +231,7 @@ class ElementHelper {
             {action: 'moveTo', x: window.width / 2, y: window.height / 5},
             'release'
         ])
-        await browser.pause(2000)
+        await browser.pause(3000)
     }
 
     async pause(ms) {
@@ -232,27 +239,27 @@ class ElementHelper {
     }
 
     async writeConsoleTick(text) {
-        await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleFail(text) {
-        await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleInfo(text) {
-        await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethod(text) {
-        await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodTick(text) {
-        await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodFail(text) {
-        await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + '\u001b[0m' + text)
     }
 }
 

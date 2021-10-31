@@ -1,15 +1,15 @@
 const ElementHelper = require('../common/ElementHelper')
 
-const txt_TierStatusPageTitle = browser.isAndroid ? `android=new UiSelector().textContains("my-tier-status-page-title")` : `-ios predicate string: name CONTAINS 'my-tier-status-page-title'`
-const btn_BackButton = browser.isAndroid ? `android=new UiSelector().textContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
+const txt_TierStatusPageTitle = browser.isAndroid ? `android=new UiSelector().descriptionContains("my-tier-status-page-title")` : `-ios predicate string: name CONTAINS 'my-tier-status-page-title'`
+const btn_BackButton = browser.isAndroid ? `android=new UiSelector().descriptionContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
 const txt_TierName = browser.isAndroid ? `//android.widget.ScrollView/android.view.View[1]` : `//XCUIElementTypeOther[contains(@name,' Üye')]`
 const txt_TierScore = browser.isAndroid ? `//android.widget.ScrollView/android.view.View[2]` : `//XCUIElementTypeOther[contains(@name,'puan')]`
-const txt_MembershipDate = browser.isAndroid ? `android=new UiSelector().textContains("membership-start-date")` : `-ios predicate string: name CONTAINS 'membership-start-date'`
+const txt_MembershipDate = browser.isAndroid ? `android=new UiSelector().descriptionContains("membership-start-date")` : `-ios predicate string: name CONTAINS 'membership-start-date'`
 const txt_PrivilagesTier = browser.isAndroid ? `//android.widget.ScrollView/android.view.View[14]` : `//XCUIElementTypeOther[15]`
-const txt_PrivilagesName = browser.isAndroid ? `android=new UiSelector().textContains("privilege-name")` : `-ios predicate string: name CONTAINS 'privilege-name'`
-const btn_AllPrivilages = browser.isAndroid ? `android=new UiSelector().textContains("all-privileges-in-modal")` : `-ios predicate string: name CONTAINS 'all-privileges-in-modal'`
-const txt_ModalTitle = browser.isAndroid ? `//android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]` : `//XCUIElementTypeOther[contains(@name,'...')]`
-const btn_CloseAllPrivilages = browser.isAndroid ? `android=new UiSelector().textContains("close-button")` : `-ios predicate string: name CONTAINS 'close-button'`
+const txt_PrivilagesName = browser.isAndroid ? `android=new UiSelector().descriptionContains("privilege-name")` : `-ios predicate string: name CONTAINS 'privilege-name'`
+const btn_AllPrivilages = browser.isAndroid ? `android=new UiSelector().descriptionContains("all-privileges-in-modal")` : `-ios predicate string: name CONTAINS 'all-privileges-in-modal'`
+const txt_ModalTitle = browser.isAndroid ? `//android.view.View[contains(@content-desc,'...')]` : `//XCUIElementTypeOther[contains(@name,'...')]`
+const btn_CloseAllPrivilages = browser.isAndroid ? `android=new UiSelector().descriptionContains("close-button")` : `-ios predicate string: name CONTAINS 'close-button'`
 
 
 class TierStatusPage {
