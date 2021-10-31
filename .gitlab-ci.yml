@@ -1,7 +1,8 @@
 image: registry.gitlab.com/modanisatech/docker-images/flutter/v1-17-1:latest
 
 stages:          # List of stages for jobs, and their order of execution
-  - test
+  - Test
+  - Report
 
 
 unit-test-job:   # This job runs in the test stage.
@@ -11,4 +12,29 @@ unit-test-job:   # This job runs in the test stage.
     - npm run test:androidBrowserStack
     - sleep 60
 
+Test:
+  stage: Test
+  script:
+    - npm run test:androidBrowserStack
+  artifacts:
+    when: always
+    paths:
+      - allure-report
+      - Reports/Allure/allure-results
+    expire_in: 1 week
+  only:
+    - master
+
+Report:
+  stage: Report
+  only:
+    - master
+  script:
+    - mkdir public
+    - mv target/allure-report/* public
+  artifacts:
+    when: always
+    paths:
+      - public
+    expire_in: 1 week
 
