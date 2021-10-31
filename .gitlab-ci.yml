@@ -7,7 +7,7 @@ stages:          # List of stages for jobs, and their order of execution
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - npm run test:androidBrowserStack"
+    - npm run test:androidBrowserStack
     - sleep 60
 
 
