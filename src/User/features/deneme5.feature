@@ -10,6 +10,6 @@ Feature: Deneme2
 
   Scenario: Deneme5-2
     Given Deneme Given
-    When Deneme When Basarısız
+    When Deneme When
     Then Deneme Then
 

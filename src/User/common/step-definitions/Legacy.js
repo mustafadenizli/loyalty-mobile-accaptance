@@ -45,9 +45,12 @@ Given(/^Nisa login with user:"([^"]*)" email: "([^"]*)" and password: "([^"]*)"$
             await Legacy.clickFacebookLogin()
             let durum = await Legacy.checkFacebookTextbox()
             if (durum == true) {
+                await Legacy.webVieweGecis()
                 await Legacy.setFacebookEmail(email)
                 await Legacy.setFacebookPassword(password)
                 await Legacy.clickFacebookGirisYap()
+                await Legacy.webVieweCikis()
+
             }
             let durum2 = await Legacy.checkDevamTextbox()
             if (durum2 == true) {

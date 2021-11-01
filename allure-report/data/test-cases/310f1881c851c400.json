@@ -1,0 +1,113 @@
+{
+  "uid" : "310f1881c851c400",
+  "name" : "Deneme3-2",
+  "fullName" : "Deneme2.Deneme3-2",
+  "historyId" : "23db50e07135de75fafe965bd8c24af9",
+  "time" : {
+    "start" : 1635770663409,
+    "stop" : 1635770674556,
+    "duration" : 11147
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given Deneme Given",
+      "time" : {
+        "start" : 1635770668526,
+        "stop" : 1635770670538,
+        "duration" : 2012
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When Deneme When",
+      "time" : {
+        "start" : 1635770670538,
+        "stop" : 1635770672545,
+        "duration" : 2007
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then Deneme Then",
+      "time" : {
+        "start" : 1635770672546,
+        "stop" : 1635770674553,
+        "duration" : 2007
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "wdio"
+  }, {
+    "name" : "language",
+    "value" : "javascript"
+  }, {
+    "name" : "thread",
+    "value" : "0-2"
+  }, {
+    "name" : "suite",
+    "value" : "Deneme2"
+  }, {
+    "name" : "testClass",
+    "value" : "Deneme2"
+  }, {
+    "name" : "testMethod",
+    "value" : "Deneme3-2"
+  }, {
+    "name" : "package",
+    "value" : "Deneme2"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ {
+    "name" : "device",
+    "value" : "xiaomi redmi note 9-10.0"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "310f1881c851c400.json",
+  "parameterValues" : [ "xiaomi redmi note 9-10.0" ]
+}

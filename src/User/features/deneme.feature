@@ -1,4 +1,4 @@
-Feature: Deneme
+Feature: Deneme1
 
   Deneme
 
@@ -8,12 +8,3 @@ Feature: Deneme
     When Deneme When
     Then Deneme Then
 
-  Scenario: Deneme1-2
-    Given Deneme Given
-    When Deneme When Basarısız
-    Then Deneme Then
-
-  Scenario: Deneme1-3
-    Given Deneme Given
-    When Deneme When
-    Then Deneme Then

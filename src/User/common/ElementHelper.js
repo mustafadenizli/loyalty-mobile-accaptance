@@ -9,7 +9,7 @@ class ElementHelper {
         return elem.getText();
     }
 
-    async getAttribute(element,attr) {
+    async getAttribute(element, attr) {
         await this.writeConsoleInfo("getText adımı başladı - " + element)
         let elem = await this.findElement(element)
         await this.writeConsoleTick("getText adımı başarıyla gerçekleşti")
@@ -28,9 +28,13 @@ class ElementHelper {
             await this.writeConsoleInfo("withOutElementSendKey adımı başladı - " + text)
             await browser.pause(3000)
             await browser.keys(text)
+
         } catch (e) {
+
+        } finally {
             await browser.pause(2000)
-            await browser.hideKeyboard('pressKey', 'Done');
+            await driver.pressKeyCode(66);
+            await browser.pause(2000)
             await this.writeConsoleTick("withOutElementSendKey adımı başarıyla gerçekleşti")
         }
     }
@@ -64,6 +68,14 @@ class ElementHelper {
         await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
         let elem = await this.findElement(element)
         const elemText = await elem.getAttribute("content-desc")
+        await expect(elemText).contain(text)
+        await this.writeConsoleTick("elementCheckTextContains adımı başarıyla gerçekleşti")
+    }
+
+    async elementCheckTextContainss(element, text) {
+        await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
+        let elem = await this.findElement(element)
+        const elemText = await elem.getText()
         await expect(elemText).contain(text)
         await this.writeConsoleTick("elementCheckTextContains adımı başarıyla gerçekleşti")
     }

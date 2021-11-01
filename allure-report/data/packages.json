@@ -1,0 +1,52 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "children" : [ {
+    "name" : "Deneme1",
+    "children" : [ {
+      "name" : "Deneme1-1",
+      "uid" : "1c5882d221bba917",
+      "parentUid" : "a60add3c885e410c4330a85528796dcc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635770593558,
+        "stop" : 1635770604506,
+        "duration" : 10948
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "xiaomi redmi note 9-10.0" ]
+    } ],
+    "uid" : "a60add3c885e410c4330a85528796dcc"
+  }, {
+    "name" : "Deneme2",
+    "children" : [ {
+      "name" : "Deneme2-1",
+      "uid" : "3795135df098608b",
+      "parentUid" : "fc12085ea40588fa9a7e0d35dfa6b64f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635770612727,
+        "stop" : 1635770623813,
+        "duration" : 11086
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "xiaomi redmi note 9-10.0" ]
+    }, {
+      "name" : "Deneme3-2",
+      "uid" : "310f1881c851c400",
+      "parentUid" : "fc12085ea40588fa9a7e0d35dfa6b64f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635770663409,
+        "stop" : 1635770674556,
+        "duration" : 11147
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "xiaomi redmi note 9-10.0" ]
+    } ],
+    "uid" : "fc12085ea40588fa9a7e0d35dfa6b64f"
+  } ],
+  "name" : "packages"
+}

@@ -12,6 +12,7 @@ Then(/^Nisa should see Description: "([^"]*)" in Landing Page$/, async (text) =>
     await LandingPage.checkLandingPageDescription(text)
 });
 Then(/^Nisa should see Button: "([^"]*)" in Landing Page$/, async (text) => {
+    await browser.pause(2000)
     await LandingPage.checkButtonName(text)
 });
 When(/^Nisa click Button: "([^"]*)" in Landing Page$/, async (text) => {

@@ -1,6 +1,8 @@
 const chai = require("chai");
 const allure = require("allure-commandline");
 let rimraf = require("rimraf");
+let count = 0
+const allureReporter = require('@wdio/allure-reporter').default
 
 exports.config = {
     host: 'hub.browserstack.com',
@@ -8,9 +10,9 @@ exports.config = {
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        './src/User/features/**/deneme4.feature',
+        './src/User/features/**/deneme.feature',
         './src/User/features/**/deneme2.feature',
-        './src/User/features/**/deneme3.feature'
+        './src/User/features/**/deneme3.feature',
     ],
     exclude: [],
     logLevel: 'silent',
@@ -23,8 +25,8 @@ exports.config = {
             {args: {}, command: 'appium'}
         ],
         ['browserstack', {
-            browserstackLocal: true,
-            preferScenarioName: true
+            browserstackLocal: false,
+            preferScenarioName: false
         }]
     ],
     framework: 'cucumber',
@@ -32,6 +34,7 @@ exports.config = {
         outputDir: './Reports/Allure/allure-results',
         disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: true,
+        useCucumberStepReporter: true
     }]],
     cucumberOpts: {
         require: ['./src/**/step-definitions/*.js'],
@@ -58,16 +61,16 @@ exports.config = {
         rimraf("./Reports/Allure/allure-results", function () {
             console.log("Allure Json Files deleted");
         });
-
     },
     onWorkerStart: function (cid, caps, specs, args, execArgv) {
         //console.info("onWorkerStart")
+
     },
     beforeSession: async (config, capabilities, specs) => {
         //console.info("beforeSession")
         let featureName = await specs && specs[0].split('/').pop() || undefined;
         featureName = await featureName.replace(".feature", "")
-        capabilities.build = "Loyalty - " + featureName
+        capabilities.name = featureName
     },
     before: async (capabilities, specs, browser) => {
         //console.info("before")
@@ -138,7 +141,6 @@ exports.config = {
         try {
             await browser.reset()
             await console.log('\u001b[' + 34 + 'm' + '  Scenario name : ' + world.pickle.name + '\u001b[0m')
-            //await browser.reloadSession()
         } catch (e) {
         }
     },
@@ -153,25 +155,25 @@ exports.config = {
         } else {
             await console.log('\u001b[' + 31 + 'm' + '    ✖ Step Fail : ' + step.text + '\u001b[0m')
             browser.takeScreenshot();
-            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Step Fail: ${step.text}"}}`);
         }
     },
     afterScenario: async (world, result) => {
         //console.info("afterScenario")
         try {
-            //await browser.execute(`browserstack_executor: {"action": "setSessionName", "arguments": {"name": "${world.pickle.name}"}}`);
             if (await result.passed) {
-                //await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Succeed"}}`);
             } else {
-                if (await result.error != false) {
-                    await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Zaman aşımına uğradı"}}`);
-                }
+                count = 1
             }
         } catch (e) {
         }
 
     },
-    afterFeature: function (uri, feature) {
+    afterFeature: async (uri, feature) => {
         //console.info("afterFeature")
+        if (count == 0) {
+            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Succeed"}}`);
+        } else {
+            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Failed"}}`);
+        }
     }
 }

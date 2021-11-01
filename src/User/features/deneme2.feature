@@ -8,8 +8,3 @@ Feature: Deneme2
     When Deneme When
     Then Deneme Then
 
-  Scenario: Deneme2-2
-    Given Deneme Given
-    When Deneme When Basarısız
-    Then Deneme Then
-

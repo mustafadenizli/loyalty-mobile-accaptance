@@ -121,7 +121,7 @@ class Common {
 
     async checkFacebookTextbox() {
         try {
-            await $(txtbox_FacebookEmail).waitForDisplayed({timeout: 2000})
+            await $(txtbox_FacebookEmail).waitForDisplayed({timeout: 10000})
             if (await $(txtbox_FacebookEmail).isExisting() == true) {
                 return true
             } else {
@@ -134,7 +134,7 @@ class Common {
 
     async checkDevamTextbox() {
         try {
-            await $(btn_FacebookGirisYapDevam).waitForDisplayed({timeout: 2000})
+            await $(btn_FacebookGirisYapDevam).waitForDisplayed({timeout: 10000})
             if (await $(btn_FacebookGirisYapDevam).isExisting() == true) {
                 return true
             } else {
@@ -224,6 +224,24 @@ class Common {
 
     async clickDoneButton() {
         await ElementHelper.elementClick(btn_Done)
+    }
+
+    async webVieweGecis() {
+        let cont = browser.getContexts()
+        for (const s in cont) {
+            if (await s.contains("WEBVIEW")) {
+                await browser.switchContext(s)
+            }
+        }
+    }
+
+    async webVieweCikis() {
+        let cont = browser.getContexts()
+        for (const s in cont) {
+            if (await s.contains("NATIVE")) {
+                await browser.switchContext(s)
+            }
+        }
     }
 
 

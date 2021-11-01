@@ -3,13 +3,12 @@ Feature: Deneme2
   Deneme
 
 
-  Scenario: Deneme4-1
+  Scenario: Deneme4-2
     Given Deneme Given
     When Deneme When
     Then Deneme Then
 
-  Scenario: Deneme4-2
+  Scenario: Deneme4-1
     Given Deneme Given
-    When Deneme When Basarısız
+    When Deneme When
     Then Deneme Then
-

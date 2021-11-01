@@ -6,8 +6,7 @@ exports.config = {
     runner: 'local',
     specs: [
         //'./src/User/features/**/EnrollmentPage.feature',
-        './src/User/features/**/deneme.feature',
-
+        './src/User/features/**/EnrollmentPage.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'
@@ -38,7 +37,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: 'not @Hatali',
+        tagExpression: '@Dene',
         timeout: 60000,
         ignoreUndefinedDefinitions: false
     },

@@ -1,0 +1,31 @@
+[ {
+  "uid" : "1c5882d221bba917",
+  "name" : "Deneme1-1",
+  "time" : {
+    "start" : 1635770593558,
+    "stop" : 1635770604506,
+    "duration" : 10948
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3795135df098608b",
+  "name" : "Deneme2-1",
+  "time" : {
+    "start" : 1635770612727,
+    "stop" : 1635770623813,
+    "duration" : 11086
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "310f1881c851c400",
+  "name" : "Deneme3-2",
+  "time" : {
+    "start" : 1635770663409,
+    "stop" : 1635770674556,
+    "duration" : 11147
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

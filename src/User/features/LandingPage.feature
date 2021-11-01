@@ -13,7 +13,7 @@ Feature: Loyalty Landing Page
 
   Background:
     Given Nisa waits for Welcome page
-    Given Nisa changes the Country to "Türkiye" from the Shipping Country picker in Welcome page
+    Given Nisa changes the Country to "Turkey" from the Shipping Country picker in Welcome page
     Given Nisa changes the Language to "TR" from the Language picker in Welcome page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
@@ -102,7 +102,7 @@ Feature: Loyalty Landing Page
       |        |                                 |               | My Modanisa nedir |
 
 
-  @S74/74.1-LoggedIn/NotLoggedIn-CheckLandFaqPage @Hatali
+  @S74/74.1-LoggedIn/NotLoggedIn-CheckLandFaqPage
   Scenario Outline: Nisa has taps All Questions
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -119,13 +119,13 @@ Feature: Loyalty Landing Page
       | normal | problemli.musteri@modanisa.com  | Testhb123     |
       |        |                                 |               |
 
-  @S74 @Hatali
+  @S74
   Scenario: Nisa Has Tapped 'Login Button' on ‘Loyalty Page’ Navigate To Legacy Login Page
     When Nisa taps to My Modanisa section
     When Nisa click Button: "Giriş Yap" in Landing Page
     Then Nisa should see Login Page
 
-  @S74 @Hatali
+  @S74
   Scenario: Nisa Has Tapped 'Login Button' in Langing Page button change 'Enroll Button'
     When Nisa taps to My Modanisa section
     When Nisa click Button: "Giriş Yap" in Landing Page
@@ -134,7 +134,7 @@ Feature: Loyalty Landing Page
     Then Nisa should see Landing Page Title
     Then Nisa should see Button: "My Modanisa'ya Katıl" in Landing Page
 
-  @S74 @Hatali
+  @S74
   Scenario Outline: Nisa Has Tapped 'Login Button' on ‘Loyalty Page’ Navigate To Legacy Login Page
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -172,7 +172,7 @@ Feature: Loyalty Landing Page
       | normal | toptanci.musteri@modanisa.com  | Testhb123 | My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz |
       | normal | problemli.musteri@modanisa.com | Testhb123 | My Modanisa kayıt ve kullanım koşulları gereği, kayıt işleminiz yapılamamaktadır. Detaylı bilgi için Modanisa Müşteri Hizmetleri ile görüşebilirsiniz |
 
-  @S57.1 @Hatali
+  @S57.1
   Scenario Outline: Nisa Goes Back To My Account Page From Loyalty Page
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section

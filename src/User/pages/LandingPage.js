@@ -70,7 +70,7 @@ class LandingPage {
     }
 
     async checkPopupMessage(text) {
-        await ElementHelper.elementCheckTextContains(txt_PopupMessage, text)
+        await ElementHelper.elementCheckTextContainss(txt_PopupMessage, text)
     }
 
     async clickPopupButton() {
