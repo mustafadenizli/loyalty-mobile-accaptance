@@ -5,7 +5,10 @@ before_script:
   - export ANDROID_HOME="/opt/android-sdk"
   - export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-amd64"
   - chmod +x gradlew
-  
+
+dev:  
+  script:
+    - ./gradlew assembleDebug
 Test:
   stage: Test
   image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
