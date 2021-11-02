@@ -9,12 +9,6 @@ Test:
     - npm run test:androidBrowserStack
   tags:
     - customer
-  artifacts:
-    when: always
-    paths:
-      - allure-report
-      - Reports/Allure/allure-results
-    expire_in: 1 week
   only:
     - master
 
