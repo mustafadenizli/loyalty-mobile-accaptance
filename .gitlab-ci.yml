@@ -1,14 +1,14 @@
-image: registry.gitlab.com/modanisatech/docker-images/flutter/v1-17-1:latest
-
-stages:          # List of stages for jobs, and their order of execution
+stages:
   - Test
-  - Report
 
 Test:
   stage: Test
   image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
   script:
+    - npm install
     - npm run test:androidBrowserStack
+  tags:
+    - customer
   artifacts:
     when: always
     paths:
@@ -17,17 +17,4 @@ Test:
     expire_in: 1 week
   only:
     - master
-
-Report:
-  stage: Report
-  only:
-    - master
-  script:
-    - mkdir public
-    - mv target/allure-report/* public
-  artifacts:
-    when: always
-    paths:
-      - public
-    expire_in: 1 week
 
