@@ -1,3 +1,8 @@
+const chai = require("chai");
+const allure = require("allure-commandline");
+let rimraf = require("rimraf");
+let count = 0
+const allureReporter = require('@wdio/allure-reporter').default
 
 exports.config = {
 
@@ -6,7 +11,9 @@ exports.config = {
     runner: 'local',
     specs: [
         //'./src/User/features/**/EnrollmentPage.feature',
-        './src/User/features/**/EnrollmentPage.feature',
+        './src/User/features/**/deneme.feature',
+        './src/User/features/**/deneme2.feature',
+
     ],
     exclude: [
         // 'path/to/excluded/files'
@@ -25,7 +32,12 @@ exports.config = {
         outputDir: 'allure-results',
     }]],
     */
-    reporters: ['spec'],
+    reporters: ['spec', ['allure', {
+        outputDir: './Reports/Allure/allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+        useCucumberStepReporter: true
+    }]],
     cucumberOpts: {
         require: ['./src/**/step-definitions/*.js'],
         backtrace: false,
@@ -37,7 +49,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: '@Dene',
+        tagExpression: '',
         timeout: 60000,
         ignoreUndefinedDefinitions: false
     },
@@ -48,6 +60,12 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of appCapabilities details
      */
     onPrepare: async (config, capabilities) => {
+        await rimraf("./allure-report", async () => {
+            await console.log("Allure Report Deleted");
+        });
+        await rimraf("./Reports/Allure/allure-results", async () => {
+            await console.log("Allure Json Files deleted");
+        });
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -133,6 +151,7 @@ exports.config = {
             await console.log('\u001b[' + 32 + 'm' + '    ✓ Step Succeed : ' + test.text + '\u001b[0m')
         } else {
             await console.log('\u001b[' + 31 + 'm' + '    ✖ Step Fail : ' + test.text + '\u001b[0m')
+            browser.takeScreenshot();
         }
     },
 
@@ -192,8 +211,26 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
 
-    onComplete: function () {
+    onComplete: function (exitCode, config, capabilities, results) {
+        //console.info("onComplete")
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', './Reports/Allure/allure-results', '--clean'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
 
+            generation.on('exit', function (exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
     },
 
     /**

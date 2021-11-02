@@ -2,9 +2,6 @@ const {Given, When, Then, Before} = require('@wdio/cucumber-framework');
 const Legacy = require('../pages/Legacy')
 const ElementHelper = require('../ElementHelper')
 const expect = require("chai").expect;
-const request = require('request-promise-native');
-const WebDriver = require('webdriver');
-
 
 Given(/^Nisa waits for Welcome page$/, async () => {
     await Legacy.checkLogo()
@@ -120,15 +117,12 @@ Given(/^Nisa sendKey private api "([^"]*)" and restart app$/, async (text) => {
 
 Given(/^Deneme Given$/, async () => {
     await browser.pause(2000)
-
 });
 When(/^Deneme When$/, async () => {
     await browser.pause(2000)
-
 });
 Then(/^Deneme Then$/, async () => {
     await browser.pause(2000)
-
 });
 When(/^Deneme When Basarısız$/, async () => {
     await browser.pause(1000)
