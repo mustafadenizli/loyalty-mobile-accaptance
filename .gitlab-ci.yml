@@ -5,6 +5,7 @@ Test:
   stage: Test
   image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
   script:
+    - npm install
     - npm run test:androidBrowserStack
   tags:
     - customer
