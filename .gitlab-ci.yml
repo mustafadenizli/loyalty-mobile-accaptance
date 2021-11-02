@@ -3,7 +3,7 @@ image: openjdk:8-jdk
 before_script:
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
-  - export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk-amd64"
+  - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java"
 
 stages:
   - test
