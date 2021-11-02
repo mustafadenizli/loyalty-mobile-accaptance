@@ -3,7 +3,6 @@ image: openjdk:8-jdk
 before_script:
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
-  - chmod +x ./gradlew
 
 stages:
   - test
@@ -12,7 +11,6 @@ browserStack:
   stage: test
   image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
   script:
-    - ./gradlew assembleDebug
     - npm install
     - npm run test:androidBrowserStack
   tags:
