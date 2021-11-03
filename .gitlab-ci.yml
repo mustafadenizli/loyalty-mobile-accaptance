@@ -26,6 +26,9 @@ apk-debug-browserstack:
     - echo $APP_ID
     - export APP_ID=$(node -pe 'JSON.parse(process.argv[1]).app_url' ${APP_ID})
     - echo $APP_ID
+    - npm cache clean --force
+    - rm -rf node_modules
+    - rm -rf package-lock.json
     - npm install
     - npm run test:androidBrowserStack
 
