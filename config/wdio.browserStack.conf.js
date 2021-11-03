@@ -34,10 +34,7 @@ exports.config = {
         ['appium',
             {args: {}, command: 'appium'}
         ],
-        ['browserstack', {
-            browserstackLocal: false,
-            preferScenarioName: false
-        }]
+        ['browserstack']
     ],
     framework: 'cucumber',
     reporters: ['spec', ['allure', {
