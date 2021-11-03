@@ -1,7 +1,7 @@
 variables:
   APK_PATH: build/app/outputs/apk/debug/app-debug.apk
   APP_ID: ''
-  JOB_ID_APK: $JOB_ID_APK
+  JOB_ID_APK: 1742227982
 
 stages:
   - run-test
@@ -10,8 +10,11 @@ apk-debug-browserstack:
   stage: run-test
   image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
   before_script:
+    - apk update && apk add openjdk8-jre
     - apk add git
     - git config --global url."https://$CI_USERNAME:$CI_PUSH_TOKEN@gitlab.com/".insteadOf "git@gitlab.com:"
+    - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    - export PATH=$PATH:$JAVA_HOME/bin
   script:
     - echo $JOB_ID_APK
     - 'curl -L --request GET --output artifact_android.zip --header "PRIVATE-TOKEN: ${GITLAB_CI_TOKEN}" "https://gitlab.com/api/v4/projects/18690327/jobs/${JOB_ID_APK}/artifacts"'
