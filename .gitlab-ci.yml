@@ -1,21 +1,25 @@
-image: openjdk:8-jdk
-
-before_script:
-  - export ANDROID_HOME=$PWD/android-sdk-linux
-  - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
-  - export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java"
-
-stages:
-  - test
-
-browserStack:
-  stage: test
+apk-debug-browserstack:
+  stage: run-test
   image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
+  before_script:
+    - apk add git
+    - git config --global url."https://$CI_USERNAME:$CI_PUSH_TOKEN@gitlab.com/".insteadOf "git@gitlab.com:"
   script:
+    - echo $JOB_ID_APK
+    - 'curl -L --request GET --output artifact_android.zip --header "PRIVATE-TOKEN: ${GITLAB_CI_TOKEN}" "https://gitlab.com/api/v4/projects/18690327/jobs/${JOB_ID_APK}/artifacts"'
+    - ls
+    - unzip -q artifact_android.zip
+    - ls
+    # - export APK_PATH=${CI_PROJECT_DIR}/modanisa-flutter/build/app/outputs/apk/debug/app-debug.apk
+    - export APP_ID=$(curl -u "${BROWSERSTACK_USER_NAME}:${BROWSERSTACK_ACCSESS_KEY}" -X POST "https://api-cloud.browserstack.com/app-automate/upload" -F "file=@"${APK_PATH})
+    - echo $APP_ID
+    - export APP_ID=$(node -pe 'JSON.parse(process.argv[1]).app_url' ${APP_ID})
+    - echo $APP_ID
     - npm install
     - npm run test:androidBrowserStack
+    
   tags:
     - customer
   artifacts:
     paths:
-        - screenshots/
+      - screenshots/ 
