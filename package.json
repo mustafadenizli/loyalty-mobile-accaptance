@@ -6,7 +6,7 @@
     "test:desktopweb": "wdio config/appCapabilities/wdio.desktop.web.conf.js",
     "test:iosapp": "wdio config/appCapabilities/wdio.ios.app.conf.js",
     "test:androidapp": "wdio config/appCapabilities/wdio.android.app.conf.js",
-    "test:androidBrowserStack": "wdio config/browserStackCapabilities/wdio.android.browserstack.conf.js && allure generate ./Reports/Allure/allure-results && allure open"
+    "test:androidBrowserStack": "./node_modules/.bin/wdio ./config/browserStackCapabilities/wdio.android.browserstack.conf.js"
   },
   "dependencies": {
     "@wdio/cli": "^7.12.6",
