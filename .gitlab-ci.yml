@@ -30,4 +30,5 @@ apk-debug-browserstack:
     - customer
   artifacts:
     paths:
-      - screenshots/ 
+      - allure-report
+      - Reports
