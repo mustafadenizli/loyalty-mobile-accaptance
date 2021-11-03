@@ -1,3 +1,11 @@
+variables:
+  APK_PATH: build/app/outputs/apk/debug/app-debug.apk
+  APP_ID: ''
+  JOB_ID_APK: $JOB_ID_APK
+
+stages:
+  - run-test
+
 apk-debug-browserstack:
   stage: run-test
   image: $CI_REGISTRY/modanisatech/docker-images/node-14-alpine
@@ -17,7 +25,7 @@ apk-debug-browserstack:
     - echo $APP_ID
     - npm install
     - npm run test:androidBrowserStack
-    
+
   tags:
     - customer
   artifacts:
