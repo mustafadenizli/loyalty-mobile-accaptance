@@ -1,0 +1,31 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "children" : [ {
+    "name" : "Denem1",
+    "uid" : "b7f802e422062c3f",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1635925207409,
+      "stop" : 1635925218576,
+      "duration" : 11167
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "xiaomi redmi note 9-10.0" ]
+  }, {
+    "name" : "Denem2",
+    "uid" : "dc954c3b2b246255",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1635925229129,
+      "stop" : 1635925240273,
+      "duration" : 11144
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "xiaomi redmi note 9-10.0" ]
+  } ],
+  "name" : "behaviors"
+}

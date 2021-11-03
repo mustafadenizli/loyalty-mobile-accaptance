@@ -1,0 +1,40 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1635925206832' stop='1635925219127'>
+    <name>Deneme1</name>
+    <title>Deneme1</title>
+    <test-cases>
+        <test-case start='1635925207409' status='passed' stop='1635925218576'>
+            <name>Denem1</name>
+            <title>Denem1</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='wdio'/>
+                <label name='thread' value='0-0'/>
+            </labels>
+            <parameters>
+                <parameter kind='argument' name='device' value='xiaomi redmi note 9-10.0'/>
+            </parameters>
+            <steps>
+                <step start='1635925212555' status='passed' stop='1635925214563'>
+                    <name>Given Deneme Given</name>
+                    <title>Given Deneme Given</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1635925214563' status='passed' stop='1635925216569'>
+                    <name>When Deneme When</name>
+                    <title>When Deneme When</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1635925216569' status='passed' stop='1635925218573'>
+                    <name>Then Deneme Then</name>
+                    <title>Then Deneme Then</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

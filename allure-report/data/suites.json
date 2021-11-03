@@ -1,0 +1,39 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "children" : [ {
+    "name" : "Deneme1",
+    "children" : [ {
+      "name" : "Denem1",
+      "uid" : "b7f802e422062c3f",
+      "parentUid" : "c7dcab982aea43a4a3aa2f7cf724c4e6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635925207409,
+        "stop" : 1635925218576,
+        "duration" : 11167
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "xiaomi redmi note 9-10.0" ]
+    } ],
+    "uid" : "c7dcab982aea43a4a3aa2f7cf724c4e6"
+  }, {
+    "name" : "Deneme2",
+    "children" : [ {
+      "name" : "Denem2",
+      "uid" : "dc954c3b2b246255",
+      "parentUid" : "871dcbcef6170e29188ef8f2e9888cc7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1635925229129,
+        "stop" : 1635925240273,
+        "duration" : 11144
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ "xiaomi redmi note 9-10.0" ]
+    } ],
+    "uid" : "871dcbcef6170e29188ef8f2e9888cc7"
+  } ],
+  "name" : "suites"
+}

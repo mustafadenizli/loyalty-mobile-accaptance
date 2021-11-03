@@ -25,7 +25,7 @@ exports.config = {
 
     ],
     exclude: [],
-    logLevel: 'silent',
+    logLevel: 'info',
     bail: 0,
     waitforTimeout: 20000,
     connectionRetryTimeout: 120000,
