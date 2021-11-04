@@ -1,11 +1,14 @@
 const chai = require("chai");
-let count = 0
+const path = require("path");
+const rimraf = require("rimraf");
+const allure = require("allure-commandline");
+let count = true
 
 exports.config = {
-    host: 'hub.browserstack.com',
-    port: 443,
-    path: "/wd/hub",
-    runner: 'local',
+
+    user: 'eneserdoan_5ocBua',
+    key: 'CXTs5aPDQsX9NMCVaj99',
+    updateJob: false,
     specs: [
         './src/User/features/**/LandingPage.feature',
         './src/User/features/**/LandingPageNavigate.feature',
@@ -17,29 +20,22 @@ exports.config = {
         './src/User/features/**/EarnedGiftsPage.feature',
         './src/User/features/**/TierStatusPage.feature',
         './src/User/features/**/FaqPage.feature',
-
     ],
-    exclude: [],
-    logLevel: 'silent',
-    bail: 0,
-    waitforTimeout: 20000,
-    connectionRetryTimeout: 120000,
-    connectionRetryCount: 3,
-    services: [
-        ['appium',
-            {args: {}, command: 'appium'}
-        ],
-        ['browserstack']
+    exclude: [
+        // 'path/to/excluded/files'
     ],
     framework: 'cucumber',
     reporters: ['spec', ['allure', {
         outputDir: './Reports/Allure/allure-results',
         disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: true,
-        useCucumberStepReporter: true
+        useCucumberStepReporter: true,
     }]],
     cucumberOpts: {
         require: ['./src/**/step-definitions/*.js'],
+        failAmbiguousDefinitions: false,
+        snippetSyntax: undefined,
+        tagsInTitle: false,
         backtrace: false,
         requireModule: [],
         dryRun: false,
@@ -49,14 +45,29 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: 'not @Hatali',
+        tagExpression: '',
         timeout: 60000,
+        retry: 0,
         ignoreUndefinedDefinitions: false
     },
-
+    maxInstances: 2,
+    logLevel: 'info',
+    outputDir: path.join(__dirname, "../log"),
+    waitforTimeout: 10000,
+    connectionRetryTimeout: 120000,
+    connectionRetryCount: 3,
+    coloredLogs: true,
+    screenshotPath: './errorShots/',
+    host: 'hub.browserstack.com',
 
     onPrepare: async (config, capabilities) => {
         //console.info("onPrepare")
+        rimraf("./allure-report", function () {
+            console.log("Allure Report Deleted");
+        });
+        rimraf("./Reports/Allure/allure-results", function () {
+            console.log("Allure Json Files deleted");
+        });
     },
     onWorkerStart: function (cid, caps, specs, args, execArgv) {
         //console.info("onWorkerStart")
@@ -106,6 +117,24 @@ exports.config = {
     },
     onComplete: function (exitCode, config, capabilities, results) {
         //console.info("onComplete")
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', './Reports/Allure/allure-results', '--clean'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function (exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
     },
     onReload: function (oldSessionId, newSessionId) {
         //console.info("onReload")
@@ -138,9 +167,8 @@ exports.config = {
     afterScenario: async (world, result) => {
         //console.info("afterScenario")
         try {
-            if (await result.passed) {
-            } else {
-                count = 1
+            if (result.passed != true) {
+                count = false
             }
         } catch (e) {
         }
@@ -148,7 +176,7 @@ exports.config = {
     },
     afterFeature: async (uri, feature) => {
         //console.info("afterFeature")
-        if (count == 0) {
+        if (count == true) {
             await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Succeed"}}`);
         } else {
             await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Failed"}}`);

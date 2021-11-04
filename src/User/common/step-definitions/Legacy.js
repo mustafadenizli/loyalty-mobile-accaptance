@@ -12,7 +12,7 @@ Given(/^Nisa changes the Country to "([^"]*)" from the Shipping Country picker i
 });
 Given(/^Nisa changes the Language to "([^"]*)" from the Language picker in Welcome page$/, async (language) => {
     await Legacy.chooseLanguage(language)
-    await Legacy.checkLogo()
+    //await Legacy.checkLogo()
 });
 Given(/^Nisa taps on the Start Shopping button in Welcome page$/, async () => {
     await Legacy.clickContinueShopping()

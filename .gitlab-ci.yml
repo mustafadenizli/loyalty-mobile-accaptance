@@ -38,3 +38,4 @@ apk-debug-browserstack:
     paths:
       - allure-report
       - Reports
+      - log

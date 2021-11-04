@@ -1,7 +1,13 @@
 .idea
 .DS_Store
-node_modules/*
-package-lock.json
+/log/
+/package-lock.json/
 /allure-report/
+allure-report/*
 /Reports/
 /node_modules/
+
+
+
+
+
