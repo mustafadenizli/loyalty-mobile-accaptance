@@ -2,6 +2,6 @@
 .DS_Store
 node_modules/*
 package-lock.json
-allure-report/*
-Reports/*
+/allure-report/
+/Reports/
 /node_modules/

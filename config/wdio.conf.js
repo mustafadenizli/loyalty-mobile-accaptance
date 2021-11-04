@@ -10,10 +10,7 @@ exports.config = {
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        //'./src/User/features/**/EnrollmentPage.feature',
-        './src/User/features/**/deneme.feature',
-        './src/User/features/**/deneme2.feature',
-
+        './src/User/features/**/PointHistoryPage.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'

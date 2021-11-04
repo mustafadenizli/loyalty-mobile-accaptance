@@ -7,20 +7,20 @@ exports.config = {
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        //'./src/User/features/**/LandingPage.feature',
-        //'./src/User/features/**/LandingPageNavigate.feature',
-        //'./src/User/features/**/EnrollmentPage.feature',
-        //'./src/User/features/**/DashboardMainPage.feature',
-        //'./src/User/features/**/PointEarningPage.feature',
+        './src/User/features/**/LandingPage.feature',
+        './src/User/features/**/LandingPageNavigate.feature',
+        './src/User/features/**/EnrollmentPage.feature',
+        './src/User/features/**/DashboardMainPage.feature',
+        './src/User/features/**/PointEarningPage.feature',
         './src/User/features/**/PointHistoryPage.feature',
-        //'./src/User/features/**/RewardsPage.feature',
-        //'./src/User/features/**/EarnedGiftsPage.feature',
-        //'./src/User/features/**/TierStatusPage.feature',
-        //'./src/User/features/**/FaqPage.feature',
+        './src/User/features/**/RewardsPage.feature',
+        './src/User/features/**/EarnedGiftsPage.feature',
+        './src/User/features/**/TierStatusPage.feature',
+        './src/User/features/**/FaqPage.feature',
 
     ],
     exclude: [],
-    logLevel: 'info',
+    logLevel: 'silent',
     bail: 0,
     waitforTimeout: 20000,
     connectionRetryTimeout: 120000,
@@ -151,7 +151,7 @@ exports.config = {
         if (count == 0) {
             await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Succeed"}}`);
         } else {
-            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Failed"}}`);
+            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Failed"}}`);
         }
     }
 }

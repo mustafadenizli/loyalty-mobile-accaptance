@@ -7,10 +7,13 @@ config.capabilities = [
         build: "Loyalty",
         device: 'Xiaomi Redmi Note 9',
         "app_url": "bs://377a9583d31f2bb09e5c0b9a96f08fd68c059a80",
-        "browserstack.idleTimeout": "300",
         acceptInsecureCerts: 'true',
         autoGrantPermissions: 'true',
         maxInstances: 2,
+        'browserstack.debug': true,
+        'browserstack.console': "info",
+        "browserstack.idleTimeout": 300,
+
     },
 ];
 config.services = ["browserstack"];
