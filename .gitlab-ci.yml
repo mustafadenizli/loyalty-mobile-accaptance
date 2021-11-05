@@ -32,6 +32,8 @@ apk-debug-browserstack:
     - npm install
     - npm run test:androidBrowserStack
 
+  timeout: 3h 30m
+
   tags:
     - customer
   artifacts:
