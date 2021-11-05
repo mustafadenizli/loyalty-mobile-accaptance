@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Nov 05 15:32:08 TRT 2021","Fri Nov 05 15:32:15 TRT 2021","6807","","Deneme2","","Deneme2","Deneme2","Deneme2",""
+"passed","Fri Nov 05 15:32:09 TRT 2021","Fri Nov 05 15:32:17 TRT 2021","8231","","Deneme1","","Deneme1","Deneme1","Deneme1",""

@@ -1,0 +1,31 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "children" : [ {
+    "name" : "Deneme2",
+    "uid" : "b3b7c3f4c73d4b2b",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1636115528755,
+      "stop" : 1636115535562,
+      "duration" : 6807
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "samsung galaxy a51-10" ]
+  }, {
+    "name" : "Deneme1",
+    "uid" : "7f7a3517de590161",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1636115529057,
+      "stop" : 1636115537288,
+      "duration" : 8231
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ "samsung galaxy a51-10" ]
+  } ],
+  "name" : "behaviors"
+}
