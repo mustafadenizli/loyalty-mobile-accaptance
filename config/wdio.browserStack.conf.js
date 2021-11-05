@@ -65,7 +65,7 @@ exports.config = {
 
     onPrepare: async (config, capabilities) => {
         //console.info("onPrepare")
-        rimraf("./allure-report", function () {
+        rimraf("./allureReport", function () {
             console.log("Allure Report Deleted");
         });
         rimraf("./Reports/Allure/allure-results", function () {
