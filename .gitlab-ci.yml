@@ -13,11 +13,11 @@ apk-debug-browserstack:
     - apk update && apk add openjdk8-jre
     - apk add git
     - git config --global url."https://$CI_USERNAME:$CI_PUSH_TOKEN@gitlab.com/".insteadOf "git@gitlab.com:"
-    - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    - export JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk
     - export PATH=$PATH:$JAVA_HOME/bin
     - cd /usr/lib/jvm
     - ls
-    - cd java-8-openjdk-amd64
+    - cd java-1.8-openjdk
     - ls
   script:
     - echo $JOB_ID_APK
