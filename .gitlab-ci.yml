@@ -31,7 +31,6 @@ apk-debug-browserstack:
     - rm -rf package-lock.json
     - npm install
     - npm run test:androidBrowserStack
-    - ls
   timeout: 3h 30m
   tags:
     #- customer
