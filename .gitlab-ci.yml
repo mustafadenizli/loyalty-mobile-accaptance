@@ -34,10 +34,9 @@ apk-debug-browserstack:
     - ls
   timeout: 3h 30m
   tags:
-    - customer
+    #- customer
   artifacts:
     when: always
     paths:
       - allure-report
       - Reports
-      - log
