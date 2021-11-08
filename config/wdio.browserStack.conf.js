@@ -2,16 +2,22 @@ const chai = require("chai");
 const path = require("path");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
-let count = true
 
 exports.config = {
 
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
     specs: [
+        './src/User/features/**/LandingPage.feature',
+        './src/User/features/**/LandingPageNavigate.feature',
+        './src/User/features/**/EnrollmentPage.feature',
+        './src/User/features/**/DashboardMainPage.feature',
+        './src/User/features/**/PointEarningPage.feature',
         './src/User/features/**/PointHistoryPage.feature',
         './src/User/features/**/RewardsPage.feature',
         './src/User/features/**/EarnedGiftsPage.feature',
+        './src/User/features/**/TierStatusPage.feature',
+        './src/User/features/**/FaqPage.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'
