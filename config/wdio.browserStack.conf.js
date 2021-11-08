@@ -8,7 +8,6 @@ exports.config = {
 
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
-    updateJob: false,
     specs: [
         './src/User/features/**/deneme.feature',
         './src/User/features/**/deneme2.feature',
@@ -43,13 +42,11 @@ exports.config = {
         ignoreUndefinedDefinitions: false
     },
     maxInstances: 2,
-    logLevel: 'info',
-    outputDir: path.join(__dirname, "../log"),
+    logLevel: 'silent',
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
     coloredLogs: true,
-    screenshotPath: './errorShots/',
     host: 'hub.browserstack.com',
 
     onPrepare: async (config, capabilities) => {
