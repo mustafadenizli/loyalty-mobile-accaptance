@@ -10,17 +10,8 @@ exports.config = {
     key: 'CXTs5aPDQsX9NMCVaj99',
     updateJob: false,
     specs: [
-        './src/User/features/**/LandingPage.feature',
-        './src/User/features/**/LandingPageNavigate.feature',
-        './src/User/features/**/EnrollmentPage.feature',
-        './src/User/features/**/DashboardMainPage.feature',
-        './src/User/features/**/PointEarningPage.feature',
-        './src/User/features/**/PointHistoryPage.feature',
-        './src/User/features/**/RewardsPage.feature',
-        './src/User/features/**/EarnedGiftsPage.feature',
-        './src/User/features/**/TierStatusPage.feature',
-        './src/User/features/**/FaqPage.feature',
-
+        './src/User/features/**/deneme.feature',
+        './src/User/features/**/deneme2.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'
