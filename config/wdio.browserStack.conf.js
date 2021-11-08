@@ -9,8 +9,12 @@ exports.config = {
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
     specs: [
-        './src/User/features/**/deneme.feature',
-        './src/User/features/**/deneme2.feature',
+        './src/User/features/**/DashboardMainPage.feature',
+        './src/User/features/**/PointEarningPage.feature',
+        './src/User/features/**/PointHistoryPage.feature',
+        './src/User/features/**/RewardsPage.feature',
+        './src/User/features/**/EarnedGiftsPage.feature',
+        './src/User/features/**/FaqPage.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'
@@ -41,7 +45,7 @@ exports.config = {
         retry: 0,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 2,
+    maxInstances: 3,
     logLevel: 'silent',
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
