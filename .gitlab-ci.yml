@@ -31,8 +31,6 @@ apk-debug-browserstack:
     - rm -rf package-lock.json
     - npm install
     - npm run test:androidBrowserStack
-    - npm i allure-commandline
-    - allure generate --clean Reports/Allure/allure-results/ && allure open
   timeout: 3h 30m
   tags:
     - customer
