@@ -9,12 +9,9 @@ exports.config = {
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
     specs: [
-        './src/User/features/**/DashboardMainPage.feature',
-        './src/User/features/**/PointEarningPage.feature',
         './src/User/features/**/PointHistoryPage.feature',
         './src/User/features/**/RewardsPage.feature',
         './src/User/features/**/EarnedGiftsPage.feature',
-        './src/User/features/**/FaqPage.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'
