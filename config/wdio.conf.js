@@ -1,9 +1,3 @@
-const chai = require("chai");
-const allure = require("allure-commandline");
-let rimraf = require("rimraf");
-let count = 0
-const allureReporter = require('@wdio/allure-reporter').default
-
 exports.config = {
 
     port: 4723,
@@ -17,7 +11,7 @@ exports.config = {
     ],
 
     maxInstances: 1,
-    logLevel: 'error',
+    logLevel: 'silent',
     bail: 0,
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
@@ -46,7 +40,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: '',
+        tagExpression: '@Deneme',
         timeout: 60000,
         ignoreUndefinedDefinitions: false
     },
@@ -57,12 +51,6 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of appCapabilities details
      */
     onPrepare: async (config, capabilities) => {
-        await rimraf("./allure-report", async () => {
-            await console.log("Allure Report Deleted");
-        });
-        await rimraf("./Reports/Allure/allure-results", async () => {
-            await console.log("Allure Json Files deleted");
-        });
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -210,24 +198,6 @@ exports.config = {
 
     onComplete: function (exitCode, config, capabilities, results) {
         //console.info("onComplete")
-        const reportError = new Error('Could not generate Allure report')
-        const generation = allure(['generate', './Reports/Allure/allure-results', '--clean'])
-        return new Promise((resolve, reject) => {
-            const generationTimeout = setTimeout(
-                () => reject(reportError),
-                5000)
-
-            generation.on('exit', function (exitCode) {
-                clearTimeout(generationTimeout)
-
-                if (exitCode !== 0) {
-                    return reject(reportError)
-                }
-
-                console.log('Allure report successfully generated')
-                resolve()
-            })
-        })
     },
 
     /**

@@ -2,7 +2,7 @@ const chai = require("chai");
 const path = require("path");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
-
+let count = true;
 exports.config = {
 
     user: 'eneserdoan_5ocBua',
@@ -141,6 +141,7 @@ exports.config = {
     beforeFeature: async (uri, feature) => {
         //console.info("beforeFeature")
         await console.log('\u001b[' + 32 + 'm' + 'Feature name : ' + feature.name + '\u001b[0m')
+        count = true;
     },
     beforeScenario: async (world) => {
         //console.info("beforeScenario")
