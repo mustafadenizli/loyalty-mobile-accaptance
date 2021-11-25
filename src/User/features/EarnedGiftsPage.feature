@@ -11,7 +11,7 @@ Feature: My Earned Gift List
   Background:
     Given Nisa waits for Welcome page
     Given Nisa changes the Country to "Turkey" from the Shipping Country picker in Welcome page
-    Given Nisa changes the Language to "TR" from the Language picker in Welcome page
+    Given Nisa changes the Language to "Türkçe" from the Language picker in Welcome page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
@@ -44,7 +44,7 @@ Feature: My Earned Gift List
     When Nisa click to Discover Gifts Button in My Earned Gifts Page
     Then Nisa should see Rewards Page
 
-  @SD7
+  @SD7 @Deneme
   Scenario: Nisa Sees back Rewards Page on Kazandığım Hediyeler page
     Then Nisa should see Button Name: "Hediyeleri Keşfet" in My Earned Gifts Page
     When Nisa click to Discover Gifts Button in My Earned Gifts Page

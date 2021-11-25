@@ -26,8 +26,13 @@ class RewardsPage {
         let arr1 = [];
         await $(area_Gifts).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
         let elems = await $$(area_Gifts)
+        let text;
         for (const el of elems) {
-            let text = await el.getAttribute("content-desc")
+            if (browser.isAndroid) {
+                text = await el.getAttribute("content-desc")
+            } else {
+                text = await el.getText()
+            }
             text = text.replace(/\s+/g, '');
             let result = await text.replace("reward-group-header-", "")
             arr1.push(parseInt(result))
@@ -37,50 +42,77 @@ class RewardsPage {
     }
 
     async checkHediyeyiAl(text) {
-        let confirmedPointText = await ElementHelper.getAttribute(txt_ConfirmedPoints, "content-desc")
+        let confirmedPointText;
+        if (browser.isAndroid) {
+            confirmedPointText = await ElementHelper.getAttribute(txt_ConfirmedPoints, "content-desc")
+        } else {
+            confirmedPointText = await ElementHelper.getText(txt_ConfirmedPoints)
+        }
         confirmedPointText = confirmedPointText.replace(/\s+/g, '');
         let replaceConfirmedText = confirmedPointText.replace("confirmed-points", "")
         let confirmedPoint = replaceConfirmedText.replace("puan", "")
         let arr1 = [];
         await $(area_Gifts).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
         let elems = await $$(area_Gifts)
+        let text1;
         for (const el of elems) {
-            let text = await el.getAttribute("content-desc")
-            text = text.replace(/\s+/g, '');
-            let result = await text.replace("reward-group-header-", "")
+            if (browser.isAndroid) {
+                text1 = await el.getAttribute("content-desc")
+            } else {
+                text1 = await el.getText()
+            }
+            text1 = text1.replace(/\s+/g, '');
+            let result = await text1.replace("reward-group-header-", "")
             arr1.push(parseInt(result))
         }
         await arr1.pop()
+        let text2;
         for (const elemsKey in arr1) {
             if (parseInt(arr1[elemsKey]) <= parseInt(confirmedPoint)) {
-                let text1 = await $$(hediyeyiaLPuanKazan)[elemsKey].getAttribute("content-desc")
-                console.info(text1)
-                await expect(text1).equal(text)
+                if (browser.isAndroid) {
+                    text2 = await $$(hediyeyiaLPuanKazan)[elemsKey].getAttribute("content-desc")
+                } else {
+                    text2 = await $$(hediyeyiaLPuanKazan)[elemsKey].getText()
+                }
+                -await expect(text2).equal(text)
             }
         }
     }
 
     async checkPuanKazan(text) {
-        let confirmedPointText = await ElementHelper.getAttribute(txt_ConfirmedPoints, "content-desc")
+        let confirmedPointText;
+        if (browser.isAndroid) {
+            confirmedPointText = await ElementHelper.getAttribute(txt_ConfirmedPoints, "content-desc")
+        } else {
+            confirmedPointText = await ElementHelper.getText(txt_ConfirmedPoints)
+        }
         confirmedPointText = confirmedPointText.replace(/\s+/g, '');
         let replaceConfirmedText = confirmedPointText.replace("confirmed-points", "")
         let confirmedPoint = replaceConfirmedText.replace("puan", "")
         let arr1 = [];
         await $(area_Gifts).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
         let elems = await $$(area_Gifts)
+        let text1;
         for (const el of elems) {
-            let text = await el.getAttribute("content-desc")
-            text = text.replace(/\s+/g, '');
-            let result = await text.replace("reward-group-header-", "")
+            if (browser.isAndroid) {
+                text1 = await el.getAttribute("content-desc")
+            } else {
+                text1 = await el.getText()
+            }
+            text1 = text1.replace(/\s+/g, '');
+            let result = await text1.replace("reward-group-header-", "")
             arr1.push(parseInt(result))
         }
         await arr1.pop()
+        let text2;
         for (const elemsKey in arr1) {
             if (parseInt(arr1[elemsKey]) > parseInt(confirmedPoint)) {
-                let text1 = await $$(hediyeyiaLPuanKazan)[elemsKey].getAttribute("content-desc")
-                console.info(text1)
-                await expect(text1).equal(text)
-
+                if (browser.isAndroid) {
+                    text2 = await $$(hediyeyiaLPuanKazan)[elemsKey].getAttribute("content-desc")
+                } else {
+                    text2 = await $$(hediyeyiaLPuanKazan)[elemsKey].getText()
+                }
+                await expect(text2).equal(text)
             }
         }
     }

@@ -4,7 +4,7 @@ const txt_EarnedGiftsPageTitle = browser.isAndroid ? `android=new UiSelector().d
 const btn_BackButton = browser.isAndroid ? `android=new UiSelector().descriptionContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
 const txt_EmptyMessage = browser.isAndroid ? `android=new UiSelector().descriptionContains("empty-earned-gifts-page-title")` : `-ios predicate string: name CONTAINS 'empty-earned-gifts-page-title'`
 const txt_EmptyDescription = browser.isAndroid ? `android=new UiSelector().descriptionContains("empty-earned-gifts-page-text")` : `-ios predicate string: name CONTAINS 'empty-earned-gifts-page-text'`
-const btn_HediyeleriKesfet = browser.isAndroid ? `android=new UiSelector().className("android.widget.Button")` : `-ios predicate string: name CONTAINS 'discover-gifts-button'`
+const btn_HediyeleriKesfet = browser.isAndroid ? `android=new UiSelector().className("android.widget.Button")` : `-ios predicate string: label == "Hediyeleri Keşfet"`
 
 
 class EarnedGiftsPage {

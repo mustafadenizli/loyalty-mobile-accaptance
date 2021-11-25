@@ -11,7 +11,7 @@ Feature: Dashboard Main Page
   Background:
     Given Nisa waits for Welcome page
     Given Nisa changes the Country to "Turkey" from the Shipping Country picker in Welcome page
-    Given Nisa changes the Language to "TR" from the Language picker in Welcome page
+    Given Nisa changes the Language to "Türkçe" from the Language picker in Welcome page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
@@ -60,7 +60,7 @@ Feature: Dashboard Main Page
       | status | email                              | password      | herName   |
       | normal | userLoyaltyDashboard2@modanisa.com | Modanisa1234. | Dashboard |
 
-  @SD1
+  @SD1 @Deneme
   Scenario Outline:Nisa Does not See Her Name on Dashboard Main Page
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"

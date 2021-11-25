@@ -8,11 +8,11 @@ Given(/^Nisa waits for Welcome page$/, async () => {
 });
 Given(/^Nisa changes the Country to "([^"]*)" from the Shipping Country picker in Welcome page$/, async (country) => {
     await Legacy.chooseCountry(country)
-    await Legacy.checkLogo()
+    await Legacy.checkCountry(country)
 });
 Given(/^Nisa changes the Language to "([^"]*)" from the Language picker in Welcome page$/, async (language) => {
     await Legacy.chooseLanguage(language)
-    //await Legacy.checkLogo()
+    await Legacy.checkLanguage(language)
 });
 Given(/^Nisa taps on the Start Shopping button in Welcome page$/, async () => {
     await Legacy.clickContinueShopping()
@@ -40,6 +40,9 @@ Given(/^Nisa login with user:"([^"]*)" email: "([^"]*)" and password: "([^"]*)"$
             await Legacy.clickLoginButton()
             await Legacy.checkLoginPage()
             await Legacy.clickFacebookLogin()
+            if (browser.isIOS){
+               await Legacy.clickContinueIOS()
+            }
             let durum = await Legacy.checkFacebookTextbox()
             if (durum == true) {
                 await Legacy.webVieweGecis()
@@ -100,16 +103,24 @@ When(/^Nisa click Phone back button$/, async () => {
     await Legacy.clickPhoneBackButton()
 });
 Given(/^Nisa sendKey private api "([^"]*)" and restart app$/, async (text) => {
-    let privateApiText = await Legacy.checkPrivateApiText()
-    if (privateApiText.includes("customer-legacy")) {
+    if (browser.isAndroid) {
+        let privateApiText = await Legacy.checkPrivateApiText()
+        if (privateApiText.includes("customer-legacy")) {
+        } else {
+            await Legacy.clickPrivateApiButton(text)
+            await Legacy.sendKeyPrivateApi(text)
+            await Legacy.clickDoneButton()
+            await Legacy.checkMyAccountPage()
+            let appId = driver.getCurrentPackage()
+            await driver.terminateApp(appId.toString())
+            await driver.activateApp(appId.toString())
+            await driver.pause(3000)
+        }
     } else {
         await Legacy.clickPrivateApiButton(text)
-        await Legacy.sendKeyPrivateApi(text)
+        await Legacy.sendKeyPrivateApi("https://" + text)
         await Legacy.clickDoneButton()
         await Legacy.checkMyAccountPage()
-        let appId = await driver.getCurrentPackage()
-        await driver.terminateApp(appId)
-        await driver.activateApp(appId)
         await driver.pause(3000)
     }
 });

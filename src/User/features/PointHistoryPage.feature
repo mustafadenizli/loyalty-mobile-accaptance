@@ -11,7 +11,7 @@ Feature: My Points History Page
   Background:
     Given Nisa waits for Welcome page
     Given Nisa changes the Country to "Turkey" from the Shipping Country picker in Welcome page
-    Given Nisa changes the Language to "TR" from the Language picker in Welcome page
+    Given Nisa changes the Language to "Türkçe" from the Language picker in Welcome page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
@@ -28,7 +28,7 @@ Feature: My Points History Page
     When Nisa click to Point History in Point Earning Page
     Then Nisa should see Point History Page
 
-  @SD3 @Deneme
+  @SD3
   Scenario: Nisa Sees Her Confirmed Points on My Points History
     Then Nisa should see Challenge Name: "Hediye Puan" in Point History Page
     Then Nisa should see Challenge Date: Today in Point History Page

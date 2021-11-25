@@ -11,7 +11,7 @@ Feature: My Tier Status Page
   Background:
     Given Nisa waits for Welcome page
     Given Nisa changes the Country to "Turkey" from the Shipping Country picker in Welcome page
-    Given Nisa changes the Language to "TR" from the Language picker in Welcome page
+    Given Nisa changes the Language to "Türkçe" from the Language picker in Welcome page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
@@ -33,7 +33,6 @@ Feature: My Tier Status Page
     Then Nisa should see Membership Date today in Tier Status Page
     Then Nisa should see Privileges Tier:"<tier>" in Tier Status Page
     Then Nisa should see Privileges Name:"Profilini tamamla" in Tier Status Page
-
     Examples:
       | tier     | email                       | password  | customerID | addScore | score |
       | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50       | 55    |

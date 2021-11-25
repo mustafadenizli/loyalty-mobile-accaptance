@@ -45,6 +45,12 @@ class ElementHelper {
         await this.writeConsoleTick("elementCheck adımı başarıyla gerçekleşti")
     }
 
+    async checkElementExist(element) {
+        await this.writeConsoleInfo("checkElementExist adımı başladı - " + element)
+        await $(element).waitForExist({timeout: 10000, timeoutMsg: "Element exist olmadı"})
+        await this.writeConsoleTick("checkElementExist adımı başarıyla gerçekleşti")
+    }
+
     async elementNotCheck(element) {
         await this.writeConsoleInfo("elementNotCheck adımı başladı - " + element)
         let wait = await $(element).waitForDisplayed({
@@ -67,7 +73,12 @@ class ElementHelper {
     async elementCheckTextContains(element, text) {
         await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
         let elem = await this.findElement(element)
-        const elemText = await elem.getAttribute("content-desc")
+        let elemText = ""
+        if (browser.isAndroid) {
+            elemText = await elem.getAttribute("content-desc")
+        } else {
+            elemText = await elem.getText()
+        }
         await expect(elemText).contain(text)
         await this.writeConsoleTick("elementCheckTextContains adımı başarıyla gerçekleşti")
     }
@@ -83,9 +94,13 @@ class ElementHelper {
     async elementCheckNotTextContains(element, text) {
         await this.writeConsoleInfo("elementCheckTextContains adımı başladı - " + element)
         let elem = await this.findElement(element)
-        const elemText = await elem.getAttribute("content-desc")
+        let elemText = ""
+        if (browser.isAndroid) {
+            elemText = await elem.getAttribute("content-desc")
+        } else {
+            elemText = await elem.getText()
+        }
         if (elemText.includes(text)) {
-            console.info("Element texti içeriyor = " + text)
             await expect(true).equal(false)
         }
         await this.writeConsoleTick("elementCheckTextContains adımı başarıyla gerçekleşti")
@@ -118,20 +133,20 @@ class ElementHelper {
     async elementsCheckTextContains(element1, text) {
         await this.writeConsoleInfo("elementsCheckTextContains adımı başladı - " + text)
         let result = false
+        let txt
         await this.findElement(element1)
-        let elems = await $$(element1)
-        let elements = elems.map(async (el) => {
-            let txt = await el.getText()
-            if (txt.includes(text)) {
-                return true
+        await $$(element1).map(async (textElement) => {
+                if (browser.isIOS) {
+                    txt = await textElement.getText()
+                } else {
+                    txt = await textElement.getAttribute("content-desc")
+                }
+                if (txt.includes(text)) {
+                    result = true
+                }
             }
-        })
-        for (const elemsKey in elements) {
-            if (elemsKey == true) {
-                result = true
-                break
-            }
-        }
+        )
+        await browser.pause(2000)
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsCheckTextContains adımı başarıyla gerçekleşti")
     }
@@ -139,21 +154,21 @@ class ElementHelper {
     async elementsClickTextContains(element1, text) {
         await this.writeConsoleInfo("elementsClickTextContains adımı başladı - " + text)
         let result = false
+        let txt
         await this.findElement(element1)
-        let elems = await $$(element1)
-        let elements = elems.map(async (el) => {
-            let txt = await el.getAttribute("content-desc")
-            if (txt.includes(text)) {
-                await el.click()
-                return true
+        await $$(element1).map(async (textElement) => {
+                if (browser.isIOS) {
+                    txt = await textElement.getText()
+                } else {
+                    txt = await textElement.getAttribute("content-desc")
+                }
+                if (txt.includes(text)) {
+                    await textElement.click()
+                    result = true
+                }
             }
-        })
-        for (const elemsKey in elements) {
-            if (elemsKey == true) {
-                result = true
-                break
-            }
-        }
+        )
+        await browser.pause(2000)
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsClickTextContains adımı başarıyla gerçekleşti")
     }
@@ -162,20 +177,20 @@ class ElementHelper {
     async elementsCheckUnderElementWithText(element1, element2, text) {
         await this.writeConsoleInfo("elementsCheckUnderElementWithText adımı başladı - " + text)
         let result = false
+        let txt
         await this.findElement(element1)
-        let elems = await $(element1).$$(element2)
-        let elements = await elems.map(async (el) => {
-            let txt = await el.getText()
-            if (txt.includes(text)) {
-                return true
+        await $(element1).$$(element2).map(async (textElement) => {
+                if (browser.isIOS) {
+                    txt = await textElement.getText()
+                } else {
+                    txt = await textElement.getAttribute("content-desc")
+                }
+                if (txt.includes(text)) {
+                    result = true
+                }
             }
-        })
-        for (const elemsKey in elements) {
-            if (elemsKey == true) {
-                result = true
-                break
-            }
-        }
+        )
+        await browser.pause(2000)
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsCheckUnderElementWithText adımı başarıyla gerçekleşti")
     }
@@ -183,21 +198,21 @@ class ElementHelper {
     async elementsClickUnderElementWithText(element1, element2, text) {
         await this.writeConsoleInfo("elementsClickUnderElementWithText adımı başladı - " + text)
         let result = false
+        let txt
         await this.findElement(element1)
-        let elems = await $(element1).$$(element2)
-        let elements = await elems.map(async (el) => {
-            let txt = await el.getAttribute("content-desc")
-            if (txt.includes(text)) {
-                await el.click()
-                return true
+        await $(element1).$$(element2).map(async (textElement) => {
+                if (browser.isIOS) {
+                    txt = await textElement.getText()
+                } else {
+                    txt = await textElement.getAttribute("content-desc")
+                }
+                if (txt.includes(text)) {
+                    await textElement.click()
+                    result = true
+                }
             }
-        })
-        for (const elemsKey in elements) {
-            if (elemsKey == true) {
-                result = true
-                break
-            }
-        }
+        )
+        await browser.pause(2000)
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsClickUnderElementWithText adımı başarıyla gerçekleşti")
     }
@@ -209,69 +224,90 @@ class ElementHelper {
             await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
             return await $(element)
         } catch (error) {
-            await this.writeConsoleChildMethod("Element bulunamadı sayfayı kaydırmayı deniyorum")
-            let elem = await element.replace("android=", "")
-            let window = await browser.getWindowSize()
-            await $(`android=new UiScrollable(new UiSelector().scrollable(true)).flingToBeginning(3).scrollIntoView(` + elem + `)`)
-            await browser.touchAction([
-                {action: 'press', x: window.width / 2, y: window.height * 3 / 4},
-                {action: 'moveTo', x: window.width / 2, y: window.height / 5},
-                'release'
-            ])
-            await browser.pause(3000)
-            try {
-                await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
-                await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
-                return await $(element)
-            } catch (error) {
-                await browser.touchAction([
-                    {action: 'press', x: window.width / 2, y: window.height / 4},
-                    {action: 'moveTo', x: window.width / 2, y: window.height * 3 / 4},
-                    'release'
-                ])
-                await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
+            let isExist = false
+            if (browser.isAndroid) {
+                let elem = await element.replace("android=", "")
+                await $(`android=new UiScrollable(new UiSelector().scrollable(true)).flingToBeginning(3).scrollIntoView(` + elem + `)`)
+                await this.findElementLittleScrollWithDisplay(element)
+            } else {
+                for (let i = 0; i < 10; i++) {
+                    await this.scrollDown()
+                    await browser.pause(1000)
+                    isExist = await $(element).isExisting()
+                    if (isExist == true) {
+                        await this.findElementLittleScrollWithDisplay(element)
+                        break
+                    }
+                }
+
+            }
+            isExist = await $(element).isExisting()
+            if (isExist == false) {
+                await this.writeConsoleChildMethodFail("FindElement adımı başarısız")
+            } else {
                 await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
                 return await $(element)
             }
+
         }
     }
 
     async scrollDown() {
-        let window = await browser.getWindowSize()
-        await browser.touchAction([
-            {action: 'press', x: window.width / 2, y: window.height * 3 / 4},
-            {action: 'moveTo', x: window.width / 2, y: window.height / 5},
-            'release'
-        ])
-        await browser.pause(3000)
+        await driver.execute('mobile: swipe', {direction: 'up'});
     }
 
-    async pause(ms) {
-        await browser.pause(ms)
+    async scrollUp() {
+        await driver.execute('mobile: swipe', {direction: 'down'});
+    }
+
+    async findElementLittleScrollWithDisplay(element) {
+        let isDisplayed
+        await browser.pause(1000)
+        isDisplayed = await $(element).isDisplayed()
+        if (isDisplayed == false) {
+            await this.scrollDown()
+            await browser.pause(1000)
+            isDisplayed = await $(element).isDisplayed()
+            if (isDisplayed == false) {
+                await this.scrollUp()
+                await this.scrollUp()
+                await browser.pause(1000)
+                isDisplayed = await $(element).isDisplayed()
+                if (isDisplayed == false) {
+                    await this.writeConsoleChildMethodFail("FindElement adımı başarısız")
+                } else {
+                    return $(element)
+                }
+            } else {
+                return $(element)
+            }
+        } else {
+            return $(element)
+        }
     }
 
     async writeConsoleTick(text) {
-        //await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleFail(text) {
-        // await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleInfo(text) {
-        //await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethod(text) {
-        // await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodTick(text) {
-        //await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodFail(text) {
-        // await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + text + '\u001b[0m')
     }
 }
 

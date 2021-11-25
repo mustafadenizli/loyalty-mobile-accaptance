@@ -11,7 +11,7 @@ Feature: Rewards
   Background:
     Given Nisa waits for Welcome page
     Given Nisa changes the Country to "Turkey" from the Shipping Country picker in Welcome page
-    Given Nisa changes the Language to "TR" from the Language picker in Welcome page
+    Given Nisa changes the Language to "Türkçe" from the Language picker in Welcome page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
@@ -41,7 +41,7 @@ Feature: Rewards
     Then Nisa should see Button Name: "Hediyeyi Al" under Confirmed Points in Rewards Page
     Then Nisa should see Button Name: "Puan Kazan" above Confirmed Points in Rewards Page
 
-  @rewards @pointExpiration @expirationDate
+  @rewards @pointExpiration @expirationDate @Deneme
   Scenario: Nisa Sees Expiration Date of her Active Points
     Then Nisa should see Expire Date: "30.11.2021" in Rewards Page
 

@@ -1,10 +1,15 @@
+const chai = require("chai");
+const path = require("path");
+const rimraf = require("rimraf");
+const allure = require("allure-commandline");
+
 exports.config = {
 
     port: 4723,
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        './src/User/features/**/PointHistoryPage.feature',
+        './src/User/features/**/TierStatusPage.feature',
     ],
     exclude: [
         // 'path/to/excluded/files'
@@ -18,16 +23,11 @@ exports.config = {
     connectionRetryCount: 3,
     services: [['appium']],
     framework: 'cucumber',
-    /*
-    reporters: ['spec', ['allure', {
-        outputDir: 'allure-results',
-    }]],
-    */
     reporters: ['spec', ['allure', {
         outputDir: './Reports/Allure/allure-results',
         disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: true,
-        useCucumberStepReporter: true
+        useCucumberStepReporter: true,
     }]],
     cucumberOpts: {
         require: ['./src/**/step-definitions/*.js'],
@@ -40,7 +40,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: '@Deneme',
+        tagExpression: 'not @Hatali',
         timeout: 60000,
         ignoreUndefinedDefinitions: false
     },
@@ -51,6 +51,12 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of appCapabilities details
      */
     onPrepare: async (config, capabilities) => {
+        rimraf("./allure-report", function () {
+            console.log("Allure Report Deleted");
+        });
+        rimraf("./Reports/Allure/allure-results", function () {
+            console.log("Allure Json Files deleted");
+        });
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -136,7 +142,7 @@ exports.config = {
             await console.log('\u001b[' + 32 + 'm' + '    ✓ Step Succeed : ' + test.text + '\u001b[0m')
         } else {
             await console.log('\u001b[' + 31 + 'm' + '    ✖ Step Fail : ' + test.text + '\u001b[0m')
-            browser.takeScreenshot();
+            await browser.takeScreenshot();
         }
     },
 
@@ -198,6 +204,24 @@ exports.config = {
 
     onComplete: function (exitCode, config, capabilities, results) {
         //console.info("onComplete")
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', './Reports/Allure/allure-results', '--clean'])
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(
+                () => reject(reportError),
+                5000)
+
+            generation.on('exit', function (exitCode) {
+                clearTimeout(generationTimeout)
+
+                if (exitCode !== 0) {
+                    return reject(reportError)
+                }
+
+                console.log('Allure report successfully generated')
+                resolve()
+            })
+        })
     },
 
     /**

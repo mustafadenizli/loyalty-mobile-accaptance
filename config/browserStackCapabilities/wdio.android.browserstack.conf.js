@@ -10,7 +10,6 @@ config.capabilities = [
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
         fullReset: false,
-
     },
 ];
 exports.config = config;

@@ -14,7 +14,7 @@ Feature: Loyalty Landing Page
   Background:
     Given Nisa waits for Welcome page
     Given Nisa changes the Country to "Turkey" from the Shipping Country picker in Welcome page
-    Given Nisa changes the Language to "TR" from the Language picker in Welcome page
+    Given Nisa changes the Language to "Türkçe" from the Language picker in Welcome page
     Given Nisa taps on the Start Shopping button in Welcome page
     Given Nisa waits for Home page
     Given Nisa taps on the My Account button in bottom menu bar
@@ -31,10 +31,10 @@ Feature: Loyalty Landing Page
     Then Nisa should see Button: "<buttonType>" in Landing Page
     Examples:
       | user   | email                           | password      | buttonType           |
+      |        |                                 |               | Giriş Yap            |
       | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa'ya Katıl |
       | normal | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa'ya Katıl |
       | normal | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa'ya Katıl |
-      |        |                                 |               | Giriş Yap            |
 
   @S74/74.1-LoggedIn/NotLoggedIn-CheckTab
   Scenario Outline: Nisa has taps "Program Features|Earn Points|Points Usage"
@@ -197,3 +197,4 @@ Feature: Loyalty Landing Page
       | normal | toptanci.musteri@modanisa.com   | Testhb123     |
       | normal | problemli.musteri@modanisa.com  | Testhb123     |
       |        |                                 |               |
+

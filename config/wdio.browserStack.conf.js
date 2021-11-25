@@ -4,7 +4,6 @@ const rimraf = require("rimraf");
 const allure = require("allure-commandline");
 let count = true;
 exports.config = {
-
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
     specs: [
@@ -49,10 +48,10 @@ exports.config = {
         ignoreUndefinedDefinitions: false
     },
     maxInstances: 3,
-    logLevel: 'silent',
+    logLevel: 'info',
     waitforTimeout: 10000,
-    connectionRetryTimeout: 120000,
-    connectionRetryCount: 3,
+    connectionRetryTimeout: 200000,
+    connectionRetryCount: 5,
     coloredLogs: true,
     host: 'hub.browserstack.com',
 

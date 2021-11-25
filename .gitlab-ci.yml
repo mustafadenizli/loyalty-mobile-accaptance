@@ -33,7 +33,7 @@ apk-debug-browserstack:
     - npm run test:androidBrowserStack
   timeout: 3h 30m
   tags:
-    - customer
+    #- customer
   artifacts:
     when: always
     paths:

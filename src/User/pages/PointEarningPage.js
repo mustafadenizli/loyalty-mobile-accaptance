@@ -3,7 +3,7 @@ const expect = require("chai").expect;
 
 const txt_PointEarningPageTitle = browser.isAndroid ? `android=new UiSelector().descriptionContains("page-title")` : `-ios predicate string: name CONTAINS 'page-title'`
 const btn_BackButton = browser.isAndroid ? `android=new UiSelector().descriptionContains("back-button")` : `-ios predicate string: name CONTAINS 'back-button'`
-const area_Challenges = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item")` : `-ios predicate string: name CONTAINS 'enrollment-form-page-title'`
+const area_Challenges = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item")` : `-ios predicate string: name CONTAINS 'challenge-item'`
 const txt_BottomChallengesPoint = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item-points")` : `-ios predicate string: name CONTAINS 'challenge-item-points'`
 const txt_ChallengeTitle = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item-title")` : `-ios predicate string: name CONTAINS 'challenge-item-title'`
 const txt_ChallengeDescription = browser.isAndroid ? `android=new UiSelector().descriptionContains("challenge-item-description")` : `-ios predicate string: name CONTAINS 'challenge-item-description'`
@@ -29,8 +29,13 @@ class PointEarningPage {
         let arr1 = [];
         await $(txt_BottomChallengesPoint).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
         let elems = await $$(txt_BottomChallengesPoint)
+        let text;
         for (const el of elems) {
-            let text = await el.getAttribute("content-desc")
+            if (browser.isAndroid) {
+                text = await el.getAttribute("content-desc")
+            } else {
+                text = await el.getText()
+            }
             let confirmedsiz = await text.replace("challenge-item-points", "")
             let artısız = await confirmedsiz.replace("+", "")
             let result = await artısız.replace("puan", "")
