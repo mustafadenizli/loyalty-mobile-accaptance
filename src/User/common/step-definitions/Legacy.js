@@ -10,12 +10,12 @@ Given(/^Nisa changes the Country to "([^"]*)" from the Shipping Country picker i
     if (browser.isAndroid) {
         switch (country) {
             case "Turkey":
-                await Legacy.chooseCountry("Türkiye")
-                await Legacy.checkCountry("Türkiye")
+                await Legacy.chooseCountry("Turkey")
+                await Legacy.checkCountry("Turkey")
                 break;
             case "United Kingdom":
-                await Legacy.chooseCountry("İngiltere")
-                await Legacy.checkCountry("İngiltere")
+                await Legacy.chooseCountry("United Kingdom")
+                await Legacy.checkCountry("United Kingdom")
                 break;
             default:
                 await Legacy.chooseCountry(country)

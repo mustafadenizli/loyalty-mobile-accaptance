@@ -7,20 +7,13 @@ exports.config = {
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
     specs: [
-        './src/User/features/**/LandingPage.feature',
-        './src/User/features/**/LandingPageNavigate.feature',
-        './src/User/features/**/EnrollmentPage.feature',
-        './src/User/features/**/DashboardMainPage.feature',
         './src/User/features/**/PointEarningPage.feature',
         './src/User/features/**/PointHistoryPage.feature',
         './src/User/features/**/RewardsPage.feature',
         './src/User/features/**/EarnedGiftsPage.feature',
-        './src/User/features/**/TierStatusPage.feature',
         './src/User/features/**/FaqPage.feature',
     ],
-    exclude: [
-        // 'path/to/excluded/files'
-    ],
+    exclude: [],
     framework: 'cucumber',
     reporters: ['spec', ['allure', {
         outputDir: './Reports/Allure/allure-results',
@@ -139,6 +132,7 @@ exports.config = {
     },
     beforeFeature: async (uri, feature) => {
         //console.info("beforeFeature")
+        await browser.execute(`browserstack_executor: {"action": "setSessionName", "arguments": {"name":"` + feature.name + `"}}`);
         await console.log('\u001b[' + 32 + 'm' + 'Feature name : ' + feature.name + '\u001b[0m')
         count = true;
     },

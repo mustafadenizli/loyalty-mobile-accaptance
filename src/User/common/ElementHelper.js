@@ -329,6 +329,7 @@ class ElementHelper {
     async writeConsoleChildMethodFail(text) {
         //await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + text + '\u001b[0m')
     }
+
 }
 
 module.exports = new ElementHelper();

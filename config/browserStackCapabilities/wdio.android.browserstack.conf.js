@@ -15,7 +15,7 @@ day = (day < 10 ? "0" : "") + day;
 config.capabilities = [
     {
         project: "Loyalty",
-        build: day + ":" + month + ":" + year + "-" + hour + ":" + min + ":" + sec,
+        build: "User - "+day + ":" + month + ":" + year + "-" + hour + ":" + min + ":" + sec,
         platformName: "Android",
         deviceName: "Samsung Galaxy A51",
         version: "10.0",
