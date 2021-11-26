@@ -53,7 +53,7 @@ exports.config = {
     connectionRetryTimeout: 200000,
     connectionRetryCount: 5,
     coloredLogs: true,
-    host: 'hub.browserstack.com',
+    host: 'hub-cloud.browserstack.com',
 
     onPrepare: async (config, capabilities) => {
         //console.info("onPrepare")

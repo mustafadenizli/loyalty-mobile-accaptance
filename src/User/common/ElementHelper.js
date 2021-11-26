@@ -47,14 +47,13 @@ class ElementHelper {
 
     async checkElementExist(element) {
         await this.writeConsoleInfo("checkElementExist adımı başladı - " + element)
-        await $(element).waitForExist({timeout: 10000, timeoutMsg: "Element exist olmadı"})
+        await $(element).waitForExist({timeoutMsg: "Element exist olmadı"})
         await this.writeConsoleTick("checkElementExist adımı başarıyla gerçekleşti")
     }
 
     async elementNotCheck(element) {
         await this.writeConsoleInfo("elementNotCheck adımı başladı - " + element)
         let wait = await $(element).waitForDisplayed({
-            timeout: 10000,
             reverse: true,
             timeoutMsg: "Element bulunamadı"
         })
@@ -228,7 +227,27 @@ class ElementHelper {
             if (browser.isAndroid) {
                 let elem = await element.replace("android=", "")
                 await $(`android=new UiScrollable(new UiSelector().scrollable(true)).flingToBeginning(3).scrollIntoView(` + elem + `)`)
-                await this.findElementLittleScrollWithDisplay(element)
+                let window = await browser.getWindowSize()
+                await browser.touchAction([
+                    {action: 'press', x: window.width / 2, y: window.height * 3 / 4},
+                    {action: 'moveTo', x: window.width / 2, y: window.height / 5},
+                    'release'
+                ])
+                await browser.pause(2000)
+                try {
+                    await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
+                    await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
+                    return await $(element)
+                } catch (error) {
+                    await browser.touchAction([
+                        {action: 'press', x: window.width / 2, y: window.height / 4},
+                        {action: 'moveTo', x: window.width / 2, y: window.height * 3 / 4},
+                        'release'
+                    ])
+                    await $(element).waitForDisplayed({timeoutMsg: "Element bulunamadı"})
+                    await this.writeConsoleChildMethodTick("FindElement adımı başarıyla gerçekleşti")
+                    return await $(element)
+                }
             } else {
                 for (let i = 0; i < 10; i++) {
                     await this.scrollDown()
@@ -262,6 +281,7 @@ class ElementHelper {
 
     async findElementLittleScrollWithDisplay(element) {
         let isDisplayed
+        await this.scrollDown()
         await browser.pause(1000)
         isDisplayed = await $(element).isDisplayed()
         if (isDisplayed == false) {
@@ -287,27 +307,27 @@ class ElementHelper {
     }
 
     async writeConsoleTick(text) {
-        await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleFail(text) {
-        await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleInfo(text) {
-        await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethod(text) {
-        await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodTick(text) {
-        await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
+        //await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodFail(text) {
-        await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + text + '\u001b[0m')
+        //await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + text + '\u001b[0m')
     }
 }
 

@@ -7,8 +7,26 @@ Given(/^Nisa waits for Welcome page$/, async () => {
     await Legacy.checkLogo()
 });
 Given(/^Nisa changes the Country to "([^"]*)" from the Shipping Country picker in Welcome page$/, async (country) => {
-    await Legacy.chooseCountry(country)
-    await Legacy.checkCountry(country)
+    if (browser.isAndroid) {
+        switch (country) {
+            case "Turkey":
+                await Legacy.chooseCountry("Türkiye")
+                await Legacy.checkCountry("Türkiye")
+                break;
+            case "United Kingdom":
+                await Legacy.chooseCountry("İngiltere")
+                await Legacy.checkCountry("İngiltere")
+                break;
+            default:
+                await Legacy.chooseCountry(country)
+                await Legacy.checkCountry(country)
+                break;
+        }
+    } else {
+        await Legacy.chooseCountry(country)
+        await Legacy.checkCountry(country)
+    }
+
 });
 Given(/^Nisa changes the Language to "([^"]*)" from the Language picker in Welcome page$/, async (language) => {
     await Legacy.chooseLanguage(language)
@@ -40,8 +58,8 @@ Given(/^Nisa login with user:"([^"]*)" email: "([^"]*)" and password: "([^"]*)"$
             await Legacy.clickLoginButton()
             await Legacy.checkLoginPage()
             await Legacy.clickFacebookLogin()
-            if (browser.isIOS){
-               await Legacy.clickContinueIOS()
+            if (browser.isIOS) {
+                await Legacy.clickContinueIOS()
             }
             let durum = await Legacy.checkFacebookTextbox()
             if (durum == true) {

@@ -6,11 +6,11 @@ const {flag} = require('country-emoji');
 
 const logo_Modanisa = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/logo")` : `-ios predicate string:name == "welcomeLogo"`
 const btn_TeslimatUlkesi = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/welcomeCountryConstraint")` : `-ios predicate string:name == 'textField_country'`
-const lbl_TeslimatUlkesi = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/welcomeCountryConstraint")` : `//XCUIElementTypeStaticText`
+const lbl_TeslimatUlkesi = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/selectedCountryText")` : `//XCUIElementTypeStaticText`
 const list_Ulkeler = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/select_dialog_listview")` : `-ios predicate string:type == 'XCUIElementTypePickerWheel'`
 const iosDone = `-ios predicate string:label == "OK"`
 const btn_Diller = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/welcomeLanguageConstraint")` : `-ios predicate string:name == 'textField_language'`
-const lbl_Diller = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/welcomeCountryConstraint")` : `//XCUIElementTypeStaticText`
+const lbl_Diller = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/selectedLanguageText")` : `//XCUIElementTypeStaticText`
 const list_Diller = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/select_dialog_listview")` : `-ios predicate string:type == 'XCUIElementTypePickerWheel'`
 const btn_DevamEt = browser.isAndroid ? `android=new UiSelector().resourceId("com.modanisa.debug:id/startShopping")` : `-ios predicate string:name == 'button_continue'`
 const button_Cancel = browser.isAndroid ? `` : `-ios predicate string:name == 'button_cancel'`
@@ -44,8 +44,6 @@ const btn_Done = browser.isAndroid ? `android=new UiSelector().resourceId("com.m
 
 
 class Common {
-
-
     async checkLogo() {
         await ElementHelper.checkElementExist(logo_Modanisa)
     }
@@ -54,7 +52,7 @@ class Common {
         await ElementHelper.elementClick(btn_TeslimatUlkesi)
         await ElementHelper.elementCheck(list_Ulkeler)
         if (browser.isAndroid) {
-            await ElementHelper.withOutElementClickTextEquals(country)
+            await ElementHelper.withOutElementClickTextContains(country)
         } else {
             let pickerOptionListElement = $(list_Ulkeler)
             const countryWithFlag = flag(country) + " " + country
@@ -65,14 +63,20 @@ class Common {
     }
 
     async checkCountry(country) {
-        await ElementHelper.elementsCheckTextContains(lbl_TeslimatUlkesi, country)
+        if (browser.isAndroid) {
+            await ElementHelper.findElement(lbl_TeslimatUlkesi)
+            let text = await $(lbl_TeslimatUlkesi).getText()
+            await expect(text).contain(country)
+        } else {
+            await ElementHelper.elementCheckTextContains(lbl_TeslimatUlkesi, country)
+        }
     }
 
     async chooseLanguage(language) {
         await ElementHelper.elementClick(btn_Diller)
         await ElementHelper.elementCheck(list_Diller)
         if (browser.isAndroid) {
-            await ElementHelper.withOutElementClickTextEquals(language)
+            await ElementHelper.withOutElementClickTextContains(language)
         } else {
             let pickerOptionListElement = $(list_Ulkeler)
             await pickerOptionListElement.addValue(language);
@@ -82,7 +86,13 @@ class Common {
     }
 
     async checkLanguage(language) {
-        await ElementHelper.elementsCheckTextContains(lbl_Diller, language)
+        if (browser.isAndroid) {
+            await ElementHelper.findElement(lbl_Diller)
+            let text = await $(lbl_Diller).getText()
+            await expect(text).contain(language)
+        } else {
+            await ElementHelper.elementCheckTextContains(lbl_Diller, language)
+        }
     }
 
     async clickContinueShopping() {
