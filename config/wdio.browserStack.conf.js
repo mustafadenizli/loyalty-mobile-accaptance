@@ -1,10 +1,13 @@
 const chai = require("chai");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
+const path = require("path");
 let count = true;
+
 exports.config = {
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
+    host: 'hub-cloud.browserstack.com',
     specs: [
         './src/User/features/**/LandingPage.feature',
         './src/User/features/**/LandingPageNavigate.feature',
@@ -27,9 +30,6 @@ exports.config = {
     }]],
     cucumberOpts: {
         require: ['./src/**/step-definitions/*.js'],
-        failAmbiguousDefinitions: false,
-        snippetSyntax: undefined,
-        tagsInTitle: false,
         backtrace: false,
         requireModule: [],
         dryRun: false,
@@ -40,29 +40,28 @@ exports.config = {
         profile: [],
         strict: false,
         tagExpression: 'not @Hatali',
-        timeout: 60000,
-        retry: 0,
+        timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
     maxInstances: 3,
-    logLevel: 'silent',
+    logLevel: 'info',
+    bail: 0,
     waitforTimeout: 15000,
     connectionRetryTimeout: 200000,
     connectionRetryCount: 5,
     coloredLogs: true,
-    host: 'hub-cloud.browserstack.com',
 
     onPrepare: async (config, capabilities) => {
-        //console.info("onPrepare")
-        /*
-         rimraf("./allure-report", function () {
-             console.log("Allure Report Deleted");
-         });
-
-         */
-        rimraf("./Reports/Allure/allure-results", function () {
-            console.log("Allure Json Files deleted");
-        });
+        try {
+            rimraf("./allure-report", function () {
+                console.log("Allure Report Deleted");
+            });
+            rimraf("./Reports/Allure/allure-results", function () {
+                console.log("Allure Json Files deleted");
+            });
+        } catch (e) {
+            await console.info("Silinecek dosya yok")
+        }
     },
     onWorkerStart: function (cid, caps, specs, args, execArgv) {
         //console.info("onWorkerStart")

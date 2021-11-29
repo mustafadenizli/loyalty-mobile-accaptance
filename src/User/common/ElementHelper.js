@@ -307,27 +307,27 @@ class ElementHelper {
     }
 
     async writeConsoleTick(text) {
-        //await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 32 + 'm' + '            ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleFail(text) {
-        //await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 31 + 'm' + '            ✖ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleInfo(text) {
-        //await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 33 + 'm' + '            - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethod(text) {
-        //await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 33 + 'm' + '                - ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodTick(text) {
-        //await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
+        await console.log('\u001b[' + 32 + 'm' + '                ✓ ' + '\u001b[0m' + text)
     }
 
     async writeConsoleChildMethodFail(text) {
-        //await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + text + '\u001b[0m')
+        await console.log('\u001b[' + 31 + 'm' + '                ✖ ' + text + '\u001b[0m')
     }
 
 }

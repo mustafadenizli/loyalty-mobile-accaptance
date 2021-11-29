@@ -10,8 +10,8 @@ Given(/^Nisa changes the Country to "([^"]*)" from the Shipping Country picker i
     if (browser.isAndroid) {
         switch (country) {
             case "Turkey":
-                await Legacy.chooseCountry("Türkiye")
-                await Legacy.checkCountry("Türkiye")
+                await Legacy.chooseCountry("Turkey")
+                await Legacy.checkCountry("Turkey")
                 break;
             case "United Kingdom":
                 await Legacy.chooseCountry("İngiltere")
@@ -125,13 +125,17 @@ Given(/^Nisa sendKey private api "([^"]*)" and restart app$/, async (text) => {
         let privateApiText = await Legacy.checkPrivateApiText()
         if (privateApiText.includes("customer-legacy")) {
         } else {
+            let appId = await driver.waitUntil(
+                function () {
+                    return driver.getCurrentPackage()
+                }
+            )
             await Legacy.clickPrivateApiButton(text)
             await Legacy.sendKeyPrivateApi(text)
             await Legacy.clickDoneButton()
             await Legacy.checkMyAccountPage()
-            let appId = driver.getCurrentPackage()
-            await driver.terminateApp(appId.toString())
-            await driver.activateApp(appId.toString())
+            await driver.terminateApp(appId)
+            await driver.activateApp(appId)
             await driver.pause(3000)
         }
     } else {

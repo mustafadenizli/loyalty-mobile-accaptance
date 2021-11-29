@@ -4,9 +4,8 @@ config.capabilities = [
     // Android Real Device for installed app
     {
         platformName: "Android",
-        platformVersion: "11",
-        deviceName: "Galaxy A51",
-        udid: "R58R312DAYM",
+        platformVersion: "9",
+        deviceName: "emulator-5554",
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
     }

@@ -1,4 +1,3 @@
-@Deneme
 Feature: FAQ Page
 
   As Nisa
@@ -26,7 +25,7 @@ Feature: FAQ Page
     Then Nisa should see Dashboard Main Page
     When Nisa click to Faq in Dashboard Main Page
 
-  @SD9
+  @SD9 @Deneme
   Scenario:Nisa Sees FAQ Page
     Then Nisa should see Faq Page Title
 
