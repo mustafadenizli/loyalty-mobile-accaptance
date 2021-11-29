@@ -23,7 +23,6 @@ Then(/^Nisa should see Privileges Name:"([^"]*)" in Tier Status Page$/, async (t
     await TierStatusPage.checkPrivilegesName(text)
 });
 When(/^Nisa click to All Privilages in Tier Status Page$/, async () => {
-
     await TierStatusPage.clickAllPrivileges()
 });
 Then(/^Nisa should see Modal Title:"([^"]*)" in Tier Status Page$/, async (text) => {

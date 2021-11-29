@@ -48,7 +48,9 @@ class TierStatusPage {
     }
 
     async clickAllPrivileges() {
-        await ElementHelper.scrollDown()
+        if (browser.isIOS) {
+            await ElementHelper.scrollDown()
+        }
         await ElementHelper.elementClick(btn_AllPrivilages)
     }
 
