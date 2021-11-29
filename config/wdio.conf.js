@@ -1,5 +1,4 @@
 const chai = require("chai");
-const path = require("path");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
 
@@ -27,10 +26,9 @@ exports.config = {
     maxInstances: 1,
     logLevel: 'silent',
     bail: 0,
-    waitforTimeout: 10000,
+    waitforTimeout: 15000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
-    services: [['appium']],
     framework: 'cucumber',
     reporters: ['spec', ['allure', {
         outputDir: './Reports/Allure/allure-results',

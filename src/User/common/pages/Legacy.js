@@ -68,7 +68,7 @@ class Common {
             let text = await $(lbl_TeslimatUlkesi).getText()
             await expect(text).contain(country)
         } else {
-            await ElementHelper.elementCheckTextContains(lbl_TeslimatUlkesi, country)
+            await ElementHelper.elementsCheckTextContains(lbl_TeslimatUlkesi, country)
         }
     }
 
@@ -91,7 +91,7 @@ class Common {
             let text = await $(lbl_Diller).getText()
             await expect(text).contain(language)
         } else {
-            await ElementHelper.elementCheckTextContains(lbl_Diller, language)
+            await ElementHelper.elementsCheckTextContains(lbl_Diller, language)
         }
     }
 

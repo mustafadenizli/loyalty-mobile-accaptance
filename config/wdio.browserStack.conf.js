@@ -1,5 +1,4 @@
 const chai = require("chai");
-const path = require("path");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
 let count = true;
