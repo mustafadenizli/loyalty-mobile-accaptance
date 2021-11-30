@@ -17,12 +17,27 @@ config.capabilities = [
         project: "Loyalty",
         build: "User - "+day + ":" + month + ":" + year + "-" + hour + ":" + min + ":" + sec,
         platformName: "Android",
-        deviceName: "Samsung Galaxy A51",
-        version: "10.0",
+        realMobile: true,
+        device: 'Samsung Galaxy S21',
+        os_version: "11.0",
         app: "bs://96e942319e5485e540fa9266d2e5fc6cf274423d",
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
         fullReset: false,
     },
 ];
+
+/*
+  {
+        project: "Loyalty",
+        build: "User - "+day + ":" + month + ":" + year + "-" + hour + ":" + min + ":" + sec,
+        platformName: "Android",
+        deviceName: "Samsung Galaxy A51",
+        version: "11.0",
+        app: "bs://96e942319e5485e540fa9266d2e5fc6cf274423d",
+        appPackage: "com.modanisa.debug",
+        appActivity: "com.modanisa.activity.SplashActivity",
+        fullReset: false,
+    },
+ */
 exports.config = config;

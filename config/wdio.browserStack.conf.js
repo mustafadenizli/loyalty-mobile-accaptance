@@ -1,7 +1,6 @@
 const chai = require("chai");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
-const path = require("path");
 let count = true;
 
 exports.config = {
@@ -10,14 +9,14 @@ exports.config = {
     host: 'hub-cloud.browserstack.com',
     specs: [
         './src/User/features/**/LandingPage.feature',
-        './src/User/features/**/LandingPageNavigate.feature',
+        './src/User/features/**/TierStatusPage.feature',
         './src/User/features/**/EnrollmentPage.feature',
         './src/User/features/**/DashboardMainPage.feature',
+        './src/User/features/**/RewardsPage.feature',
+        './src/User/features/**/LandingPageNavigate.feature',
         './src/User/features/**/PointEarningPage.feature',
         './src/User/features/**/PointHistoryPage.feature',
-        './src/User/features/**/RewardsPage.feature',
         './src/User/features/**/EarnedGiftsPage.feature',
-        './src/User/features/**/TierStatusPage.feature',
         './src/User/features/**/FaqPage.feature',
     ],
     exclude: [],
@@ -43,7 +42,7 @@ exports.config = {
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 1,
+    maxInstances: 3,
     logLevel: 'silent',
     bail: 0,
     waitforTimeout: 15000,
