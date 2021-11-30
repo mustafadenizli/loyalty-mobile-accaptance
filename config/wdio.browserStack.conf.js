@@ -43,8 +43,8 @@ exports.config = {
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 3,
-    logLevel: 'info',
+    maxInstances: 1,
+    logLevel: 'silent',
     bail: 0,
     waitforTimeout: 15000,
     connectionRetryTimeout: 200000,
