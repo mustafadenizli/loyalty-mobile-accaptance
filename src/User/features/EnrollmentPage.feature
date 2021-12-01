@@ -44,7 +44,7 @@ Feature: Enrollment Page
       | status | email                           | password      | customerId |
       | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
 
-  @S80 @enrollment
+  @S80 @enrollment @Hatali
   Scenario Outline: Nisa Enrolls Successfully With Default User Data
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"

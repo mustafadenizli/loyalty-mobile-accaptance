@@ -29,7 +29,7 @@ Feature: FAQ Page
   Scenario:Nisa Sees FAQ Page
     Then Nisa should see Faq Page Title
 
-  @SD9
+  @SD9 @Hatali
   Scenario:Nisa Sees FAQ Modal
     When Nisa click to Faq Name: "My Modanisa nedir" in Faq Page
     Then Nisa should see Faq Modal Title "My Modanisa nedir"
