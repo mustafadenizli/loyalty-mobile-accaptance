@@ -35,8 +35,8 @@ class TierStatusPage {
         let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         let yyyy = today.getFullYear();
         today = dd + '.' + mm + '.' + yyyy;
-        if(dd.startsWith("0")){
-            dd = dd.substring(0,1)
+        if (dd.startsWith("0")) {
+            dd = dd.substring(0, 1)
         }
         await ElementHelper.elementCheckTextContains(txt_MembershipDate, dd)
         await ElementHelper.elementCheckTextContains(txt_MembershipDate, yyyy)
@@ -53,8 +53,8 @@ class TierStatusPage {
     async clickAllPrivileges() {
         if (browser.isIOS) {
             await ElementHelper.scrollDown()
-        }
-        else {
+        } else {
+            let window = await browser.getWindowSize()
             await browser.touchAction([
                 {action: 'press', x: window.width / 2, y: window.height * 3 / 4},
                 {action: 'moveTo', x: window.width / 2, y: window.height / 5},
