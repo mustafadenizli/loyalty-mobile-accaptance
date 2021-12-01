@@ -46,7 +46,7 @@ exports.config = {
     maxInstances: 3,
     logLevel: 'silent',
     bail: 0,
-    waitforTimeout: 15000,
+    waitforTimeout: 30000,
     connectionRetryTimeout: 200000,
     connectionRetryCount: 5,
     coloredLogs: true,
