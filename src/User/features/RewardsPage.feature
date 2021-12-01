@@ -1,4 +1,4 @@
-Feature: Rewards
+Feature: Rewards Page
 
   As Nisa
   I want to see my current points and list of gifts

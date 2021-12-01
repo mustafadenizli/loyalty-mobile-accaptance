@@ -1,4 +1,4 @@
-Feature: My Earned Gift List
+Feature: Earned Gifts Page
 
   As Nisa
   I want to reach the list of gifts that I have earned

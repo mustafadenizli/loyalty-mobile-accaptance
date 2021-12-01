@@ -1,4 +1,4 @@
-Feature: Loyalty Landing Page
+Feature: Landing Page
 
   31 dk
 

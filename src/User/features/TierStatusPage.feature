@@ -1,4 +1,4 @@
-Feature: My Tier Status Page
+Feature: Tier Status Page
 
   AS Nisa
   I WANT to look into my tier status and number of points I have

@@ -1,4 +1,4 @@
-Feature: My Points History Page
+Feature: Points History Page
 
   As Nisa
   I want to see how many points I got from what challenges, on what date

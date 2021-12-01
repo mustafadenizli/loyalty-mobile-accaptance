@@ -1,5 +1,4 @@
-@Deneme
-Feature: Customer Loyalty Page
+Feature: Landing Page Navigate
 
   3 dk
 

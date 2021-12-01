@@ -1,4 +1,4 @@
-Feature: Navigate To Customer Loyalty Page
+Feature: Enrollment Page
 
   As Nisa
   I want to be able to access Loyalty Page with an Enrollment button
