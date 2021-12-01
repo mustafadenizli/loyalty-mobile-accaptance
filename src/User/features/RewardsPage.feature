@@ -41,8 +41,8 @@ Feature: Rewards
     Then Nisa should see Button Name: "Hediyeyi Al" under Confirmed Points in Rewards Page
     Then Nisa should see Button Name: "Puan Kazan" above Confirmed Points in Rewards Page
 
-  @rewards @pointExpiration @expirationDate @Deneme
+  @rewards @pointExpiration @expirationDate
   Scenario: Nisa Sees Expiration Date of her Active Points
-    Then Nisa should see Expire Date: "30.11.2021" in Rewards Page
+    Then Nisa should see Expire Date: "28.02.2022" in Rewards Page
 
 

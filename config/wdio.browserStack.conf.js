@@ -8,16 +8,17 @@ exports.config = {
     key: 'CXTs5aPDQsX9NMCVaj99',
     host: 'hub-cloud.browserstack.com',
     specs: [
-        './src/User/features/**/FaqPage.feature',
-        './src/User/features/**/EarnedGiftsPage.feature',
-        './src/User/features/**/PointHistoryPage.feature',
-        './src/User/features/**/PointEarningPage.feature',
-        './src/User/features/**/LandingPageNavigate.feature',
-        './src/User/features/**/RewardsPage.feature',
-        './src/User/features/**/DashboardMainPage.feature',
-        './src/User/features/**/EnrollmentPage.feature',
-        './src/User/features/**/TierStatusPage.feature',
-        './src/User/features/**/LandingPage.feature',
+        //'./src/User/features/**/LandingPage.feature',
+        './src/User/features/**/TierStatusPage.feature',      //20m50s - Hatali All Privilagesa tıklamıyor
+        './src/User/features/**/EnrollmentPage.feature',      //18m57s - Hatali
+        './src/User/features/**/DashboardMainPage.feature',   //10m18s
+        './src/User/features/**/FaqPage.feature',             //8m56s - Hatali
+        './src/User/features/**/EarnedGiftsPage.feature',     //6m26s
+        './src/User/features/**/RewardsPage.feature',         //5m25s - Hatali Son casedeki tarihi kontrol et
+        './src/User/features/**/PointEarningPage.feature',    //5m10s
+        './src/User/features/**/PointHistoryPage.feature',    //4m15s
+        './src/User/features/**/LandingPageNavigate.feature', //3m38s
+
     ],
     exclude: [],
     framework: 'cucumber',
@@ -42,7 +43,7 @@ exports.config = {
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 1,
+    maxInstances: 3,
     logLevel: 'silent',
     bail: 0,
     waitforTimeout: 15000,
