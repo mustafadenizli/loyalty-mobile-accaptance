@@ -142,6 +142,7 @@ class ElementHelper {
                 }
                 if (txt.includes(text)) {
                     result = true
+                    return result
                 }
             }
         )
@@ -164,6 +165,7 @@ class ElementHelper {
                 if (txt.includes(text)) {
                     await textElement.click()
                     result = true
+                    return result
                 }
             }
         )
@@ -186,6 +188,7 @@ class ElementHelper {
                 }
                 if (txt.includes(text)) {
                     result = true
+                    return result
                 }
             }
         )
@@ -208,6 +211,7 @@ class ElementHelper {
                 if (txt.includes(text)) {
                     await textElement.click()
                     result = true
+                    return result
                 }
             }
         )
