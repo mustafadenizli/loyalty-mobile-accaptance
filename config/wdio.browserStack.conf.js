@@ -8,7 +8,7 @@ exports.config = {
     key: 'CXTs5aPDQsX9NMCVaj99',
     host: 'hub-cloud.browserstack.com',
     specs: [
-        //'./src/User/features/**/LandingPage.feature',
+        './src/User/features/**/LandingPage.feature',         //50m
         './src/User/features/**/TierStatusPage.feature',      //19m
         './src/User/features/**/DashboardMainPage.feature',   //16m
         './src/User/features/**/EnrollmentPage.feature',      //15m
