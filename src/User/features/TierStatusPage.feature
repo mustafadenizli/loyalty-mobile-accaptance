@@ -19,7 +19,7 @@ Feature: Tier Status Page
     Given Nisa taps on the My Account button in bottom menu bar
 
   @SD11
-  Scenario Outline:  Nisa taps to "Üyelik Seviyem" section on dashboard main page <tc>
+  Scenario Outline:  Nisa taps to "Üyelik Seviyem" section on dashboard main page <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<addScore>"
