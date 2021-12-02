@@ -35,7 +35,7 @@ Feature: FAQ Page
     Then Nisa should see Faq Modal Title "My Modanisa nedir"
     Then Nisa should see Faq Modal Description "My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır."
 
-  @SD9
+  @SD9 @Hatali
   Scenario:Nisa Closed FAQ Detail Modal
     When Nisa click to Faq Name: "My Modanisa nedir" in Faq Page
     When Nisa click to Faq Modal Close Button
