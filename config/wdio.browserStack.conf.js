@@ -9,15 +9,15 @@ exports.config = {
     host: 'hub-cloud.browserstack.com',
     specs: [
         //'./src/User/features/**/LandingPage.feature',
-        './src/User/features/**/TierStatusPage.feature',      //20m50s - Hatali All Privilagesa tıklamıyor
-        './src/User/features/**/EnrollmentPage.feature',      //18m57s - Hatali
-        './src/User/features/**/DashboardMainPage.feature',   //10m18s
-        './src/User/features/**/FaqPage.feature',             //8m56s - Hatali
-        './src/User/features/**/EarnedGiftsPage.feature',     //6m26s
-        './src/User/features/**/RewardsPage.feature',         //5m25s - Hatali Son casedeki tarihi kontrol et
-        './src/User/features/**/PointEarningPage.feature',    //5m10s
-        './src/User/features/**/PointHistoryPage.feature',    //4m15s
-        './src/User/features/**/LandingPageNavigate.feature', //3m38s
+        './src/User/features/**/TierStatusPage.feature',      //19m
+        './src/User/features/**/DashboardMainPage.feature',   //16m
+        './src/User/features/**/EnrollmentPage.feature',      //15m
+        './src/User/features/**/EarnedGiftsPage.feature',     //7m
+        './src/User/features/**/RewardsPage.feature',         //6m
+        './src/User/features/**/LandingPageNavigate.feature', //5m
+        './src/User/features/**/FaqPage.feature',             //5m
+        './src/User/features/**/PointEarningPage.feature',    //4m
+        './src/User/features/**/PointHistoryPage.feature',    //4m
 
     ],
     exclude: [],

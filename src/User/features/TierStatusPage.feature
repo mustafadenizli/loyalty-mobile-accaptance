@@ -19,7 +19,7 @@ Feature: Tier Status Page
     Given Nisa taps on the My Account button in bottom menu bar
 
   @SD11
-  Scenario Outline:  Nisa taps to "Üyelik Seviyem" section on dashboard main page
+  Scenario Outline:  Nisa taps to "Üyelik Seviyem" section on dashboard main page <tc>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<addScore>"
@@ -34,14 +34,14 @@ Feature: Tier Status Page
     Then Nisa should see Privileges Tier:"<tier>" in Tier Status Page
     Then Nisa should see Privileges Name:"Profilini tamamla" in Tier Status Page
     Examples:
-      | tier     | email                       | password  | customerID | addScore | score |
-      | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50       | 55    |
-      | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110      | 115   |
-      | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210      | 215   |
+      | TC | tier     | email                       | password  | customerID | addScore | score |
+      | 1  | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50       | 55    |
+      | 2  | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110      | 115   |
+      | 3  | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210      | 215   |
 
 
   @SD11 @BackButton
-  Scenario Outline: Nisa taps to back button on "Üyelik Seviyem" page
+  Scenario Outline: Nisa taps to back button on "Üyelik Seviyem" page <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<score>"
@@ -54,13 +54,13 @@ Feature: Tier Status Page
     Then Nisa should see Dashboard Main Page
 
     Examples:
-      | tier     | email                       | password  | customerID | score |
-      | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50    |
-      | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110   |
-      | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210   |
+      | TC | tier     | email                       | password  | customerID | score |
+      | 1  | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50    |
+      | 2  | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110   |
+      | 3  | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210   |
 
   @SD11
-  Scenario Outline: Nisa taps to "Tüm Seviyelerdeki Ayrıcalıklar İçin" button on "Üyelik Seviyem" page then nisa should see "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal
+  Scenario Outline: Nisa taps to "Tüm Seviyelerdeki Ayrıcalıklar İçin" button on "Üyelik Seviyem" page then nisa should see "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<score>"
@@ -73,14 +73,14 @@ Feature: Tier Status Page
     Then Nisa should see Modal Title:"Tüm Seviyelerdeki Ayrıcalıklar" in Tier Status Page
 
     Examples:
-      | tier     | email                       | password  | customerID | score |
-      | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50    |
-      | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110   |
-      | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210   |
+      | TC | tier     | email                       | password  | customerID | score |
+      | 1  | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50    |
+      | 2  | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110   |
+      | 3  | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210   |
 
 
   @SD11 @CloseButton @Deneme
-  Scenario Outline: Nisa taps to close "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal
+  Scenario Outline: Nisa taps to close "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<score>"
@@ -95,8 +95,8 @@ Feature: Tier Status Page
     Then Nisa should see Tier Status Page
 
     Examples:
-      | tier     | email                       | password  | customerID | score |
-      | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50    |
-      | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110   |
-      | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210   |
+      | TC | tier     | email                       | password  | customerID | score |
+      | 1  | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50    |
+      | 2  | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110   |
+      | 3  | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210   |
 

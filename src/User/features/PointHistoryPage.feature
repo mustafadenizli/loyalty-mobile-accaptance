@@ -34,6 +34,7 @@ Feature: Points History Page
     Then Nisa should see Challenge Date: Today in Point History Page
     Then Nisa should see Challenge Point: "10 puan onaylandı" in Point History Page
 
+
   @SD3
   Scenario: Nisa goes back to previous page from Puan Geçmişim section
     When Nisa click to Back Button in Point History Page
