@@ -15,7 +15,7 @@ day = (day < 10 ? "0" : "") + day;
 config.capabilities = [
     {
         project: "Loyalty",
-        build: "User - "+day + ":" + month + ":" + year + "-" + hour + ":" + min + ":" + sec,
+        build: "User - " + day + ":" + month + ":" + year + "-" + hour + ":" + min + ":" + sec,
         platformName: "Android",
         realMobile: true,
         device: 'Samsung Galaxy S21',
@@ -24,6 +24,7 @@ config.capabilities = [
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
         fullReset: false,
+        networkProfile: "4g-lte-high-latency",
     },
 ];
 
