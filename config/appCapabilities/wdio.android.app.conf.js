@@ -10,9 +10,7 @@ config.capabilities = [
         appActivity: "com.modanisa.activity.SplashActivity",
     }
 
-
     /*
-    
         // -- Android Real Device for not installed app
         {
             platformName: "Android",

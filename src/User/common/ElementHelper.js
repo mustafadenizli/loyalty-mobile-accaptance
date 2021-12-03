@@ -135,19 +135,17 @@ class ElementHelper {
         let txt
         await this.findElement(element1)
         let elements = await $$(element1)
-        await elements.map(async (textElement) => {
-                if (browser.isIOS) {
-                    txt = await textElement.getText()
-                } else {
-                    txt = await textElement.getAttribute("content-desc")
-                }
-                if (txt.includes(text)) {
-                    result = true
-                    return result
-                }
+        for (const el of elements) {
+            if (browser.isIOS) {
+                txt = await el.getText()
+            } else {
+                txt = await el.getAttribute("content-desc")
             }
-        )
-        await browser.pause(2000)
+            if (txt.includes(text)) {
+                result = true
+                break
+            }
+        }
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsCheckTextContains adımı başarıyla gerçekleşti")
     }
@@ -158,19 +156,18 @@ class ElementHelper {
         let txt
         await this.findElement(element1)
         let elements = await $$(element1)
-        await elements.map(async (textElement) => {
-                if (browser.isIOS) {
-                    txt = await textElement.getText()
-                } else {
-                    txt = await textElement.getAttribute("content-desc")
-                }
-                if (txt.includes(text)) {
-                    await textElement.click()
-                    result = true
-                    return result
-                }
+        for (const el of elements) {
+            if (browser.isIOS) {
+                txt = await el.getText()
+            } else {
+                txt = await el.getAttribute("content-desc")
             }
-        )
+            if (txt.includes(text)) {
+                await el.click()
+                result = true
+                break
+            }
+        }
         await browser.pause(2000)
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsClickTextContains adımı başarıyla gerçekleşti")
@@ -183,18 +180,17 @@ class ElementHelper {
         let txt
         await this.findElement(element1)
         let elements = await $(element1).$$(element2)
-        await elements.map(async (textElement) => {
-                if (browser.isIOS) {
-                    txt = await textElement.getText()
-                } else {
-                    txt = await textElement.getAttribute("content-desc")
-                }
-                if (txt.includes(text)) {
-                    result = true
-                    return result
-                }
+        for (const el of elements) {
+            if (browser.isIOS) {
+                txt = await el.getText()
+            } else {
+                txt = await el.getAttribute("content-desc")
             }
-        )
+            if (txt.includes(text)) {
+                result = true
+                break
+            }
+        }
         await browser.pause(2000)
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsCheckUnderElementWithText adımı başarıyla gerçekleşti")
@@ -206,19 +202,18 @@ class ElementHelper {
         let txt
         await this.findElement(element1)
         let elements = $(element1).$$(element2)
-        await elements.map(async (textElement) => {
-                if (browser.isIOS) {
-                    txt = await textElement.getText()
-                } else {
-                    txt = await textElement.getAttribute("content-desc")
-                }
-                if (txt.includes(text)) {
-                    await textElement.click()
-                    result = true
-                    return result
-                }
+        for (const el of elements) {
+            if (browser.isIOS) {
+                txt = await el.getText()
+            } else {
+                txt = await el.getAttribute("content-desc")
             }
-        )
+            if (txt.includes(text)) {
+                await el.click()
+                result = true
+                break
+            }
+        }
         await browser.pause(2000)
         await expect(true).equal(result)
         await this.writeConsoleTick("elementsClickUnderElementWithText adımı başarıyla gerçekleşti")
