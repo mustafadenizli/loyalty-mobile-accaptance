@@ -24,7 +24,7 @@ config.capabilities = [
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
         fullReset: false,
-        networkProfile: "4g-lte-high-latency",
+        networkProfile: "4g-lte-advanced-good",
     },
 ];
 
