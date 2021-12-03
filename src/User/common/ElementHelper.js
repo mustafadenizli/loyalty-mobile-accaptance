@@ -134,7 +134,8 @@ class ElementHelper {
         let result = false
         let txt
         await this.findElement(element1)
-        await $$(element1).map(async (textElement) => {
+        let elements = await $$(element1)
+        await elements.map(async (textElement) => {
                 if (browser.isIOS) {
                     txt = await textElement.getText()
                 } else {
@@ -156,7 +157,8 @@ class ElementHelper {
         let result = false
         let txt
         await this.findElement(element1)
-        await $$(element1).map(async (textElement) => {
+        let elements = await $$(element1)
+        await elements.map(async (textElement) => {
                 if (browser.isIOS) {
                     txt = await textElement.getText()
                 } else {
@@ -180,7 +182,8 @@ class ElementHelper {
         let result = false
         let txt
         await this.findElement(element1)
-        await $(element1).$$(element2).map(async (textElement) => {
+        let elements = await $(element1).$$(element2)
+        await elements.map(async (textElement) => {
                 if (browser.isIOS) {
                     txt = await textElement.getText()
                 } else {
@@ -202,7 +205,8 @@ class ElementHelper {
         let result = false
         let txt
         await this.findElement(element1)
-        await $(element1).$$(element2).map(async (textElement) => {
+        let elements = $(element1).$$(element2)
+        await elements.map(async (textElement) => {
                 if (browser.isIOS) {
                     txt = await textElement.getText()
                 } else {

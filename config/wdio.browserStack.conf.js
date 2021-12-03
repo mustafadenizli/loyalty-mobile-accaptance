@@ -8,7 +8,7 @@ exports.config = {
     key: 'CXTs5aPDQsX9NMCVaj99',
     host: 'hub-cloud.browserstack.com',
     specs: [
-        './src/User/features/**/LandingPage.feature',         //50m
+        //'./src/User/features/**/LandingPage.feature',         //50m
         './src/User/features/**/TierStatusPage.feature',      //19m
         './src/User/features/**/DashboardMainPage.feature',   //16m
         './src/User/features/**/EnrollmentPage.feature',      //15m
@@ -18,7 +18,6 @@ exports.config = {
         './src/User/features/**/FaqPage.feature',             //5m
         './src/User/features/**/PointEarningPage.feature',    //4m
         './src/User/features/**/PointHistoryPage.feature',    //4m
-
     ],
     exclude: [],
     framework: 'cucumber',
@@ -43,7 +42,7 @@ exports.config = {
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 3,
+    maxInstances: 4,
     logLevel: 'silent',
     bail: 0,
     waitforTimeout: 30000,

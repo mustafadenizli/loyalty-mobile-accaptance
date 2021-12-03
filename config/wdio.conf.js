@@ -9,16 +9,16 @@ exports.config = {
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        //'./src/User/features/**/LandingPage.feature',
-        //'./src/User/features/**/LandingPageNavigate.feature',
-        //'./src/User/features/**/EnrollmentPage.feature',
-        //'./src/User/features/**/DashboardMainPage.feature',
-        //'./src/User/features/**/PointEarningPage.feature',
-        './src/User/features/**/PointHistoryPage.feature',
-        //'./src/User/features/**/RewardsPage.feature',
-        //'./src/User/features/**/EarnedGiftsPage.feature',
-        //'./src/User/features/**/TierStatusPage.feature',
-        //'./src/User/features/**/FaqPage.feature',
+        './src/User/features/**/LandingPage.feature',         //50m
+        './src/User/features/**/TierStatusPage.feature',      //19m
+        './src/User/features/**/DashboardMainPage.feature',   //16m
+        './src/User/features/**/EnrollmentPage.feature',      //15m
+        './src/User/features/**/EarnedGiftsPage.feature',     //7m
+        './src/User/features/**/RewardsPage.feature',         //6m
+        './src/User/features/**/LandingPageNavigate.feature', //5m
+        './src/User/features/**/FaqPage.feature',             //5m
+        './src/User/features/**/PointEarningPage.feature',    //4m
+        './src/User/features/**/PointHistoryPage.feature',    //4m
     ],
     exclude: [],
     framework: 'cucumber',
@@ -52,15 +52,14 @@ exports.config = {
     coloredLogs: true,
 
     onPrepare: async (config, capabilities) => {
-        try{
+        try {
             rimraf("./allure-report", function () {
                 console.log("Allure Report Deleted");
             });
             rimraf("./Reports/Allure/allure-results", function () {
                 console.log("Allure Json Files deleted");
             });
-        }
-        catch (e) {
+        } catch (e) {
             await console.info("dosya yok 1")
         }
     },
