@@ -8,7 +8,7 @@ exports.config = {
     key: 'CXTs5aPDQsX9NMCVaj99',
     host: 'hub-cloud.browserstack.com',
     specs: [
-        //'./src/User/features/**/LandingPage.feature',         //50m
+        './src/User/features/**/LandingPage.feature',         //50m
         './src/User/features/**/TierStatusPage.feature',      //19m
         './src/User/features/**/DashboardMainPage.feature',   //16m
         './src/User/features/**/EnrollmentPage.feature',      //15m
@@ -45,7 +45,7 @@ exports.config = {
     maxInstances: 4,
     logLevel: 'silent',
     bail: 0,
-    waitforTimeout: 30000,
+    waitforTimeout: 45000,
     connectionRetryTimeout: 200000,
     connectionRetryCount: 5,
     coloredLogs: true,
