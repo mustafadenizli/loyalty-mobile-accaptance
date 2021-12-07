@@ -19,7 +19,6 @@ config.capabilities = [
             udid: "5a7b5e20",
             app: "/Users/enes.erdogan/Desktop/Automation/User-WebDriverIOArchitecture/files/e03b0f87-0ff9-4336-a72c-5cd0c2832229.apk"
         },
-
         // -- Android Real Device for installed app
         {
             platformName: "Android",

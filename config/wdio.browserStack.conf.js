@@ -1,14 +1,16 @@
 const chai = require("chai");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
+const path = require("path");
 let count = true;
 
 exports.config = {
+    outputDir: path.join(__dirname, "../log"),
     user: 'eneserdoan_5ocBua',
     key: 'CXTs5aPDQsX9NMCVaj99',
     host: 'hub-cloud.browserstack.com',
     specs: [
-        './src/User/features/**/LandingPage.feature',         //50m
+        //'./src/User/features/**/LandingPage.feature',         //50m
         './src/User/features/**/TierStatusPage.feature',      //19m
         './src/User/features/**/DashboardMainPage.feature',   //16m
         './src/User/features/**/EnrollmentPage.feature',      //15m
@@ -42,8 +44,8 @@ exports.config = {
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 4,
-    logLevel: 'silent',
+    maxInstances: 10,
+    logLevel: 'info',
     bail: 0,
     waitforTimeout: 45000,
     connectionRetryTimeout: 200000,

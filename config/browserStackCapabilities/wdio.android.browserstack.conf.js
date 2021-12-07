@@ -18,13 +18,14 @@ config.capabilities = [
         build: "User - " + day + ":" + month + ":" + year + "-" + hour + ":" + min + ":" + sec,
         platformName: "Android",
         realMobile: true,
-        device: 'Samsung Galaxy S21',
-        os_version: "11.0",
+        device: 'Samsung Galaxy S20',
+        os_version: "10.0",
         app: "bs://96e942319e5485e540fa9266d2e5fc6cf274423d",
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
         fullReset: false,
         networkProfile: "4g-lte-advanced-good",
+        networkLogs:true,
     },
 ];
 
