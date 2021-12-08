@@ -12,6 +12,8 @@
     "@wdio/cli": "^7.12.6",
     "allure-commandline": "^2.13.8",
     "axios": "^0.24.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
     "rimraf": "^3.0.2",
     "webdriver": "^7.16.9"
   },
