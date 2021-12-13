@@ -39,7 +39,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: 'not @Hatali',
+        tagExpression: '@Dene',
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
@@ -150,6 +150,7 @@ exports.config = {
         try {
             let res = JSON.stringify(world.pickle.name)
             res = res.replace(/"/g, '');
+            res = res.replace(/\\/g, "")
             await browser.reset()
             await browser.execute(`browserstack_executor: {"action": "setSessionName", "arguments": {"name":"` + world.gherkinDocument.feature.name
                 + "-" + res + `"}}`);
