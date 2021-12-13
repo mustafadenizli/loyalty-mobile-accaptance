@@ -172,12 +172,12 @@ exports.config = {
     },
     afterScenario: async (world, result) => {
         //console.info("afterScenario")
-        let res = JSON.stringify(result.error)
-        res = res.replace(/\\n/g, ' ');
-        res = res.replace(/"/g, '');
         if (result.passed) {
             await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Succeed"}}`);
         } else {
+            let res = JSON.stringify(result.error)
+            res = res.replace(/\\n/g, ' ');
+            res = res.replace(/"/g, '');
             await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "` + res + `"}}`);
         }
     },

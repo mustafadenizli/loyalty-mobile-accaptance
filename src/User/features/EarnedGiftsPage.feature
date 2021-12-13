@@ -44,7 +44,7 @@ Feature: Earned Gifts Page
     When Nisa click to Discover Gifts Button in My Earned Gifts Page
     Then Nisa should see Rewards Page
 
-  @SD7 @Deneme
+  @SD7
   Scenario: Nisa Sees back Rewards Page on Kazandığım Hediyeler page
     Then Nisa should see Button Name: "Hediyeleri Keşfet" in My Earned Gifts Page
     When Nisa click to Discover Gifts Button in My Earned Gifts Page

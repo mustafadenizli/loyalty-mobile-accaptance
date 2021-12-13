@@ -28,14 +28,14 @@ Feature: Points History Page
     When Nisa click to Point History in Point Earning Page
     Then Nisa should see Point History Page
 
-  @SD3
+  @SD3 @Deneme
   Scenario: Nisa Sees Her Confirmed Points on My Points History
     Then Nisa should see Challenge Name: "Hediye Puan" in Point History Page
     Then Nisa should see Challenge Date: Today in Point History Page
     Then Nisa should see Challenge Point: "10 puan onaylandı" in Point History Page
 
 
-  @SD3
+  @SD3 @Deneme
   Scenario: Nisa goes back to previous page from Puan Geçmişim section
     When Nisa click to Back Button in Point History Page
     Then Nisa should see Dashboard Main Page

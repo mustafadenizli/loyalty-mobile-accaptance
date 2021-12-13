@@ -86,7 +86,7 @@ Feature: Enrollment Page
       | user   | email                           | password      | customerId |
       | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
 
-  @S80 @enrollment @Deneme
+  @S80 @enrollment
   Scenario Outline: Nisa Go Back to Loyalty Page From Enrollment Form Page Custom Email
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"

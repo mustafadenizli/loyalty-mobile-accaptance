@@ -60,7 +60,7 @@ Feature: Dashboard Main Page
       | status | email                              | password      | herName   |
       | normal | userLoyaltyDashboard2@modanisa.com | Modanisa1234. | Dashboard |
 
-  @SD1 @Deneme
+  @SD1
   Scenario Outline:Nisa Does not See Her Name on Dashboard Main Page
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"

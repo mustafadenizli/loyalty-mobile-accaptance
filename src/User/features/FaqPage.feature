@@ -25,7 +25,7 @@ Feature: FAQ Page
     Then Nisa should see Dashboard Main Page
     When Nisa click to Faq in Dashboard Main Page
 
-  @SD9 @Deneme
+  @SD9
   Scenario:Nisa Sees FAQ Page
     Then Nisa should see Faq Page Title
 

@@ -79,7 +79,7 @@ Feature: Tier Status Page
       | 3  | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210   |
 
 
-  @SD11 @CloseButton @Deneme
+  @SD11 @CloseButton
   Scenario Outline: Nisa taps to close "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
