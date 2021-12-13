@@ -25,8 +25,9 @@ config.capabilities = [
         appActivity: "com.modanisa.activity.SplashActivity",
         fullReset: false,
         "browserstack.networkLogs": "true",
-        "browserstack.appium_version" : "1.21.0",
-        "browserstack.acceptInsecureCerts" : "true",
+        "browserstack.appium_version": "1.21.0",
+        "browserstack.acceptInsecureCerts": "true",
+        "browserstack.networkProfile": "4g-lte-advanced-good"
     },
 ];
 

@@ -8,18 +8,6 @@
     "test:androidapp": "wdio config/appCapabilities/wdio.android.app.conf.js",
     "test:androidBrowserStack": "./node_modules/.bin/wdio ./config/browserStackCapabilities/wdio.android.browserstack.conf.js"
   },
-  "keywords": [],
-  "author": "Enes Erdogan",
-  "license": "ISC",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/modanisatech/customer/loyant/loyalty-mobile-accaptance.git"
-  },
-  "bugs": {
-    "url": "https://gitlab.com/modanisatech/customer/loyant/loyalty-mobile-accaptance/issues"
-  },
-  "homepage": "https://gitlab.com/modanisatech/customer/loyant/loyalty-mobile-accaptance#readme",
   "dependencies": {
     "@wdio/cli": "^7.12.6",
     "allure-commandline": "^2.13.8",
@@ -27,6 +15,7 @@
     "lodash": "^4.17.21",
     "minimist": "^1.2.5",
     "rimraf": "^3.0.2",
+    "wdio-cucumber-parallel-execution": "^3.6.15",
     "webdriver": "^7.16.9",
     "yargs": "^17.3.0"
   },
@@ -41,5 +30,17 @@
     "country-emoji": "^1.5.6",
     "cucumber-html-reporter": "^5.5.0",
     "expect-webdriverio": "^3.1.4"
-  }
+  },
+  "keywords": [],
+  "author": "Enes Erdogan",
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/modanisatech/customer/loyant/loyalty-mobile-accaptance.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/modanisatech/customer/loyant/loyalty-mobile-accaptance/issues"
+  },
+  "homepage": "https://gitlab.com/modanisatech/customer/loyant/loyalty-mobile-accaptance#readme"
 }

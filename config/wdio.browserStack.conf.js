@@ -1,7 +1,12 @@
 const chai = require("chai");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
+const wdioParallel = require('wdio-cucumber-parallel-execution');
+
 let count = true;
+const sourceSpecDirectory = `./src/User/features`;
+let tmpSpecDirectory = `${sourceSpecDirectory}/tmp`;
+let featureFilePath = `${tmpSpecDirectory}/*.feature`;
 
 exports.config = {
     //outputDir: path.join(__dirname, "../log"),
@@ -9,17 +14,7 @@ exports.config = {
     key: 'CXTs5aPDQsX9NMCVaj99',
     host: 'hub.browserstack.com',
     specs: [
-        //'./src/User/features/**/LandingPage.feature',         //50m
-        './src/User/features/**/TierStatusPage.feature',      //19m
-        './src/User/features/**/DashboardMainPage.feature',   //16m
-        './src/User/features/**/EnrollmentPage.feature',      //15m
-        './src/User/features/**/EarnedGiftsPage.feature',     //7m
-        './src/User/features/**/RewardsPage.feature',         //6m
-        './src/User/features/**/LandingPageNavigate.feature', //5m
-        './src/User/features/**/FaqPage.feature',             //5m
-        './src/User/features/**/PointEarningPage.feature',    //4m
-        './src/User/features/**/PointHistoryPage.feature',    //4m
-
+        featureFilePath
     ],
     exclude: [],
     framework: 'cucumber',
@@ -48,7 +43,7 @@ exports.config = {
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 15,
+    maxInstances: 12,
     logLevel: 'silent',
     bail: 0,
     waitforTimeout: 45000,
@@ -64,6 +59,13 @@ exports.config = {
             rimraf("./Reports/Allure/allure-results", function () {
                 console.log("Allure Json Files deleted");
             });
+            await wdioParallel.performSetup({
+                sourceSpecDirectory: sourceSpecDirectory,
+                tmpSpecDirectory: tmpSpecDirectory,
+                cleanTmpSpecDirectory: true
+            });
+            featureFilePath = `${tmpSpecDirectory}/*.feature`;
+
         } catch (e) {
             await console.info("Silinecek dosya yok")
         }
@@ -140,15 +142,18 @@ exports.config = {
     },
     beforeFeature: async (uri, feature) => {
         //console.info("beforeFeature")
-        await browser.execute(`browserstack_executor: {"action": "setSessionName", "arguments": {"name":"` + feature.name + `"}}`);
         await console.log('\u001b[' + 32 + 'm' + 'Feature name : ' + feature.name + '\u001b[0m')
         count = true;
     },
     beforeScenario: async (world) => {
         //console.info("beforeScenario")
         try {
+            let res = JSON.stringify(world.pickle.name)
+            res = res.replace(/"/g, '');
             await browser.reset()
-            await console.log('\u001b[' + 34 + 'm' + '  Scenario name : ' + world.pickle.name + '\u001b[0m')
+            await browser.execute(`browserstack_executor: {"action": "setSessionName", "arguments": {"name":"` + world.gherkinDocument.feature.name
+                + "-" + res + `"}}`);
+            await console.log('\u001b[' + 34 + 'm' + '  Scenario name : ' + res + '\u001b[0m')
         } catch (e) {
         }
     },
@@ -162,25 +167,20 @@ exports.config = {
             await console.log('\u001b[' + 32 + 'm' + '    ✓ Step Succeed : ' + step.text + '\u001b[0m')
         } else {
             await console.log('\u001b[' + 31 + 'm' + '    ✖ Step Fail : ' + step.text + '\u001b[0m')
-            browser.takeScreenshot();
         }
     },
     afterScenario: async (world, result) => {
         //console.info("afterScenario")
-        try {
-            if (result.passed != true) {
-                count = false
-            }
-        } catch (e) {
+        let res = JSON.stringify(result.error)
+        res = res.replace(/\\n/g, ' ');
+        res = res.replace(/"/g, '');
+        if (result.passed) {
+            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Succeed"}}`);
+        } else {
+            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "` + res + `"}}`);
         }
-
     },
     afterFeature: async (uri, feature) => {
         //console.info("afterFeature")
-        if (count == true) {
-            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Succeed"}}`);
-        } else {
-            await browser.execute(`browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed","reason": "Failed"}}`);
-        }
     }
 }
