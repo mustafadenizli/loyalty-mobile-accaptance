@@ -39,7 +39,7 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: '@Dene',
+        tagExpression: 'not @Hatali',
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },

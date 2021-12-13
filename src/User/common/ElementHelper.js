@@ -134,7 +134,7 @@ class ElementHelper {
         let result = false
         let txt
         await this.findElement(element1)
-        let elements =  await $$(element1)
+        let elements = await $$(element1)
         for (const el of elements) {
             if (browser.isIOS) {
                 txt = await el.getText()
@@ -201,7 +201,7 @@ class ElementHelper {
         let result = false
         let txt
         await this.findElement(element1)
-        let elements = $(element1).$$(element2)
+        let elements = await $(element1).$$(element2)
         for (const el of elements) {
             if (browser.isIOS) {
                 txt = await el.getText()
