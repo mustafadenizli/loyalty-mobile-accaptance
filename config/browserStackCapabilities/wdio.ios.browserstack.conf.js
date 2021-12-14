@@ -23,8 +23,9 @@ config.capabilities = [
         app: "bs://e243099bac6a4e7643349eb767aa0fd1ee46fd8f",
         fullReset: false,
         "browserstack.networkLogs": "true",
-        "browserstack.appium_version" : "1.21.0",
-        "browserstack.acceptInsecureCerts" : "true",
+        "browserstack.appium_version": "1.21.0",
+        "browserstack.acceptInsecureCerts": "true",
+        "browserstack.networkProfile": "4g-lte-advanced-good"
     },
 ];
 

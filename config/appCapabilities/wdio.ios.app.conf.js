@@ -4,9 +4,9 @@ const path = require("path");
 config.capabilities = [
     {
         platformName: "iOS",
-        platformVersion: "14.6",
-        deviceName: "iPhone SE",
-        app: path.resolve("/Users/enes.erdogan/Downloads/066e727b-5b78-4ff1-9d00-153c6d742305.ipa")
+        platformVersion: "14.2",
+        deviceName: "iPhone 12",
+        app: path.resolve("/Users/enes.erdogan/Downloads/Modanisa.app")
     },
 ];
 

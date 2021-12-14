@@ -9,16 +9,16 @@ exports.config = {
     path: "/wd/hub",
     runner: 'local',
     specs: [
-        './src/User/reports/**/LandingPage.feature',         //50m
-        './src/User/reports/**/TierStatusPage.feature',      //19m
-        './src/User/reports/**/DashboardMainPage.feature',   //16m
-        './src/User/reports/**/EnrollmentPage.feature',      //15m
-        './src/User/reports/**/EarnedGiftsPage.feature',     //7m
-        './src/User/reports/**/RewardsPage.feature',         //6m
-        './src/User/reports/**/LandingPageNavigate.feature', //5m
-        './src/User/reports/**/FaqPage.feature',             //5m
-        './src/User/reports/**/PointEarningPage.feature',    //4m
-        './src/User/reports/**/PointHistoryPage.feature',    //4m
+        //'./src/User/features/**/LandingPage.feature',         //50m
+        './src/User/features/**/TierStatusPage.feature',      //19m
+        './src/User/features/**/DashboardMainPage.feature',   //16m
+        './src/User/features/**/EnrollmentPage.feature',      //15m
+        './src/User/features/**/EarnedGiftsPage.feature',     //7m
+        './src/User/features/**/RewardsPage.feature',         //6m
+        './src/User/features/**/LandingPageNavigate.feature', //5m
+        './src/User/features/**/FaqPage.feature',             //5m
+        './src/User/features/**/PointEarningPage.feature',    //4m
+        './src/User/features/**/PointHistoryPage.feature',    //4m
     ],
     exclude: [],
     framework: 'cucumber',
@@ -39,12 +39,12 @@ exports.config = {
         source: true,
         profile: [],
         strict: false,
-        tagExpression: '@Deneme',
+        tagExpression: 'not @Hatali',
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
     maxInstances: 1,
-    logLevel: 'silent',
+    logLevel: 'info',
     bail: 0,
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
