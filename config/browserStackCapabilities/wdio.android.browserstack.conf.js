@@ -27,7 +27,9 @@ config.capabilities = [
         "browserstack.networkLogs": "true",
         "browserstack.appium_version": "1.21.0",
         "browserstack.acceptInsecureCerts": "true",
-        "browserstack.networkProfile": "4g-lte-advanced-good"
+        "browserstack.networkProfile": "4g-lte-advanced-good",
+        'browserstack.local': true
+
     },
 ];
 

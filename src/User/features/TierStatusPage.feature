@@ -4,8 +4,8 @@ Feature: Tier Status Page
   I WANT to look into my tier status and number of points I have
   SO THAT I know how many points needed to upgrade my tier
 
-  | status    | Emails                             | Passwords      | CustomerIDs |
-  | normal    | userLoyaltyTierStatus@modanisa.com | Modanisa1234.  | 12727305    |
+  | status    | Emails                              | Passwords      | CustomerIDs |
+  | normal    | userLoyaltyTierStatus1@modanisa.com | Modanisa1234.  | 12727305    |
 
 
   Background:
@@ -35,7 +35,7 @@ Feature: Tier Status Page
     Then Nisa should see Privileges Name:"Profilini tamamla" in Tier Status Page
     Examples:
       | TC | tier     | email                       | password  | customerID | addScore | score |
-      | 1  | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50       | 55    |
+#     | 1  | Silver   | nisaSilverD-11@yandex.com   | Testhb123 | 11064240   | 50       | 55    |
       | 2  | Gold     | nisaGoldD-11@yandex.com     | Testhb123 | 11064241   | 110      | 115   |
       | 3  | Platinum | nisaPlatinumD-11@yandex.com | Testhb123 | 11064242   | 210      | 215   |
 

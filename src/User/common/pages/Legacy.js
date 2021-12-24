@@ -274,9 +274,7 @@ class Common {
             let screen = await browser.getWindowSize()
             let height = await screen.height
             let width = await screen.width
-            await console.info("1")
             await browser.pause(2000)
-            await console.info("1")
             await browser.touchAction([
                 {action: 'longPress', x: 50, y: 400},
                 {action: 'wait', options: {ms: 500}},
