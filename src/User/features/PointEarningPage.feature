@@ -6,6 +6,10 @@ Feature: Points Earning Page
 
   | status    | Emails                                | Passwords      | CustomerIDs |
   | normal    | userLoyaltyPointEarning@modanisa.com  | Modanisa1234.  | 12727301    |
+  | normal    | userLoyaltyPointEarning1@modanisa.com  | Modanisa1234. | 12727406	 |
+  | normal    | userLoyaltyPointEarning2@modanisa.com  | Modanisa1234. | 12727407	 |
+  | normal    | userLoyaltyPointEarning3@modanisa.com  | Modanisa1234. | 12727408    |
+  | normal    | userLoyaltyPointEarning4@modanisa.com  | Modanisa1234. | 12727409    |
 
 
   Background:

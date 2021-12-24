@@ -4,7 +4,7 @@ config.capabilities = [
     // Android Real Device for installed app
     {
         platformName: "Android",
-        platformVersion: "9",
+        platformVersion: "10",
         deviceName: "emulator-5554",
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",

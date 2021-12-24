@@ -7,6 +7,12 @@ Feature: Dashboard Main Page
   | status    | Emails                             | Passwords      | CustomerIDs |
   | normal    | userLoyaltyDashboard1@modanisa.com | Modanisa1234.  | 12727300    |
   | normal    | userLoyaltyDashboard2@modanisa.com | Modanisa1234.  | 12727273    |
+  | normal    | userLoyaltyDashboard3@modanisa.com | Modanisa1234.  | 12727381	  |
+  | normal    | userLoyaltyDashboard4@modanisa.com | Modanisa1234.  | 12727382	  |
+  | normal    | userLoyaltyDashboard5@modanisa.com | Modanisa1234.  | 12727383	  |
+  | normal    | userLoyaltyDashboard6@modanisa.com | Modanisa1234.  | 12727384    |
+  | normal    | userLoyaltyDashboard7@modanisa.com | Modanisa1234.  | 12727385    |
+  | normal    | userLoyaltyDashboard8@modanisa.com | Modanisa1234.  | 12727386	  |
 
   Background:
     Given Nisa waits for Welcome page
@@ -48,9 +54,10 @@ Feature: Dashboard Main Page
     Then Nisa should see Pending Points Name: "Onay Bekleyen Puan" in Dashboard Main Page
     Examples:
       | status | email                              | password      | customerId | addPendingPoint |
-      | normal | userLoyaltyDashboard1@modanisa.com | Modanisa1234. | 12727300   | 10              |
+      | normal | userLoyaltyDashboard2@modanisa.com | Modanisa1234. | 12727273   | 10              |
 
-  @SD1
+  #@SD1
+  @deneme1
   Scenario Outline:Nisa Sees Her Name on Dashboard Main Page
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -58,7 +65,7 @@ Feature: Dashboard Main Page
     Then Nisa should see Her Name: "<herName>" in Dashboard Main Page
     Examples:
       | status | email                              | password      | herName   |
-      | normal | userLoyaltyDashboard2@modanisa.com | Modanisa1234. | Dashboard |
+      #| normal | userLoyaltyDashboard3@modanisa.com | Modanisa1234. | Dashboard |
 
   @SD1
   Scenario Outline:Nisa Does not See Her Name on Dashboard Main Page
@@ -70,7 +77,7 @@ Feature: Dashboard Main Page
     Then Nisa should not see Her Name in Dashboard Main Page
     Examples:
       | status | email                              | password      | customerId |
-      | normal | userLoyaltyDashboard1@modanisa.com | Modanisa1234. | 12727300   |
+      | normal | userLoyaltyDashboard4@modanisa.com | Modanisa1234. | 12727382   |
 
   @SD1
   Scenario Outline:Nisa Sees Her Confirmed Points and added Confirmed Points on Dashboard Main Page
@@ -86,7 +93,7 @@ Feature: Dashboard Main Page
     Then Nisa should see Confirmed Points: "<secondConfirmedPoint>" in Dashboard Main Page
     Examples:
       | status | email                              | password      | customerId | firstConfirmedPoint | addConfirmedPoint | secondConfirmedPoint |
-      | normal | userLoyaltyDashboard1@modanisa.com | Modanisa1234. | 12727300   | 5                   | 10                | 15                   |
+      | normal | userLoyaltyDashboard5@modanisa.com | Modanisa1234. | 12727383   | 5                   | 10                | 15                   |
 
   @SD1
   Scenario Outline:Nisa Not Sees Her Pending Points on Dashboard Main Page
@@ -98,7 +105,7 @@ Feature: Dashboard Main Page
     Then Nisa should not see Pending Points in Dashboard Main Page
     Examples:
       | status | email                              | password      | customerId |
-      | normal | userLoyaltyDashboard1@modanisa.com | Modanisa1234. | 12727300   |
+      | normal | userLoyaltyDashboard6@modanisa.com | Modanisa1234. | 12727384   |
 
   @SD1
   Scenario Outline:Nisa Sees Her Pending Points and added Pending Points on Dashboard Main Page
@@ -114,7 +121,7 @@ Feature: Dashboard Main Page
     Then Nisa should see Pending Points: "<confirmedPoint>" in Dashboard Main Page
     Examples:
       | status | email                              | password      | customerId | addConfirmedPoint | confirmedPoint |
-      | normal | userLoyaltyDashboard1@modanisa.com | Modanisa1234. | 12727300   | 10                | 10             |
+      | normal | userLoyaltyDashboard7@modanisa.com | Modanisa1234. | 12727385   | 10                | 10             |
 
   @SD1
   Scenario Outline:Nisa Goes Back to Previous Page From Dashboard Main Page
@@ -127,4 +134,4 @@ Feature: Dashboard Main Page
     Then Nisa should see My Account page
     Examples:
       | status | email                              | password      | customerId |
-      | normal | userLoyaltyDashboard1@modanisa.com | Modanisa1234. | 12727300   |
+      | normal | userLoyaltyDashboard8@modanisa.com | Modanisa1234. | 12727386   |

@@ -4,8 +4,14 @@ Feature: FAQ Page
   I want to see a FAQ page
   So that I know how to benefit best from the loyalty program
 
-  | status    | Emails                      | Passwords      | CustomerIDs |
-  | normal    | userLoyaltyFaq@modanisa.com | Modanisa1234.  | 12727306    |
+  | status    | Emails                      | Passwords      | CustomerIDs  |
+  | normal    | userLoyaltyFaq@modanisa.com | Modanisa1234.  | 12727306     |
+  | normal    | userLoyaltyFaq1@modanisa.com | Modanisa1234. | 12727411	    |
+  | normal    | userLoyaltyFaq2@modanisa.com | Modanisa1234. | 12727412	    |
+  | normal    | userLoyaltyFaq3@modanisa.com | Modanisa1234. | 12727413	    |
+  | normal    | userLoyaltyFaq4@modanisa.com | Modanisa1234. | 12727414     |
+  | normal    | userLoyaltyFaq5@modanisa.com | Modanisa1234. | 12727415     |
+  | normal    | userLoyaltyFaq6@modanisa.com | Modanisa1234. | 12727416	    |
 
   Background:
     Given Nisa waits for Welcome page

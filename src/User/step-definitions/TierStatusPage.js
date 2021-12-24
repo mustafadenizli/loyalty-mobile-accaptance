@@ -22,6 +22,13 @@ Then(/^Nisa should see Privileges Tier:"([^"]*)" in Tier Status Page$/, async (t
 Then(/^Nisa should see Privileges Name:"([^"]*)" in Tier Status Page$/, async (text) => {
     await TierStatusPage.checkPrivilegesName(text)
 });
+Then(/^Nisa should see Privileges Title:"([^"]*)" in Tier Status Page$/, async (text) => {
+    await TierStatusPage.checkPrivilegesTitle(text)
+});
+Then(/^Nisa should see All Privileges:"([^"]*)" in Tier Status Page$/, async (text) => {
+    await TierStatusPage.checkAllPrivileges(text)
+});
+
 When(/^Nisa click to All Privilages in Tier Status Page$/, async () => {
     await TierStatusPage.clickAllPrivileges()
 });

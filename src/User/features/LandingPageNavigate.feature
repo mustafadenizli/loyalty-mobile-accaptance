@@ -7,7 +7,8 @@ Feature: Landing Page Navigate
   So that I can learn more about the Loyalty Program
 
   | Emails                             | Passwords      | CustomerIDs |
-  | userLoyaltyLanding2@modanisa.com   | Modanisa1234.  | 12727308    |
+  | userLoyaltyLanding1@modanisa.com   | Modanisa1234.  | 12727410    |
+  | userLoyaltyLanding2@modanisa.com   | Modanisa1234.  | 12727308   |
 
   @S2002
   Scenario Outline: Nisa Has See My Modanisa Section As Not Logged In User At Turkey <TC>
@@ -23,7 +24,7 @@ Feature: Landing Page Navigate
     Then Nisa should see visible Section My Modanisa in My Account Page
     Examples:
       | TC | user   | email                            | password      |
-      | 1  | normal | userLoyaltyLanding2@modanisa.com | Modanisa1234. |
+      | 1  | normal | userLoyaltyLanding1@modanisa.com | Modanisa1234. |
       | 2  |        |                                  |               |
 
   @S2002

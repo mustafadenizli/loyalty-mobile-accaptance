@@ -6,6 +6,9 @@ Feature: Points History Page
 
   | status    | Emails                                | Passwords      | CustomerIDs |
   | normal    | userLoyaltyPointHistory@modanisa.com  | Modanisa1234.  | 12727302    |
+  | normal    | userLoyaltyPointHistory1@modanisa.com  | Modanisa1234. | 12727403	 |
+  | normal    | userLoyaltyPointHistory2@modanisa.com  | Modanisa1234. | 12727404	 |
+  | normal    | userLoyaltyPointHistory3@modanisa.com  | Modanisa1234. | 12727405	 |
 
 
   Background:

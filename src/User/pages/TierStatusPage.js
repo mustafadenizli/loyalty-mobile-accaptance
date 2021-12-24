@@ -10,6 +10,8 @@ const txt_PrivilagesName = browser.isAndroid ? `android=new UiSelector().descrip
 const btn_AllPrivilages = browser.isAndroid ? `android=new UiSelector().descriptionContains("all-privileges-in-modal")` : `-ios predicate string: name CONTAINS 'all-privileges-in-modal'`
 const txt_ModalTitle = browser.isAndroid ? `//android.view.View[contains(@content-desc,'...')]` : `//XCUIElementTypeOther[contains(@name,'...')]`
 const btn_CloseAllPrivilages = browser.isAndroid ? `android=new UiSelector().descriptionContains("close-button")` : `-ios predicate string: name CONTAINS 'close-button'`
+const txt_PrivilagesTitle = browser.isAndroid ? `//android.view.View[@content-desc="Ayrıcalıklar"]` : `//XCUIElementTypeOther[@name="Ayrıcalıklar"]`
+
 
 
 class TierStatusPage {
@@ -48,6 +50,12 @@ class TierStatusPage {
 
     async checkPrivilegesName(text) {
         await ElementHelper.elementsCheckTextContains(txt_PrivilagesName, text)
+    }
+    async checkPrivilegesTitle(text){
+        await ElementHelper.elementCheckTextContains(txt_PrivilagesTitle,text)
+    }
+    async checkAllPrivileges(text){
+        await ElementHelper.elementCheckTextContains(btn_AllPrivilages,text)
     }
 
     async clickAllPrivileges() {

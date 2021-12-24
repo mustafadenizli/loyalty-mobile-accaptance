@@ -10,6 +10,19 @@ Feature: Landing Page
   | userLoyaltyLanding@modanisa.com   | Modanisa1234.  | 12727253    |
   | toptanci.musteri@modanisa.com     | Testhb123      | 10183939    |
   | problemli.musteri@modanisa.com    | Testhb123      | 10183941    |
+  | userLoyaltyLanding1@modanisa.com   | Modanisa1234. | 12727410    |
+  | userLoyaltyLanding2@modanisa.com   | Modanisa1234. | 12727308    |
+  | userLoyaltyLanding3@modanisa.com   | Modanisa1234. | 12727433	 |
+  | userLoyaltyLanding4@modanisa.com   | Modanisa1234. | 12727434	 |
+  | userLoyaltyLanding5@modanisa.com   | Modanisa1234. | 12727435	 |
+  | userLoyaltyLanding6@modanisa.com   | Modanisa1234. | 12727436	 |
+  | userLoyaltyLanding7@modanisa.com   | Modanisa1234. | 12727437	 |
+  | userLoyaltyLanding8@modanisa.com   | Modanisa1234. | 12727438	 |
+  | userLoyaltyLanding9@modanisa.com   | Modanisa1234. | 12727439	 |
+  | userLoyaltyLanding10@modanisa.com  | Modanisa1234. | 12727440	 |
+
+
+
 
   Background:
     Given Nisa waits for Welcome page
@@ -36,7 +49,8 @@ Feature: Landing Page
       | 3  | normal | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa'ya Katıl |
       | 4  | normal | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa'ya Katıl |
 
-  @S74/74.1-LoggedIn/NotLoggedIn-CheckTab
+ # @S74/74.1-LoggedIn/NotLoggedIn-CheckTab
+  @deneme1
   Scenario Outline: Nisa has taps "Program Features|Earn Points|Points Usage" <TC>
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -45,9 +59,9 @@ Feature: Landing Page
     Then Nisa should see Tab Card: "<tabCard>" in Landing Page
     Examples:
       | TC | user   | email                           | password      | tab                 | tabCard                 |
-      | 1  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | Program Özellikleri | Kargo Bedava Fırsatları |
-      | 2  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | Puan Kazanımı       | Hoş Geldin Puanı        |
-      | 3  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | Hediye Seçimi       | Modanisa Hediye Çekleri |
+      #| 1  | normal | userLoyaltyLanding1@modanisa.com | Modanisa1234. | Program Özellikleri | Kargo Bedava Fırsatları |
+      #| 2  | normal | userLoyaltyLanding2@modanisa.com | Modanisa1234. | Puan Kazanımı       | Hoş Geldin Puanı        |
+      | 3  | normal | userLoyaltyLanding3@modanisa.com | Modanisa1234. | Hediye Seçimi       | Modanisa Hediye Çekleri |
       | 4  | normal | toptanci.musteri@modanisa.com   | Testhb123     | Program Özellikleri | Kargo Bedava Fırsatları |
       | 5  | normal | toptanci.musteri@modanisa.com   | Testhb123     | Puan Kazanımı       | Hoş Geldin Puanı        |
       | 6  | normal | toptanci.musteri@modanisa.com   | Testhb123     | Hediye Seçimi       | Modanisa Hediye Çekleri |
@@ -71,9 +85,9 @@ Feature: Landing Page
     Then Nisa should see Landing Page Title
     Examples:
       | TC | user   | email                           | password      | faqName                                 | faqDescription                                            |
-      | 1  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa nedir                       | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır |
+      | 1  | normal | userLoyaltyLanding4@modanisa.com | Modanisa1234. | My Modanisa nedir                       | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır |
 #     | 2  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa’ya nasıl kayıt olurum       | My Modanisa’ya kayıt olmak için                           |
-      | 3  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa ne gibi ayrıcalıklar sağlar | My Modanisa’ya kayıt olduktan sonra                       |
+      | 3  | normal | userLoyaltyLanding5@modanisa.com | Modanisa1234. | My Modanisa ne gibi ayrıcalıklar sağlar | My Modanisa’ya kayıt olduktan sonra                       |
       | 4  | normal | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa nedir                       | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır |
 #     | 5  | normal | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa’ya nasıl kayıt olurum       | My Modanisa’ya kayıt olmak için                           |
       | 6  | normal | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa ne gibi ayrıcalıklar sağlar | My Modanisa’ya kayıt olduktan sonra                       |
@@ -96,7 +110,7 @@ Feature: Landing Page
 #    Then Nisa should see Landing Page Title
     Examples:
       | TC | user   | email                           | password      | faqName           |
-      | 1  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. | My Modanisa nedir |
+      | 1  | normal | userLoyaltyLanding6@modanisa.com | Modanisa1234. | My Modanisa nedir |
       | 2  | normal | toptanci.musteri@modanisa.com   | Testhb123     | My Modanisa nedir |
       | 3  | normal | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa nedir |
       | 4  |        |                                 |               | My Modanisa nedir |
@@ -114,7 +128,7 @@ Feature: Landing Page
     Then Nisa should see Landing Page Title
     Examples:
       | TC | user   | email                           | password      |
-      | 1  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. |
+      | 1  | normal | userLoyaltyLanding7@modanisa.com | Modanisa1234. |
       | 2  | normal | toptanci.musteri@modanisa.com   | Testhb123     |
       | 3  | normal | problemli.musteri@modanisa.com  | Testhb123     |
       | 4  |        |                                 |               |
@@ -142,7 +156,7 @@ Feature: Landing Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      |
-      | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. |
+      | normal | userLoyaltyLanding8@modanisa.com | Modanisa1234. |
 
   @S56
   Scenario Outline: Nisa Has Not See Enroll Button And Warning Message When She Is Wholesaler <TC>
@@ -180,7 +194,7 @@ Feature: Landing Page
     Then Nisa should see My Account page
     Examples:
       | TC | user   | email                           | password      |
-      | 1  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. |
+      | 1  | normal | userLoyaltyLanding9@modanisa.com | Modanisa1234. |
       | 2  | normal | toptanci.musteri@modanisa.com   | Testhb123     |
       | 3  | normal | problemli.musteri@modanisa.com  | Testhb123     |
       | 4  |        |                                 |               |
@@ -193,7 +207,7 @@ Feature: Landing Page
     Then Nisa should see My Account page
     Examples:
       | TC | user   | email                           | password      |
-      | 1  | normal | userLoyaltyLanding@modanisa.com | Modanisa1234. |
+      | 1  | normal | userLoyaltyLanding10@modanisa.com | Modanisa1234. |
       | 2  | normal | toptanci.musteri@modanisa.com   | Testhb123     |
       | 3  | normal | problemli.musteri@modanisa.com  | Testhb123     |
       | 4  |        |                                 |               |

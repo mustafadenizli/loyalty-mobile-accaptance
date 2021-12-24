@@ -4,8 +4,15 @@ Feature: Earned Gifts Page
   I want to reach the list of gifts that I have earned
   So that I can use them before my gifts are expired
 
-  | status    | Emails                              | Passwords      | CustomerIDs |
-  | normal    | userLoyaltyEarnedGifts@modanisa.com | Modanisa1234.  | 12727304    |
+  | status    | Emails                              | Passwords      | CustomerIDs  |
+  | normal    | userLoyaltyEarnedGifts@modanisa.com | Modanisa1234.  | 12727304     |
+  | normal    | userLoyaltyEarnedGifts1@modanisa.com | Modanisa1234. | 12727425	    |
+  | normal    | userLoyaltyEarnedGifts2@modanisa.com | Modanisa1234. | 12727426	    |
+  | normal    | userLoyaltyEarnedGifts3@modanisa.com | Modanisa1234. | 12727427     |
+  | normal    | userLoyaltyEarnedGifts4@modanisa.com | Modanisa1234. | 12727428	    |
+  | normal    | userLoyaltyEarnedGifts5@modanisa.com | Modanisa1234. | 12727429	    |
+  | normal    | userLoyaltyEarnedGifts6@modanisa.com | Modanisa1234. | 12727430	    |
+
 
 
   Background:

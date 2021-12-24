@@ -4,8 +4,12 @@ Feature: Rewards Page
   I want to see my current points and list of gifts
   So that I can redeem my gifts
 
-  | status    | Emails                           | Passwords      | CustomerIDs |
-  | normal    | userLoyaltyRewards@modanisa.com  | Modanisa1234.  | 12727303    |
+  | status    | Emails                           | Passwords       | CustomerIDs |
+  | normal    | userLoyaltyRewards@modanisa.com  | Modanisa1234.   | 12727303    |
+  | normal    | userLoyaltyRewards1@modanisa.com  | Modanisa1234.  | 12727399    |
+  | normal    | userLoyaltyRewards2@modanisa.com  | Modanisa1234.  | 12727400	 |
+  | normal    | userLoyaltyRewards3@modanisa.com  | Modanisa1234.  | 12727401	 |
+  | normal    | userLoyaltyRewards4@modanisa.com  | Modanisa1234.  | 12727402	 |
 
 
   Background:

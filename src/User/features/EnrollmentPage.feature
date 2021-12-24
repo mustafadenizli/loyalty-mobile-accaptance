@@ -7,9 +7,17 @@ Feature: Enrollment Page
   | status    | Emails                            | Passwords      | CustomerIDs |
   | facebook  | userloyaltyEnroll@yandex.com      | Modanisa1234.  | 12727273    |
   | normal    | userloyaltyEnroll1@modanisa.com   | Modanisa1234.  | 12727275    |
-  | normal    | userloyaltyEnroll2@modanisa.com   | Modanisa1234.  | 12727275    |
+  | normal    | userloyaltyEnroll2@modanisa.com   | Modanisa1234.  | 12727309	    |
   | normal    | userloyaltyEnroll3@modanisa.com   | Modanisa1234.  | 12727310    |
   | normal    | userloyaltyEnroll4@modanisa.com   | Modanisa1234.  | 12727311    |
+  | normal    | userloyaltyEnroll5@modanisa.com   | Modanisa1234.  | 12727417	 |
+  | normal    | userloyaltyEnroll6@modanisa.com   | Modanisa1234.  | 12727418	 |
+  | normal    | userloyaltyEnroll7@modanisa.com   | Modanisa1234.  | 12727419	 |
+  | normal    | userloyaltyEnroll8@modanisa.com   | Modanisa1234.  | 12727420	 |
+  | normal    | userloyaltyEnroll9@modanisa.com   | Modanisa1234.  | 12727421	 |
+  | normal    | userloyaltyEnroll10@modanisa.com  | Modanisa1234.  | 12727422	 |
+  | normal    | userloyaltyEnroll11@modanisa.com  | Modanisa1234.  | 12727423	 |
+  | normal    | userloyaltyEnroll12@modanisa.com  | Modanisa1234.  | 12727424    |
 
 
   Background:
@@ -42,7 +50,7 @@ Feature: Enrollment Page
     Then Nisa should see Dashboard Main Page
     Examples:
       | status | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll2@modanisa.com | Modanisa1234. | 12727309   |
 
   @S80 @enrollment @Hatali
   Scenario Outline: Nisa Enrolls Successfully With Default User Data
@@ -84,7 +92,7 @@ Feature: Enrollment Page
     Then Nisa should see Button: "My Modanisa'ya Katıl" in Landing Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll4@modanisa.com | Modanisa1234. | 12727311   |
 
   @S80 @enrollment
   Scenario Outline: Nisa Go Back to Loyalty Page From Enrollment Form Page Custom Email
@@ -97,7 +105,7 @@ Feature: Enrollment Page
     Then Nisa should see Button: "My Modanisa'ya Katıl" in Landing Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll5@modanisa.com | Modanisa1234. | 12727417   |
 
   @S80 @enrollment @Hatali
   Scenario Outline: Nisa Try To Enroll With Invalid Email
@@ -157,7 +165,7 @@ Feature: Enrollment Page
 #    Then Nisa should seen "E-mail ile haberdar Olmak İstiyorum" section as "true"
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userLoyaltyEnroll4@modanisa.com | Modanisa1234. | 12727311   |
+      | normal | userLoyaltyEnroll6@modanisa.com | Modanisa1234. | 12727418   |
 
 
   @S80_3
@@ -171,7 +179,7 @@ Feature: Enrollment Page
     When Nisa click Button: "Kullanım Koşulları" in Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll7@modanisa.com | Modanisa1234. | 12727419   |
 
 
   @S80_3
@@ -187,7 +195,7 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll8@modanisa.com | Modanisa1234. | 12727420   |
 
   @S80_3 @Hatali
   Scenario Outline: Nisa closes Kullanım Koşulları Phone back
@@ -202,7 +210,7 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll9@modanisa.com | Modanisa1234. | 12727421   |
 
   @S80_3
   Scenario Outline: Nisa taps Gizlilik Bildirimleri
@@ -215,7 +223,7 @@ Feature: Enrollment Page
     When Nisa click Button: "Gizlilik Bildirimleri" in Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll10@modanisa.com | Modanisa1234. | 12727422   |
 
   @S80_3
   Scenario Outline: Nisa closes Gizlilik Bildirimleri
@@ -230,7 +238,7 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll11@modanisa.com | Modanisa1234. | 12727423   |
 
   @S80_3 @Hatali
   Scenario Outline: Nisa closes Gizlilik Bildirimleri Phone Back
@@ -245,4 +253,4 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userloyaltyEnroll12@modanisa.com | Modanisa1234. | 12727424   |
