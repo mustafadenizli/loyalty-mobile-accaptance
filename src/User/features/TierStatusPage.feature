@@ -38,7 +38,7 @@ Feature: Tier Status Page
     Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
     Given Nisa taps on the My Account button in bottom menu bar
 
-  @SD11 @deneme
+  @SD11
   Scenario Outline:  Nisa taps to "Üyelik Seviyem" section on dashboard main page <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
@@ -83,7 +83,7 @@ Feature: Tier Status Page
       | 2  | Gold     | userLoyaltyTierStatus4@modanisa.com  | Modanisa1234. | 12727390   | 110   |
       | 3  | Platinum | userLoyaltyTierStatus5@modanisa.com  | Modanisa1234. | 12727391	  | 210   |
 
-  @SD11 @deneme
+  @SD11
   Scenario Outline: nisa should see "Tüm Seviyelerdeki Ayrıcalıklar İçin" in "Üyelik Seviyem" page
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
@@ -99,7 +99,6 @@ Feature: Tier Status Page
          | userLoyaltyTierStatus6@modanisa.com   | Modanisa1234. | 12727392   |
 
   #@SD11
-    @deneme1
   Scenario Outline: Nisa taps to "Tüm Seviyelerdeki Ayrıcalıklar İçin" button on "Üyelik Seviyem" page then nisa should see "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"

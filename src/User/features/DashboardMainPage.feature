@@ -57,7 +57,6 @@ Feature: Dashboard Main Page
       | normal | userLoyaltyDashboard2@modanisa.com | Modanisa1234. | 12727273   | 10              |
 
   #@SD1
-  @deneme1
   Scenario Outline:Nisa Sees Her Name on Dashboard Main Page
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section

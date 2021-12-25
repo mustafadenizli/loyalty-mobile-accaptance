@@ -44,14 +44,14 @@ exports.config = {
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
-    maxInstances: 5,
+    maxInstances: 4,
     logLevel: 'silent',
     bail: 0,
     waitforTimeout: 45000,
     connectionRetryTimeout: 200000,
     connectionRetryCount: 5,
     coloredLogs: true,
-    specFileRetries: 1,
+    specFileRetries: 2,
     specFileRetriesDelay: 0,
     specFileRetriesDeferred: false,
     onPrepare: async (config, capabilities) => {
