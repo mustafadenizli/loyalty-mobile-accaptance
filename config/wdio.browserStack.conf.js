@@ -2,7 +2,6 @@ const chai = require("chai");
 const rimraf = require("rimraf");
 const allure = require("allure-commandline");
 const wdioParallel = require('wdio-cucumber-parallel-execution');
-const browserstack = require('browserstack-local');
 
 let count = true;
 const sourceSpecDirectory = `./src/User/features`;
@@ -68,16 +67,6 @@ exports.config = {
                 cleanTmpSpecDirectory: true
             });
             featureFilePath = `${tmpSpecDirectory}/*.feature`;
-            console.log("Connecting local");
-            return new Promise(function (resolve, reject) {
-                exports.bs_local = new browserstack.Local();
-                exports.bs_local.start({'key': exports.config.key}, function (error) {
-                    if (error) return reject(error);
-                    console.log('Connected. Now testing...');
-                    resolve();
-                });
-            });
-
         } catch (e) {
             await console.info("Silinecek dosya yok")
         }
@@ -148,8 +137,6 @@ exports.config = {
                 resolve()
             })
         })
-        exports.bs_local.stop(function () {
-        });
     },
     onReload: function (oldSessionId, newSessionId) {
         //console.info("onReload")

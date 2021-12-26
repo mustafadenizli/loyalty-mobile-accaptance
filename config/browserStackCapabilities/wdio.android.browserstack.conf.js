@@ -20,7 +20,7 @@ config.capabilities = [
         realMobile: true,
         device: 'Samsung Galaxy S10',
         os_version: "9.0",
-        app: "bs://96e942319e5485e540fa9266d2e5fc6cf274423d",
+        app: "bs://8b9d5e24aac950a856a2942109f11c17178cc81b",
         appPackage: "com.modanisa.debug",
         appActivity: "com.modanisa.activity.SplashActivity",
         fullReset: false,
@@ -28,8 +28,6 @@ config.capabilities = [
         "browserstack.appium_version": "1.21.0",
         "browserstack.acceptInsecureCerts": "true",
         "browserstack.networkProfile": "4g-lte-advanced-good",
-        'browserstack.local': true
-
     },
 ];
 
