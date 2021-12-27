@@ -1,5 +1,4 @@
 Feature: Landing Page Navigate
-
   3 dk
 
   As Nisa

@@ -1,3 +1,4 @@
+
 Feature: Landing Page
 
   31 dk
@@ -50,7 +51,6 @@ Feature: Landing Page
       | 4  | normal | problemli.musteri@modanisa.com  | Testhb123     | My Modanisa'ya Katıl |
 
  # @S74/74.1-LoggedIn/NotLoggedIn-CheckTab
-  @deneme1
   Scenario Outline: Nisa has taps "Program Features|Earn Points|Points Usage" <TC>
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
