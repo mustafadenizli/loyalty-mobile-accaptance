@@ -40,7 +40,7 @@ exports.config = {
         profile: [],
         strict: false,
         //tagExpression: 'not @Hatali',
-        tagExpression:'@CloseButton',
+        tagExpression:'not @Hatali',
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },
