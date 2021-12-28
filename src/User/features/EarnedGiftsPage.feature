@@ -6,14 +6,12 @@ Feature: Earned Gifts Page
 
   | status    | Emails                              | Passwords      | CustomerIDs  |
   | normal    | userLoyaltyEarnedGifts@modanisa.com | Modanisa1234.  | 12727304     |
-  | normal    | userLoyaltyEarnedGifts1@modanisa.com | Modanisa1234. | 12727425	    |
-  | normal    | userLoyaltyEarnedGifts2@modanisa.com | Modanisa1234. | 12727426	    |
+  | normal    | userLoyaltyEarnedGifts1@modanisa.com | Modanisa1234. | 12727425        |
+  | normal    | userLoyaltyEarnedGifts2@modanisa.com | Modanisa1234. | 12727426        |
   | normal    | userLoyaltyEarnedGifts3@modanisa.com | Modanisa1234. | 12727427     |
-  | normal    | userLoyaltyEarnedGifts4@modanisa.com | Modanisa1234. | 12727428	    |
-  | normal    | userLoyaltyEarnedGifts5@modanisa.com | Modanisa1234. | 12727429	    |
-  | normal    | userLoyaltyEarnedGifts6@modanisa.com | Modanisa1234. | 12727430	    |
-
-
+  | normal    | userLoyaltyEarnedGifts4@modanisa.com | Modanisa1234. | 12727428        |
+  | normal    | userLoyaltyEarnedGifts5@modanisa.com | Modanisa1234. | 12727429        |
+  | normal    | userLoyaltyEarnedGifts6@modanisa.com | Modanisa1234. | 12727430        |
 
   Background:
     Given Nisa waits for Welcome page
@@ -24,7 +22,6 @@ Feature: Earned Gifts Page
     Given Nisa taps on the My Account button in bottom menu bar
     Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
     Given Nisa taps on the My Account button in bottom menu bar
-
 
 
   @SD7

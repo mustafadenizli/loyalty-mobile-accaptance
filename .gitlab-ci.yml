@@ -1,7 +1,7 @@
 variables:
   APK_PATH: build/app/outputs/apk/debug/app-debug.apk
   APP_ID: ''
-  JOB_ID_APK: 1814365054
+  JOB_ID_APK: $JOB_ID_APK
 
 stages:
   - run-test
@@ -33,7 +33,7 @@ apk-debug-browserstack:
     - npm run test:androidBrowserStack
   timeout: 3h 30m
   tags:
-    #- customer
+    - customer
   artifacts:
     when: always
     paths:
