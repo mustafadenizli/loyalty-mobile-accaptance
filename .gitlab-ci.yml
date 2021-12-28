@@ -34,8 +34,6 @@ apk-debug-browserstack:
   timeout: 3h 30m
   tags:
     - customer
-  only:
-    - triggers
   artifacts:
     when: always
     paths:
