@@ -10,13 +10,13 @@ exports.config = {
     runner: 'local',
     specs: [
         //'./src/User/features/**/LandingPage.feature',         //50m
-       // './src/User/features/**/TierStatusPage.feature',      //19m
+        './src/User/features/**/TierStatusPage.feature',      //19m
         //'./src/User/features/**/DashboardMainPage.feature',   //16m
         //'./src/User/features/**/EnrollmentPage.feature',      //15m
         //'./src/User/features/**/EarnedGiftsPage.feature',     //7m
         //'./src/User/features/**/RewardsPage.feature',         //6m
         //'./src/User/features/**/LandingPageNavigate.feature', //5m
-        './src/User/features/**/FaqPage.feature',             //5m
+        //'./src/User/features/**/FaqPage.feature',             //5m
         //'./src/User/features/**/PointEarningPage.feature',    //4m
        //'./src/User/features/**/PointHistoryPage.feature',    //4m
     ],
@@ -40,7 +40,7 @@ exports.config = {
         profile: [],
         strict: false,
         //tagExpression: 'not @Hatali',
-        tagExpression:'not @Hatali',
+        tagExpression:'@CloseButton',
         timeout: 120000,
         ignoreUndefinedDefinitions: false
     },

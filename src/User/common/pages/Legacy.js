@@ -268,9 +268,11 @@ class Common {
     }
 
     async clickPhoneBackButton() {
-        if (browser.isAndroid) {
+
+       if (browser.isAndroid) {
             await driver.back()
-        } else {
+        }
+        else {
             let screen = await browser.getWindowSize()
             let height = await screen.height
             let width = await screen.width

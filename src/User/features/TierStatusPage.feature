@@ -38,8 +38,8 @@ Feature: Tier Status Page
     Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
     Given Nisa taps on the My Account button in bottom menu bar
 
-  @SD11
-  Scenario Outline:  Nisa taps to "Üyelik Seviyem" section on dashboard main page <TC>
+  @TierStatusPage
+  Scenario Outline: Nisa sees <tier> <score> and <Privileges Name> fields by adding <addScore> point on my membership level page with <email>.
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<addScore>"
@@ -54,18 +54,18 @@ Feature: Tier Status Page
     Then Nisa should see Privileges Tier:"<tier>" in Tier Status Page
     Then Nisa should see Privileges Name:"<Privileges Name>" in Tier Status Page
     Examples:
-      | TC | tier     | email                                | password      | customerID | addScore | score | Privileges Name                    |
-      | 1  | Silver   | nisaSilverD-11@yandex.com            | Testhb123     | 11064240   | 50       | 55    | Profilini tamamla                  |
-      | 2  | Gold     | nisaGoldD-11@yandex.com              | Testhb123     | 11064241   | 110      | 115   | İletişime izin ver                 |
-      | 3  | Platinum | nisaPlatinumD-11@yandex.com          | Testhb123     | 11064242   | 210      | 215   | Kargo bedava                       |
-      | 4  | Silver   | userLoyaltyTierStatus@modanisa.com   | Modanisa1234. | 12727305   | 50       | 55    | Özel kampanyalardan haberdar ol    |
-      | 5  | Gold     | userLoyaltyTierStatus1@modanisa.com  | Modanisa1234. | 12727387   | 110      | 115   | İndirimlerde öncelik               |
-      | 6  | Platinum | userLoyaltyTierStatus2@modanisa.com  | Modanisa1234. | 12727388   | 210      | 215   | Özel etkinlik ve davetlere katılım |
+       | tier     | email                                | password      | customerID | addScore | score | Privileges Name                    |
+       | Silver   | nisaSilverD-11@yandex.com            | Testhb123     | 11064240   | 50       | 55    | Profilini tamamla                  |
+       | Gold     | nisaGoldD-11@yandex.com              | Testhb123     | 11064241   | 110      | 115   | İletişime izin ver                 |
+       | Platinum | nisaPlatinumD-11@yandex.com          | Testhb123     | 11064242   | 210      | 215   | Kargo bedava                       |
+       | Silver   | userLoyaltyTierStatus@modanisa.com   | Modanisa1234. | 12727305   | 50       | 55    | Özel kampanyalardan haberdar ol    |
+       | Gold     | userLoyaltyTierStatus1@modanisa.com  | Modanisa1234. | 12727387   | 110      | 115   | İndirimlerde öncelik               |
+       | Platinum | userLoyaltyTierStatus2@modanisa.com  | Modanisa1234. | 12727388   | 210      | 215   | Özel etkinlik ve davetlere katılım |
 
 
 
-  @SD11 @BackButton
-  Scenario Outline: Nisa taps to back button on "Üyelik Seviyem" page <TC>
+  @TierStatusPage @BackButton
+  Scenario Outline: Nisa taps the back button on the "My Membership Level" page with <email>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<score>"
@@ -78,13 +78,13 @@ Feature: Tier Status Page
     Then Nisa should see Dashboard Main Page
 
     Examples:
-      | TC | tier     | email                                | password      | customerID | score |
-      | 1  | Silver   | userLoyaltyTierStatus3@modanisa.com  | Modanisa1234. | 12727389   | 50    |
-      | 2  | Gold     | userLoyaltyTierStatus4@modanisa.com  | Modanisa1234. | 12727390   | 110   |
-      | 3  | Platinum | userLoyaltyTierStatus5@modanisa.com  | Modanisa1234. | 12727391	  | 210   |
+       | tier     | email                                | password      | customerID | score |
+       | Silver   | userLoyaltyTierStatus3@modanisa.com  | Modanisa1234. | 12727389   | 50    |
+       | Gold     | userLoyaltyTierStatus4@modanisa.com  | Modanisa1234. | 12727390   | 110   |
+       | Platinum | userLoyaltyTierStatus5@modanisa.com  | Modanisa1234. | 12727391	  | 210   |
 
-  @SD11
-  Scenario Outline: nisa should see "Tüm Seviyelerdeki Ayrıcalıklar İçin" in "Üyelik Seviyem" page
+  @TierStatusPage @AllPrivileges
+  Scenario Outline: Nisa should see "For All Privilege Levels" on the "My Membership Level" page with <email>.
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<score>"
@@ -98,8 +98,8 @@ Feature: Tier Status Page
          | email                                 | password      | customerID |
          | userLoyaltyTierStatus6@modanisa.com   | Modanisa1234. | 12727392   |
 
-  #@SD11
-  Scenario Outline: Nisa taps to "Tüm Seviyelerdeki Ayrıcalıklar İçin" button on "Üyelik Seviyem" page then nisa should see "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal <TC>
+  @TierStatusPage @deneme1
+  Scenario Outline: Nisa should see "For All Privilege Levels", <Privileges Name>, After Nisa taps to the "For All Privileges" button on the "My Membership Level" page with <email>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<score>"
@@ -114,21 +114,21 @@ Feature: Tier Status Page
     Then Nisa should see Privileges Name:"<Privileges Name>" in Tier Status Page
 
     Examples:
-      | TC | tier     | email                                 | password      | customerID | score | Privileges Name                     |
-      | 1  | Silver   | userLoyaltyTierStatus7@modanisa.com   | Modanisa1234. | 12727393   | 50    | Puan Aralıkları                     |
-      | 2  | Gold     | userLoyaltyTierStatus8@modanisa.com   | Modanisa1234. | 12727394   | 110   | Hoş Geldin Puanı                    |
-      | 3  | Platinum | userLoyaltyTierStatus9@modanisa.com   | Modanisa1234. | 12727395   | 210   | Profil Doldurma Puanı               |
-      | 4  | Silver   | userLoyaltyTierStatus10@modanisa.com  | Modanisa1234. | 12727396   | 50    | SMS ile İletişim İzni               |
-      | 5  | Gold     | userLoyaltyTierStatus11@modanisa.com  | Modanisa1234. | 12727397   | 110   | E-mail ile İletişim İzni            |
-      | 6  | Platinum | userLoyaltyTierStatus12@modanisa.com  | Modanisa1234. | 12727398   | 210   | Arama ile İletişim İzni             |
-      | 7  | Silver   | userLoyaltyTierStatus13@modanisa.com  | Modanisa1234. | 12727441   | 50    | Ürün Yorumu Yapınca Kazanılan Puan  |
+      | tier     | email                                 | password      | customerID | score | Privileges Name                     |
+      | Silver   | userLoyaltyTierStatus7@modanisa.com   | Modanisa1234. | 12727393   | 50    | Puan Aralıkları                     |
+      | Gold     | userLoyaltyTierStatus8@modanisa.com   | Modanisa1234. | 12727394   | 110   | Hoş Geldin Puanı                    |
+      | Platinum | userLoyaltyTierStatus9@modanisa.com   | Modanisa1234. | 12727395   | 210   | Profil Doldurma Puanı               |
+      | Silver   | userLoyaltyTierStatus10@modanisa.com  | Modanisa1234. | 12727396   | 50    | SMS ile İletişim İzni               |
+      | Gold     | userLoyaltyTierStatus11@modanisa.com  | Modanisa1234. | 12727397   | 110   | E-mail ile İletişim İzni            |
+      | Platinum | userLoyaltyTierStatus12@modanisa.com  | Modanisa1234. | 12727398   | 210   | Arama ile İletişim İzni             |
+      | Silver   | userLoyaltyTierStatus13@modanisa.com  | Modanisa1234. | 12727441   | 50    | Ürün Yorumu Yapınca Kazanılan Puan  |
       #| 8  | Gold     | userLoyaltyTierStatus14@modanisa.com  | Modanisa1234. | 12727442   | 110   | Doğum Günü Puanı                    |
 
 
 
 
-  @SD11 @CloseButton
-  Scenario Outline: Nisa taps to close "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal <TC>
+  @TierStatusPage @CloseButton
+  Scenario Outline: Nisa taps to close "Tüm Seviyelerdeki Ayrıcalıklar İçin" modal with <email>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<score>"
@@ -143,8 +143,8 @@ Feature: Tier Status Page
     Then Nisa should see Tier Status Page
 
     Examples:
-      | TC | tier     | email                                  | password       | customerID | score |
-      | 1  | Silver   | userLoyaltyTierStatus15@modanisa.com   | Modanisa1234. | 12727443   | 50    |
-      | 2  | Gold     | userLoyaltyTierStatus16@modanisa.com   | Modanisa1234. | 12727444   | 110   |
-      | 3  | Platinum | userLoyaltyTierStatus17@modanisa.com   | Modanisa1234. | 12727445   | 210   |
+       | tier     | email                                  | password       | customerID | score |
+       | Silver   | userLoyaltyTierStatus15@modanisa.com   | Modanisa1234. | 12727443    | 50    |
+       | Gold     | userLoyaltyTierStatus16@modanisa.com   | Modanisa1234. | 12727444    | 110   |
+       | Platinum | userLoyaltyTierStatus17@modanisa.com   | Modanisa1234. | 12727445    | 210   |
 

@@ -4,12 +4,12 @@ Feature: Rewards Page
   I want to see my current points and list of gifts
   So that I can redeem my gifts
 
-  | status    | Emails                           | Passwords       | CustomerIDs |
-  | normal    | userLoyaltyRewards@modanisa.com  | Modanisa1234.   | 12727303    |
-  | normal    | userLoyaltyRewards1@modanisa.com  | Modanisa1234.  | 12727399    |
-  | normal    | userLoyaltyRewards2@modanisa.com  | Modanisa1234.  | 12727400	 |
-  | normal    | userLoyaltyRewards3@modanisa.com  | Modanisa1234.  | 12727401	 |
-  | normal    | userLoyaltyRewards4@modanisa.com  | Modanisa1234.  | 12727402	 |
+  | status    | Emails                            | Passwords       | CustomerIDs |
+  | normal    | userLoyaltyRewards@modanisa.com   | Modanisa1234.   | 12727303    |
+  | normal    | userLoyaltyRewards1@modanisa.com  | Modanisa1234.   | 12727399    |
+  | normal    | userLoyaltyRewards2@modanisa.com  | Modanisa1234.   | 12727400	  |
+  | normal    | userLoyaltyRewards3@modanisa.com  | Modanisa1234.   | 12727401	  |
+  | normal    | userLoyaltyRewards4@modanisa.com  | Modanisa1234.   | 12727402	  |
 
 
   Background:
@@ -21,32 +21,72 @@ Feature: Rewards Page
     Given Nisa taps on the My Account button in bottom menu bar
     Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
     Given Nisa taps on the My Account button in bottom menu bar
-    Given Nisa is not enrolled user with customerId: "12727303"
-    Given Nisa is enrolled user with customerId: "12727303" and e-mail: "userLoyaltyRewards@modanisa.com"
-    Given Nisa add Confirmed Point with customerId: "12727303" and confirmedPoint: "50"
-    Given Nisa login with user:"normal" email: "userLoyaltyRewards@modanisa.com" and password: "Modanisa1234."
+
+
+  @Rewards @ConfirmedPoint
+  Scenario Outline: Nisa sees <confirmedPoint> on the Gift Selection page with <email>
+    Given Nisa is not enrolled user with customerId: "<customerID>"
+    Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
+    Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<addConfirmedPoint>"
+    Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
     Then Nisa should see Dashboard Main Page
     When Nisa click to Rewards in Dashboard Main Page
     Then Nisa should see Rewards Page
+    Then Nisa should see Confirmed Points: "<confirmedPoint>" in Rewards Page
 
-  @SD4 @rewards
-  Scenario: Nisa Sees Her Confirmed Points on Gift List Page
-    Then Nisa should see Confirmed Points: "55 puan" in Rewards Page
+    Examples:
+   | customerID  | email                             | password       | addConfirmedPoint |  confirmedPoint  |
+   | 12727303    | userLoyaltyRewards@modanisa.com   | Modanisa1234.  | 50                | 55 puan          |
 
-  @SD4 @back @rewards
-  Scenario: Nisa goes back to Dashboard page from Gift List Page
+  @Rewards @BackButton
+  Scenario Outline: Nisa returns to Dashboard page from Gift List Page with <email>
+    Given Nisa is not enrolled user with customerId: "<customerID>"
+    Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
+    Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
+    Then Nisa should see Dashboard Main Page
+    When Nisa click to Rewards in Dashboard Main Page
+    Then Nisa should see Rewards Page
     When Nisa click to Back Button in Rewards Page
     Then Nisa should see Dashboard Main Page
 
-  @SD4 @rewards
-  Scenario: Nisa sees gifts sorted by point
+    Examples:
+      | customerID  | email                             | password      |
+      | 12727399    | userLoyaltyRewards1@modanisa.com  | Modanisa1234. |
+
+  @Rewards
+  Scenario Outline: Nisa sees gifts sorted by points with <email>
+    Given Nisa is not enrolled user with customerId: "<customerID>"
+    Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
+    Given Nisa add Confirmed Point with customerId: "<customerID>" and confirmedPoint: "<addConfirmedPoint>"
+    Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
+    Then Nisa should see Dashboard Main Page
+    When Nisa click to Rewards in Dashboard Main Page
+    Then Nisa should see Rewards Page
     Then Nisa should see sorted Gifts in Rewards Page
     Then Nisa should see Button Name: "Hediyeyi Al" under Confirmed Points in Rewards Page
     Then Nisa should see Button Name: "Puan Kazan" above Confirmed Points in Rewards Page
 
-  @rewards @pointExpiration @expirationDate
-  Scenario: Nisa Sees Expiration Date of her Active Points
-    Then Nisa should see Expire Date: "28.02.2022" in Rewards Page
+    Examples:
+    Examples:
+      | customerID  | email                             | password      |
+      | 12727400    | userLoyaltyRewards2@modanisa.com  | Modanisa1234. |
+
+  @Rewards @ExpireDate
+  Scenario Outline: Nisa Sees the Expiry Date of Active Points <expire Date> with <email>
+    Given Nisa is not enrolled user with customerId: "<customerID>"
+    Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
+    Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
+    When Nisa taps to My Modanisa section
+    Then Nisa should see Dashboard Main Page
+    When Nisa click to Rewards in Dashboard Main Page
+    Then Nisa should see Rewards Page
+    Then Nisa should see Expire Date: "<expire Date>" in Rewards Page
+
+    Examples:
+      | customerID  | email                             | password      | expire Date |
+      | 12727401    | userLoyaltyRewards3@modanisa.com  | Modanisa1234. | 28.02.2022  |
 
 
