@@ -5,7 +5,7 @@ config.capabilities = [
     {
         platformName: "iOS",
         platformVersion: "15.0",
-        deviceName: "iPhone 12 mini",
+        deviceName: "iPhone 12 Pro Max",
         app: path.resolve("/Users/mustafa.denizli/Downloads/Modanisa.app")
     },
 ];

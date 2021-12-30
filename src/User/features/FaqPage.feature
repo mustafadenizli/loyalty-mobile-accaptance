@@ -29,7 +29,7 @@ Feature: FAQ Page
 
 
   @FaqPage
-  Scenario Outline:Nisa Sees FAQ Page <case number>
+  Scenario Outline:Nisa Sees FAQ Page with <email> email
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
@@ -39,13 +39,13 @@ Feature: FAQ Page
     Then Nisa should see Faq Page Title
 
     Examples:
-    | case number| customerID | email                        | password      |
-    | 1          | 12727306   | userLoyaltyFaq@modanisa.com  | Modanisa1234. |
+    | customerID | email                        | password      |
+    | 12727306   | userLoyaltyFaq@modanisa.com  | Modanisa1234. |
 
 
 
   @FaqPage @FaqDetailModal
-  Scenario Outline:Nisa Sees FAQ Detail Modal <case number>
+  Scenario Outline: Nisa sees <faqName>, <faqModalTitle> and <faqModalDescription> fields for modal on her FAQ Page with her email <email>. <TC>
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
@@ -57,7 +57,7 @@ Feature: FAQ Page
     Then Nisa should see Faq Modal Description "<faqModalDescription>"
 
     Examples:
-      | case number | customerID | email                         | password       | faqName                                   | faqModalTitle                             | faqModalDescription                                        |
+      | TC          | customerID | email                         | password       | faqName                                   | faqModalTitle                             | faqModalDescription                                        |
       | 1           | 12727411   | userLoyaltyFaq1@modanisa.com  | Modanisa1234.  | My Modanisa nedir                         | My Modanisa nedir                         | My Modanisa, Modanisa müşterilerinin ayrıcaklı dünyasıdır. |
      # | 2          | 12727412   | userLoyaltyFaq2@modanisa.com  | Modanisa1234.  | nasıl kayıt olurum                        | nasıl kayıt olurum                        | kayıt olmak                                                |
       | 3           | 12727412   | userLoyaltyFaq2@modanisa.com  | Modanisa1234.  | My Modanisa ne gibi ayrıcalıklar sağlar   | My Modanisa ne gibi ayrıcalıklar sağlar   | kayıt olduktan sonra                                       |
@@ -68,7 +68,7 @@ Feature: FAQ Page
       | 8           | 12727452   | userLoyaltyFaq7@modanisa.com  | Modanisa1234.  | kayıt olmadan önce yaptığım alışverişler  | kayıt olmadan önce yaptığım alışverişler  | Sadece My Modanisa                                         |
 
   @FaqPage @CloseModal
-  Scenario Outline:Nisa Closed FAQ Detail Modal <case number>
+  Scenario Outline:Nisa turned off modal for <fagName> with <email> email. <TC>
       Given Nisa is not enrolled user with customerId: "<customerID>"
       Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
       Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
@@ -94,7 +94,7 @@ Feature: FAQ Page
 
 
   @FaqPage @FagBackButton
-  Scenario Outline:Nisa goes back to Dashboard Main Page from “Popular Questions Section” page <case number>
+  Scenario Outline:Nisa returns to the Dashboard Home Page from the "Popular Questions Section" page with <email> email
     Given Nisa is not enrolled user with customerId: "<customerID>"
     Given Nisa is enrolled user with customerId: "<customerID>" and e-mail: "<email>"
     Given Nisa login with user:"normal" email: "<email>" and password: "<password>"
@@ -105,8 +105,8 @@ Feature: FAQ Page
     Then Nisa should see Dashboard Main Page
 
     Examples:
-      | case number | customerID   | email                         | password      |
-      | 1           | 12727453	   | userLoyaltyFaq8@modanisa.com  | Modanisa1234. |
+          | customerID   | email                           | password      |
+          | 12727453	   | userLoyaltyFaq8@modanisa.com  | Modanisa1234. |
 
 
 

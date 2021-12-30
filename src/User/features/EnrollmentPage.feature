@@ -6,18 +6,18 @@ Feature: Enrollment Page
 
   | status    | Emails                            | Passwords      | CustomerIDs |
   | facebook  | userloyaltyEnroll@yandex.com      | Modanisa1234.  | 12727273    |
-  | normal    | userloyaltyEnroll1@modanisa.com   | Modanisa1234.  | 12727275    |
-  | normal    | userloyaltyEnroll2@modanisa.com   | Modanisa1234.  | 12727309	    |
-  | normal    | userloyaltyEnroll3@modanisa.com   | Modanisa1234.  | 12727310    |
-  | normal    | userloyaltyEnroll4@modanisa.com   | Modanisa1234.  | 12727311    |
-  | normal    | userloyaltyEnroll5@modanisa.com   | Modanisa1234.  | 12727417	 |
-  | normal    | userloyaltyEnroll6@modanisa.com   | Modanisa1234.  | 12727418	 |
-  | normal    | userloyaltyEnroll7@modanisa.com   | Modanisa1234.  | 12727419	 |
-  | normal    | userloyaltyEnroll8@modanisa.com   | Modanisa1234.  | 12727420	 |
-  | normal    | userloyaltyEnroll9@modanisa.com   | Modanisa1234.  | 12727421	 |
-  | normal    | userloyaltyEnroll10@modanisa.com  | Modanisa1234.  | 12727422	 |
-  | normal    | userloyaltyEnroll11@modanisa.com  | Modanisa1234.  | 12727423	 |
-  | normal    | userloyaltyEnroll12@modanisa.com  | Modanisa1234.  | 12727424    |
+  | normal    | userLoyaltyEnroll1@modanisa.com   | Modanisa1234.  | 12727275    |
+  | normal    | userLoyaltyEnroll2@modanisa.com   | Modanisa1234.  | 12727309	    |
+  | normal    | userLoyaltyEnroll3@modanisa.com   | Modanisa1234.  | 12727310    |
+  | normal    | userLoyaltyEnroll4@modanisa.com   | Modanisa1234.  | 12727311    |
+  | normal    | userLoyaltyEnroll5@modanisa.com   | Modanisa1234.  | 12727417	 |
+  | normal    | userLoyaltyEnroll6@modanisa.com   | Modanisa1234.  | 12727418	 |
+  | normal    | userLoyaltyEnroll7@modanisa.com   | Modanisa1234.  | 12727419	 |
+  | normal    | userLoyaltyEnroll8@modanisa.com   | Modanisa1234.  | 12727420	 |
+  | normal    | userLoyaltyEnroll9@modanisa.com   | Modanisa1234.  | 12727421	 |
+  | normal    | userLoyaltyEnroll10@modanisa.com  | Modanisa1234.  | 12727422	 |
+  | normal    | userLoyaltyEnroll11@modanisa.com  | Modanisa1234.  | 12727423	 |
+  | normal    | userLoyaltyEnroll12@modanisa.com  | Modanisa1234.  | 12727424    |
 
 
   Background:
@@ -30,8 +30,8 @@ Feature: Enrollment Page
     Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
     Given Nisa taps on the My Account button in bottom menu bar
 
-  @S57
-  Scenario Outline: Nisa Open Loyalty Page as Logged In and Not Enrolled User
+  @EnrollmentPage
+  Scenario Outline: Nisa Open Loyalty Page as Logged In and Not Enrolled User with <email> email
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -39,10 +39,10 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | status | email                           | password      | customerId |
-      | normal | userloyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
+      | normal | userLoyaltyEnroll1@modanisa.com | Modanisa1234. | 12727275   |
 
-  @S57
-  Scenario Outline: Nisa Open Loyalty Page as Logged In and Enrolled User
+  @EnrollmentPage @RegisteredUser
+  Scenario Outline: Nisa Open Loyalty Page as Logged In and Enrolled User with <email> email
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa is enrolled user with customerId: "<customerId>" and e-mail: "<email>"
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
@@ -50,9 +50,9 @@ Feature: Enrollment Page
     Then Nisa should see Dashboard Main Page
     Examples:
       | status | email                           | password      | customerId |
-      | normal | userloyaltyEnroll2@modanisa.com | Modanisa1234. | 12727309   |
+      | normal | userLoyaltyEnroll2@modanisa.com | Modanisa1234. | 12727309   |
 
-  @S80 @enrollment @Hatali
+  @EnrollmentPage @Hatali
   Scenario Outline: Nisa Enrolls Successfully With Default User Data
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
@@ -64,9 +64,9 @@ Feature: Enrollment Page
     Then Nisa should see Dashboard Main Page
     Examples:
       | status | email                           | password      | customerId |
-      | normal | userloyaltyEnroll3@modanisa.com | Modanisa1234. | 12727310   |
+      | normal | userLoyaltyEnroll3@modanisa.com | Modanisa1234. | 12727310   |
 
-  @S80 @enrollment @Hatali
+   @EnrollmentPage @Hatali
     # Facebook ile bir kere giriş yapıldığında mail adresi kaydoluyor. Bunun silinmesinin yolu bulunmadan bu case iptal
   Scenario Outline: Nisa Enrolls Successfully With Custom Email
     Given Nisa is not enrolled user with customerId: "<customerId>"
@@ -81,8 +81,8 @@ Feature: Enrollment Page
       | user     | email                            | password  | customerId |
       | facebook | automated.email.adress@gmail.com | Mdns1234. | 12727364   |
 
-  @S80 @enrollment
-  Scenario Outline: Nisa Go Back to Loyalty Page From Enrollment Form Page
+  @EnrollmentPage @BackLandingPage
+  Scenario Outline: Nisa Go Back to Loyalty Page From Enrollment Form Page with <email> email
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -92,10 +92,10 @@ Feature: Enrollment Page
     Then Nisa should see Button: "My Modanisa'ya Katıl" in Landing Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll4@modanisa.com | Modanisa1234. | 12727311   |
+      | normal | userLoyaltyEnroll4@modanisa.com | Modanisa1234. | 12727311   |
 
-  @S80 @enrollment
-  Scenario Outline: Nisa Go Back to Loyalty Page From Enrollment Form Page Custom Email
+   @enrollmentPage @PhoneBackLandingPage
+  Scenario Outline: Nisa Go Back to Loyalty Page From Enrollment Form Page with <email> email
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -105,9 +105,9 @@ Feature: Enrollment Page
     Then Nisa should see Button: "My Modanisa'ya Katıl" in Landing Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll5@modanisa.com | Modanisa1234. | 12727417   |
+      | normal | userLoyaltyEnroll5@modanisa.com | Modanisa1234. | 12727417   |
 
-  @S80 @enrollment @Hatali
+  @EnrollmentPage @Hatali
   Scenario Outline: Nisa Try To Enroll With Invalid Email
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
@@ -120,7 +120,7 @@ Feature: Enrollment Page
       | user     | email                            | password  | customerId |
       | facebook | automated.email.adress@gmail.com | Mdns1234. | 11064273   |
 
-  @S80 @enrollment @Hatali
+  @EnrollmentPage @Hatali
   Scenario Outline: Nisa Enrolls Successfully With Custom Email
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
@@ -134,7 +134,7 @@ Feature: Enrollment Page
       | user     | email                            | password  | customerId | sendKeyEmail          |
       | facebook | automated.email.adress@gmail.com | Mdns1234. | 11064273   | asli.testhb@gmail.com |
 
-  @S80 @Hatali
+  @EnrollmentPage @Hatali
   Scenario Outline: Nisa Check Email Consention Checkbox Facebook
     Given Nisa is not allow any notification permission with customerId: "<customerId>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
@@ -151,7 +151,7 @@ Feature: Enrollment Page
       | user     | email                            | password  | customerId | sendKeyEmail                     |
       | facebook | automated.email.adress@gmail.com | Mdns1234. | 11064273   | automated.email.adress@gmail.com |
 
-  @S80 @Hatali
+  @EnrollmentPage @Hatali
   Scenario Outline: Nisa Check Email Consention Checkbox
     Given Nisa is not allow any notification permission with customerId: "<customerId>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
@@ -168,8 +168,8 @@ Feature: Enrollment Page
       | normal | userLoyaltyEnroll6@modanisa.com | Modanisa1234. | 12727418   |
 
 
-  @S80_3
-  Scenario Outline: Nisa taps Kullanım Koşulları
+  @EnrollmentPage @ClickKullanımKoşulları
+  Scenario Outline: Nisa displays and clicks on the Terms Of Use on the Enrollment Page with <email> email.
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -179,11 +179,11 @@ Feature: Enrollment Page
     When Nisa click Button: "Kullanım Koşulları" in Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll7@modanisa.com | Modanisa1234. | 12727419   |
+      | normal | userLoyaltyEnroll7@modanisa.com | Modanisa1234. | 12727419   |
 
 
-  @S80_3
-  Scenario Outline: Nisa closes Kullanım Koşulları
+  @EnrollmentPage @CloseKullanımKoşullari
+  Scenario Outline: Nisa closes on the Terms Of Use on the Enrollment Page with <email> email.
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -195,9 +195,10 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll8@modanisa.com | Modanisa1234. | 12727420   |
+      | normal | userLoyaltyEnroll8@modanisa.com | Modanisa1234. | 12727420   |
 
-  @S80_3 @Hatali
+  @EnrollmentPage @Hatali123
+    #Android'te çalışıyor.
   Scenario Outline: Nisa closes Kullanım Koşulları Phone back
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
@@ -210,10 +211,10 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll9@modanisa.com | Modanisa1234. | 12727421   |
+      | normal | userLoyaltyEnroll9@modanisa.com | Modanisa1234. | 12727421   |
 
-  @S80_3
-  Scenario Outline: Nisa taps Gizlilik Bildirimleri
+  @EnrollmentPage @ClickGizlilikBildirimleri
+  Scenario Outline: Nisa displays and clicks on the Privacy Notices on the Enrollment Page with <email> email.
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -223,10 +224,10 @@ Feature: Enrollment Page
     When Nisa click Button: "Gizlilik Bildirimleri" in Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll10@modanisa.com | Modanisa1234. | 12727422   |
+      | normal | userLoyaltyEnroll10@modanisa.com | Modanisa1234. | 12727422   |
 
-  @S80_3
-  Scenario Outline: Nisa closes Gizlilik Bildirimleri
+  @EnrollmentPage @CloseGizlilikBildirimleri
+  Scenario Outline: Nisa closes on the Privacy Notices on the Enrollment Page with <email> email.
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
@@ -238,9 +239,10 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll11@modanisa.com | Modanisa1234. | 12727423   |
+      | normal | userLoyaltyEnroll11@modanisa.com | Modanisa1234. | 12727423   |
 
-  @S80_3 @Hatali
+  @EnrollmentPage @Hatali
+    #Anroid'te çalışıyor.
   Scenario Outline: Nisa closes Gizlilik Bildirimleri Phone Back
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa login with user:"<user>" email: "<email>" and password: "<password>"
@@ -253,4 +255,4 @@ Feature: Enrollment Page
     Then Nisa should see Enrollment Page
     Examples:
       | user   | email                           | password      | customerId |
-      | normal | userloyaltyEnroll12@modanisa.com | Modanisa1234. | 12727424   |
+      | normal | userLoyaltyEnroll12@modanisa.com | Modanisa1234. | 12727424   |

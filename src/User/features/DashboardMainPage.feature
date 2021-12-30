@@ -13,6 +13,7 @@ Feature: Dashboard Main Page
   | normal    | userLoyaltyDashboard6@modanisa.com | Modanisa1234.  | 12727384    |
   | normal    | userLoyaltyDashboard7@modanisa.com | Modanisa1234.  | 12727385    |
   | normal    | userLoyaltyDashboard8@modanisa.com | Modanisa1234.  | 12727386	  |
+  | normal    | userLoyaltyDashboard9@modanisa.com | Modanisa1234.  | 12727477    |
 
   Background:
     Given Nisa waits for Welcome page
@@ -24,8 +25,8 @@ Feature: Dashboard Main Page
     Given Nisa sendKey private api "customer-legacy-mdns-api-staging.modanisa.net" and restart app
     Given Nisa taps on the My Account button in bottom menu bar
 
-  @SD1
-  Scenario Outline:Nisa Sees Sections on Dashboard Main Page
+  @DashboardMainPage @Sections
+  Scenario Outline:Nisa Sees Sections on Dashboard Main Page with <email> email
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa is enrolled user with customerId: "<customerId>" and e-mail: "<email>"
@@ -40,8 +41,8 @@ Feature: Dashboard Main Page
       | status | email                              | password      | customerId |
       | normal | userLoyaltyDashboard1@modanisa.com | Modanisa1234. | 12727300   |
 
-  @SD1
-  Scenario Outline:Nisa Sees Components on Dashboard Main Page
+  @DashboardMainPage @Components
+  Scenario Outline:Nisa Sees Components on Dashboard Main Page with <email> email
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa is enrolled user with customerId: "<customerId>" and e-mail: "<email>"
@@ -56,17 +57,17 @@ Feature: Dashboard Main Page
       | status | email                              | password      | customerId | addPendingPoint |
       | normal | userLoyaltyDashboard2@modanisa.com | Modanisa1234. | 12727273   | 10              |
 
-  #@SD1
-  Scenario Outline:Nisa Sees Her Name on Dashboard Main Page
+  @DashboardMainPage @HerName
+  Scenario Outline:Nisa Sees Her Name on Dashboard Main Page with <email> email
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     When Nisa taps to My Modanisa section
     Then Nisa should see Dashboard Main Page
     Then Nisa should see Her Name: "<herName>" in Dashboard Main Page
     Examples:
       | status | email                              | password      | herName   |
-      #| normal | userLoyaltyDashboard3@modanisa.com | Modanisa1234. | Dashboard |
+      | normal | userLoyaltyDashboard3@modanisa.com | Modanisa1234. | Dashboard |
 
-  @SD1
+  @DashboardMainPage @NotHerName
   Scenario Outline:Nisa Does not See Her Name on Dashboard Main Page
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
@@ -78,8 +79,8 @@ Feature: Dashboard Main Page
       | status | email                              | password      | customerId |
       | normal | userLoyaltyDashboard4@modanisa.com | Modanisa1234. | 12727382   |
 
-  @SD1
-  Scenario Outline:Nisa Sees Her Confirmed Points and added Confirmed Points on Dashboard Main Page
+  @DashboardMainPage @ConfirmedPoint
+  Scenario Outline:Nisa Sees Her Confirmed Points and added Confirmed Points on Dashboard Main Page with <email> email
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa is enrolled user with customerId: "<customerId>" and e-mail: "<email>"
@@ -94,8 +95,8 @@ Feature: Dashboard Main Page
       | status | email                              | password      | customerId | firstConfirmedPoint | addConfirmedPoint | secondConfirmedPoint |
       | normal | userLoyaltyDashboard5@modanisa.com | Modanisa1234. | 12727383   | 5                   | 10                | 15                   |
 
-  @SD1
-  Scenario Outline:Nisa Not Sees Her Pending Points on Dashboard Main Page
+  @DashboardMainPage @NotPendingPoints
+  Scenario Outline:Nisa should not see Pending Points in Dashboard Main Page with <email> email
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa is enrolled user with customerId: "<customerId>" and e-mail: "<email>"
@@ -106,8 +107,8 @@ Feature: Dashboard Main Page
       | status | email                              | password      | customerId |
       | normal | userLoyaltyDashboard6@modanisa.com | Modanisa1234. | 12727384   |
 
-  @SD1
-  Scenario Outline:Nisa Sees Her Pending Points and added Pending Points on Dashboard Main Page
+  @DashboardMainPage @PendingPoints
+  Scenario Outline:Nisa Sees Her Pending Points and added <10> Pending Points on Dashboard Main Page with <email> email.
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa is enrolled user with customerId: "<customerId>" and e-mail: "<email>"
@@ -122,8 +123,8 @@ Feature: Dashboard Main Page
       | status | email                              | password      | customerId | addConfirmedPoint | confirmedPoint |
       | normal | userLoyaltyDashboard7@modanisa.com | Modanisa1234. | 12727385   | 10                | 10             |
 
-  @SD1
-  Scenario Outline:Nisa Goes Back to Previous Page From Dashboard Main Page
+  @DashboardMainPage @BackButton
+  Scenario Outline:Nisa Goes Back to Previous Page From Dashboard Main Page with <email> email
     Given Nisa login with user:"<status>" email: "<email>" and password: "<password>"
     Given Nisa is not enrolled user with customerId: "<customerId>"
     Given Nisa is enrolled user with customerId: "<customerId>" and e-mail: "<email>"
